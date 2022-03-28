@@ -21,9 +21,17 @@ void framework::initialize(int argc, char** argv)
 {
     this->argh_.add_options()
         ("help,h", "shows usage")
-        ("version,v", "shows the compiler version")
-        ("protocol,p", popts::);
-    this->argh_.add_positional_option("")
+        ("version,v", "shows the sentient compiler version")
+        ("protocol,p", "compiles a protocol definition file")
+        ("model,m", "compiles a model definition file")
+        ("model-prefix,a", popts::value<std::string>(), "model class prefix (optional)")
+        ("language,l", popts::value<std::string>(),
+            "language to compile [ c | c++ | csharp | java | kotlin | python | sql-ddl ]")
+        ("package-name,n", popts::value<std::string>(), "package name for Java language (ex. -n \"org.hyperlevelnerds\")")
+        ("coding-convention,c", popts::value<std::string>(),
+            "coding convention to generate [ snake | camel | pascal ]")
+        ("out-dir,o", popts::value<std::string>(), "generated output file directory");
+
     this->argh_.parse(argc, argv);
 }
 

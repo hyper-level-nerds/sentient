@@ -17,8 +17,8 @@ struct example_static_model :
         (sentient::u16_t, age)
     );
 };
-
 #pragma pack(pop)
+
 #include <vector>
 int main(int argc, char** argv)
 {

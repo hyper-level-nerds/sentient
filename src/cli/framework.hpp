@@ -4,6 +4,7 @@
 #include <string>
 
 #include "./arg_parser.hpp"
+#include "./languages.hpp"
 
 namespace sentient
 {
@@ -21,6 +22,7 @@ private:
     void initialize(int argc, char** argv);
 
     arg_parser argh_;
+    languages lang_;
 };
 
 }
