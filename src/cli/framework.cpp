@@ -51,6 +51,20 @@ int framework::execute()
         goto exit_section;
     }
 
+    if (this->argh_.vars_map().count("model") &&
+        this->argh_.vars_map().count("protocol"))
+    {
+        std::cerr << "\033[31mselect one option between"
+                  << "\033[32m --model"
+                  << " and "
+                  << "--protocol"
+                  << std::endl
+                  << this->argh_.opts_desc()
+                  << std::endl;
+        exit_code = EXIT_FAILURE;
+    }
+
+
 
 
 exit_section:

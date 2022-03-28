@@ -23,6 +23,7 @@ private:
 
     arg_parser argh_;
     languages lang_;
+    bool model_or_protocol_;
 };
 
 }
