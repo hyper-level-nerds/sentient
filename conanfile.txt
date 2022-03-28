@@ -1,0 +1,8 @@
+[requires]
+boost/1.78.0
+soci/4.0.3
+
+[generators]
+cmake
+
+[options]

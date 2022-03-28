@@ -1,0 +1,12 @@
+namespace example {
+
+#dbms_compat(0)
+model example_model {
+    u64 number,
+    str[128] name,
+    u32 childs_size,
+    str[][128] childs,
+    f64 health,
+}
+
+}

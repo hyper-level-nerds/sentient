@@ -1,0 +1,8 @@
+if (SENTIENT_BUILD_CLI)
+  message(${SENTIENT_MSG_PREFIX}"sentient CLI tool enabled")
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/cli)
+endif ()
+if (SENTIENT_BUILD_CORE)
+  message(${SENTIENT_MSG_PREFIX}"sentient core library enabled")
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/library/core)
+endif ()

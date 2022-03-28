@@ -1,0 +1,12 @@
+namespace example {
+
+protocol my_protocol {
+    stx { 0xFD }
+    len : u8
+    from : u16
+    to : u16
+    command : u32
+    etx { '\n' }
+}
+
+}
