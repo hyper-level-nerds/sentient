@@ -2,6 +2,7 @@
 #include "./version_output.hpp"
 
 #include <iostream>
+#include <filesystem>
 
 #include <boost/program_options/value_semantic.hpp>
 namespace popts = boost::program_options;
@@ -22,8 +23,7 @@ void framework::initialize(int argc, char** argv)
     this->argh_.add_options()
         ("help,h", "shows usage")
         ("version,v", "shows the sentient compiler version")
-        ("protocol,p", "compiles a protocol definition file")
-        ("model,m", "compiles a model definition file")
+        ("type,t", popts::value<std::string>(), "a type to compile [ p [ protocol ] | m [ model ] ]")
         ("model-prefix,a", popts::value<std::string>(), "model class prefix (optional)")
         ("language,l", popts::value<std::string>(),
             "language to compile [ c | c++ | csharp | java | kotlin | python | sql-ddl ]")
@@ -51,17 +51,27 @@ int framework::execute()
         goto exit_section;
     }
 
-    if (this->argh_.vars_map().count("model") &&
-        this->argh_.vars_map().count("protocol"))
+    if (this->argh_.vars_map().count("type"))
     {
-        std::cerr << "\033[31mselect one option between"
-                  << "\033[32m --model"
-                  << " and "
-                  << "--protocol"
-                  << std::endl
-                  << this->argh_.opts_desc()
-                  << std::endl;
+        auto type_to_generate = this->argh_.vars_map()["type"].as<std::string>();
+        if (type_to_generate != "protocol" && type_to_generate != "p" &&
+            type_to_generate != "model" && type_to_generate != "m")
+        {
+            std::cerr << "[error] "
+                      << "\"unknown --type arg \" parameter : "
+                      << type_to_generate
+                      << std::endl << std::endl;
+            exit_code = EXIT_FAILURE;
+            goto exit_section;
+        }
+    }
+    else
+    {
+        std::cerr << "[error] "
+                  << "\"--type arg \" required"
+                  << std::endl << std::endl;
         exit_code = EXIT_FAILURE;
+        goto exit_section;
     }
 
 

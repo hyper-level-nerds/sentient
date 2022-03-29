@@ -1,3 +1,4 @@
+#include "./filesystem.hpp"
 
 namespace sentient
 {

@@ -47,6 +47,37 @@ namespace sentient
 	using byte_array_t = std::unique_ptr<std::byte[], _Deleter>;
 	template <typename _Deleter = std::default_delete<std::byte>>
 	using byte_buffer_t = std::pair<byte_array_t<_Deleter>, size_t>;
+
+	struct subcentry_datetime32_t
+	{
+		uint32_t year : 7;
+		uint32_t month : 4;
+		uint32_t day : 5;
+		uint32_t hour : 4;
+		uint32_t minute : 6;
+		uint32_t second : 6;
+	};
+
+	struct subcentry_datetime64_t
+	{
+		uint32_t year : 7;
+		uint32_t month : 4;
+		uint32_t day : 5;
+		uint32_t hour : 4;
+		uint32_t minute : 6;
+		uint32_t second : 6;
+		uint32_t microsecond;
+	};
+
+	struct datetime64_t
+	{
+		uint32_t year : 7;
+		uint32_t month : 4;
+		uint32_t day : 5;
+		uint32_t hour : 4;
+		uint32_t minute : 6;
+		uint32_t second : 6;
+	};
 }
 
 #endif

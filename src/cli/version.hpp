@@ -39,7 +39,7 @@ SENTIENT_COMPILER_LICENSE
 "\n";
 
 constexpr const char* options_output =
-    "see options\n  sntc [options...] <input file> -o <output directory>\n";
+    "see options\n  sntc --type=[ p | m ] [options...] <input file> -o <output directory>\n";
 
 }
 }

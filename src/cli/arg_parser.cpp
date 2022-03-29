@@ -10,8 +10,8 @@ namespace compiler
 {
 
 arg_parser::arg_parser(const std::string& opts_title) :
-    opts_desc_(opts_title)
-{  
+    opts_desc_(opts_title, 256, 128)
+{
 }
 
 popts::variables_map& arg_parser::vars_map()
