@@ -13,8 +13,11 @@
  */
 
 #include <cstddef>
+#include <atomic>
 #include <type_traits>
 #include <memory>
+#include <mutex>
+#include <condition_variable>
 
 #include <boost/lockfree/queue.hpp>
 
@@ -33,7 +36,8 @@ class object_pool
 {
 public:
     using value_type = _Tp;
-    using pointer_type = _PtrType;
+    using pointer_type = std::add_pointer_t<value_type>;
+    using smart_pointer_type = _PtrType;
     using pool_type = boost::lockfree::queue<std::add_pointer_t<_Tp>>;
 
 private:
@@ -43,13 +47,13 @@ private:
      */
     struct pool_deleter
     {
-        boost::lockfree::queue<std::add_pointer_t<_Tp>>& pool_;
-        pool_deleter(boost::lockfree::queue<std::add_pointer_t<_Tp>>& pool) :
+        boost::lockfree::queue<pointer_type>& pool_;
+        pool_deleter(boost::lockfree::queue<pointer_type>& pool) :
             pool_(pool) {}
 
         void operator() (_Tp* t) const
         {
-            pool.push(t);
+            this->pool_.push(t);
         }
     };
 
@@ -61,33 +65,42 @@ public:
         size_(capacity)
     {
         for (size_t idx = 0; idx < this->size_; idx++)
-            pool_.push(new value_type(default_constructor_args));
+            pool_.push(new value_type(default_constructor_args...));
     }
 
     virtual ~object_pool()
     {
+        {
+            std::unique_lock lk(this->all_returned_mtx_);
+            this->all_returned_condvar_.wait(lk, [&]() {
+                return this->size == this->
+                });
+        }
         for (size_t idx = 0; idx < this->size_; idx++)
         {
-            value_type* ret = nullptr;
+            pointer_type ret = nullptr;
             pool_.pop(ret);
             if (ret != nullptr) delete ret;
         }
     }
 
-    size_t size() { return this->size_; }
-    bool available() { return this->pool_.capacity() != 0; }
+    inline size_t size() { return this->size_; }
+    inline bool available() { return this->pool_.capacity() != 0; }
 
-    pointer_type get_object()
+    
+
+    smart_pointer_type get_object()
     {
         value_type* ret = nullptr;
         pool_.pop(ret);
-        return pointer_type(ret, pool_deleter(pool_));
+        return smart_pointer_type(ret, pool_deleter(pool_));
     }
 
 private:
-
-    size_t    size_;
-    pool_type pool_;
+    std::mutex              all_returned_mtx_;
+    std::condition_variable all_returned_condvar_;
+    std::atomic_size_t      size_;
+    pool_type               pool_;
 };
 
 }

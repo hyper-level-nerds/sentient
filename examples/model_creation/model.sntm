@@ -1,12 +1,14 @@
-namespace example {
 
-#dbms_compat(0)
-model example_model {
-    u64 number,
-    str8[128] name,
-    u32 childs_size,
-    arr<str8[128]> childs,
-    f64 health,
-}
 
-}
+namespace example:
+
+    @pack
+    model example_model:
+        number : u64
+        email_address : str8[256]
+        password : str8[65] $cred $encrypt(sha-256)
+        health : f64
+        created_timestamp : dt64
+        updated_timestamp : dt64
+
+    
