@@ -188,11 +188,30 @@ namespace protocol_traits
 namespace message_based_protocols
 {
 
+/**
+ * @author Jin
+ * @brief protocol STX
+ * 
+ * @tparam _Tp 
+ * @tparam _Val 
+ */
 template <typename _Tp, _Tp _Val>
 struct protocol_stx
 { using stx_type = _Tp; static constexpr stx_type stx_value = _Val; };
+/**
+ * @author Jin
+ * @brief protocol from
+ * 
+ * @tparam _Tp 
+ */
 template <typename _Tp>
 struct protocol_from { using from_type = _Tp; };
+/**
+ * @author Jin
+ * @brief protocol to
+ * 
+ * @tparam _Tp 
+ */
 template <typename _Tp>
 struct protocol_to { using to_type = _Tp; };
 template <typename _Tp>
@@ -209,6 +228,10 @@ struct protocol_etx
 
 namespace stream_based_protocols
 {
+
+template <char ... _Stx>
+struct protocol_stx
+{ static constexpr const char stx_value[sizeof...(_Stx)] = { (_Stx)... };  };
 
 
 

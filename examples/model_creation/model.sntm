@@ -1,14 +1,23 @@
+# data types : u8(1 byte unsigned int)... u64(8 bytes unsigned int),
+#              i8(1 byte signed int)... u64(8 bytes signed int),
+#              f4(4 bytes floating point real number), f8(8 bytes floating point real number),
+#              str8(1 byte character (recommended))
+#              [] (dynamic type array) must have a size type(integers) in advance (ex.
+#                                                                                  arr_size : u32
+#                                                                                  arr : u32[] )
+#              [<integer constant>] static sized array expression (ex.
+#                                                                  )
 
-
-namespace example:
+ns example:
 
     @pack
-    model example_model:
-        number : u64
+    example_model:
+        number : u64 $pk
         email_address : str8[256]
+        # credential field
         password : str8[65] $cred $encrypt(sha-256)
         health : f64
-        created_timestamp : dt64
-        updated_timestamp : dt64
+        created_time : dt64
+        updated_time : dt64
 
     

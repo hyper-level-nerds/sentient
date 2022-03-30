@@ -1,16 +1,13 @@
-namespace example {
+ns example:
 
-msg_ptcl my_protocol {
-    stx { 0xFD }
-    len : u8
-    from : u16
-    to : u16
-    command : u32
-    etx { '\n' }
-}
+    message_protocol(msg_ptcl):
+        stx { 0xFD }
+        len : u8
+        from : u16
+        to : u16
+        command : u32
+        etx { '\n' }
 
-text_ptcl {
-    
-}
+    stream_protocol : strm_ptcl:
+        
 
-}
