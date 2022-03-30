@@ -1,8 +1,10 @@
+#include <iostream>
+#include <array>
 #include <sentient/core/types.hpp>
 #include <sentient/core/type_traits.hpp>
+#include <sentient/core/object_pool.hpp>
 
 #include <boost/hana/define_struct.hpp>
-#include <boost/asio.hpp>
 
 namespace snt = sentient;
 
@@ -20,11 +22,12 @@ struct example_static_model :
 #pragma pack(pop)
 
 #include <vector>
+
 int main(int argc, char** argv)
 {
-    sizeof(example_static_model);
-    
-    
+    sentient::object_pool<example_static_model> pool(4096);
+
+    auto a = pool.get_object();
 
     return 0;
 }

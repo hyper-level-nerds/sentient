@@ -24,7 +24,7 @@ namespace type_traits
 namespace internal
 {
 template<typename... Tps>
-struct is_stl_spec_container_helper {};
+struct is_type_helper {};
 }
 
 /**
@@ -122,6 +122,34 @@ template <typename _Model, typename _Tp = void>
 constexpr inline bool is_dbms_compatible_model_v = is_dbms_compatible_model<_Model, _Tp>::value;
 
 /**
+ * @author Jin
+ * @brief 
+ * 
+ * @tparam _Tp 
+ * @tparam _Up 
+ */
+template<typename _Tp, typename _Up = void>
+struct is_datetime : std::false_type {};
+template<typename _Tp>
+struct is_datetime<
+    _Tp,
+    std::conditional_t<
+        false,
+        internal::is_type_helper<
+            decltype(std::declval<_Tp>().year),
+            decltype(std::declval<_Tp>().month),
+            decltype(std::declval<_Tp>().day),
+            decltype(std::declval<_Tp>().hours),
+            decltype(std::declval<_Tp>().minutes),
+            decltype(std::declval<_Tp>().seconds)
+        >,
+    void
+    >
+> : public std::true_type {};
+template <typename _Model, typename _Tp>
+inline constexpr bool is_datetime_v = is_datetime<_Model, _Tp>::value;
+
+/**
  * @brief check if the type is an standard spec implemented container
  * 
  * @tparam _Tp 
@@ -131,24 +159,24 @@ template<typename _Tp, typename _Up = void>
 struct is_stl_spec_container : std::false_type {};
 template<typename _Tp>
 struct is_stl_spec_container<
-        _Tp,
-        std::conditional_t<
-            false,
-            internal::is_stl_spec_container_helper<
-                typename _Tp::value_type,
-                typename _Tp::size_type,
-                typename _Tp::allocator_type,
-                typename _Tp::iterator,
-                typename _Tp::const_iterator,
-                decltype(std::declval<_Tp>().size()),
-                decltype(std::declval<_Tp>().begin()),
-                decltype(std::declval<_Tp>().end()),
-                decltype(std::declval<_Tp>().cbegin()),
-                decltype(std::declval<_Tp>().cend())
-                >,
-            void
-            >
-        > : public std::true_type {};
+    _Tp,
+    std::conditional_t<
+        false,
+        internal::is_type_helper<
+            typename _Tp::value_type,
+            typename _Tp::size_type,
+            typename _Tp::allocator_type,
+            typename _Tp::iterator,
+            typename _Tp::const_iterator,
+            decltype(std::declval<_Tp>().size()),
+            decltype(std::declval<_Tp>().begin()),
+            decltype(std::declval<_Tp>().end()),
+            decltype(std::declval<_Tp>().cbegin()),
+            decltype(std::declval<_Tp>().cend())
+        >,
+    void
+    >
+> : public std::true_type {};
 template <typename _Tp, typename _Up = void>
 constexpr inline bool is_stl_spec_container_v = is_stl_spec_container<_Tp, _Up>::value;
 
@@ -156,6 +184,8 @@ template<typename _Tp, typename _Up = void>
 struct is_stl_spec_string : std::false_type { };
 
 namespace protocol_traits
+{
+namespace message_based_protocols
 {
 
 template <typename _Tp, _Tp _Val>
@@ -174,6 +204,15 @@ struct protocol_crc { using crc_type = _Tp; };
 template <typename _Tp, _Tp _Val>
 struct protocol_etx 
 { using etx_type = _Tp; static constexpr etx_type etx_value = _Val; };
+
+}
+
+namespace stream_based_protocols
+{
+
+
+
+}
 
 }
 
