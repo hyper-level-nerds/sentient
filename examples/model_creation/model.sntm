@@ -8,19 +8,20 @@
 #              a8 (1 byte ascii character)
 #
 #              *** array type expressions ***
-#              [] (dynamic type array) must have a size type(integers) in advance ( ex.
+#              [] (dynamic array type) must have a size type(integers) in advance ( ex.
 #                                                                                   arr_size : u32
 #                                                                                   arr : u32[] )
-#              [<integer constant>] static sized array expression ( ex.
-#                                                                   arr : u32[64])
+#              [ <integer constant >] static sized array expression ( ex.
+#                                                                     arr : u32[64])
 #
 #              str8 [] | [<integer constant>] (1 byte utf-8 array)
 #              str16 [] | [<integer constant>] (2 byte utf-16 array)
 #              str32 [] | [<integer constant>] (4 byte utf-32 array)
+#              dt32
+#              dt64
 
 ns example:
 
-    @pack
     example_model:
         number : u64 $pk
         email_address : str8[256]
@@ -29,5 +30,3 @@ ns example:
         health : f64
         created_time : dt64
         updated_time : dt64
-
-    

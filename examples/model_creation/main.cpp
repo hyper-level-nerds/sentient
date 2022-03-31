@@ -4,7 +4,7 @@
 
 #include <sentient/core/types.hpp>
 #include <sentient/core/type_traits.hpp>
-// #include <sentient/core/object_pool.hpp>
+#include <sentient/core/object_pool.hpp>
 #include <boost/lockfree/queue.hpp>
 #include <boost/hana/define_struct.hpp>
 

@@ -150,7 +150,8 @@ template <typename _Model, typename _Tp>
 inline constexpr bool is_datetime_v = is_datetime<_Model, _Tp>::value;
 
 /**
- * @brief check if the type is an standard spec implemented container
+ * @author Jin
+ * @brief check if the type is a standard spec implemented container
  * 
  * @tparam _Tp 
  * @tparam _Up 
