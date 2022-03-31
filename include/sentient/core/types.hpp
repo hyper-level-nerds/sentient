@@ -35,6 +35,8 @@ using i64_t = int64_t;
 using f32_t = float;
 using f64_t = double;
 
+using ascii_t = char;
+
 using crc8_t = uint8_t;
 using crc16_t = uint16_t;
 using crc32_t = uint32_t;
@@ -42,7 +44,9 @@ using crc32_t = uint32_t;
 template <typename _Tp, size_t _Size>
 using arr_t = _Tp[_Size];
 template <size_t _Size>
-using str8_t = arr_t<char, _Size>;
+using ascii8_t = arr_t<ascii_t, _Size>;
+template <size_t _Size>
+using str8_t = arr_t<char8_t, _Size>;
 template <size_t _Size>
 using str16_t = arr_t<char16_t, _Size>;
 template <size_t _Size>

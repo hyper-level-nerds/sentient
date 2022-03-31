@@ -1,12 +1,22 @@
-# data types : u8(1 byte unsigned int)... u64(8 bytes unsigned int),
-#              i8(1 byte signed int)... u64(8 bytes signed int),
-#              f4(4 bytes floating point real number), f8(8 bytes floating point real number),
-#              str8(1 byte character (recommended))
-#              [] (dynamic type array) must have a size type(integers) in advance (ex.
-#                                                                                  arr_size : u32
-#                                                                                  arr : u32[] )
-#              [<integer constant>] static sized array expression (ex.
-#                                                                  )
+# data types : 
+#              *** primitive types ***
+#              b  (1 byte integral type)
+#              u8 (1 byte unsigned int)... u64 (8 bytes unsigned int)
+#              i8 (1 byte signed int)... u64 (8 bytes signed int)
+#              f4 (4 bytes floating point real number)
+#              f8 (8 bytes floating point real number)
+#              a8 (1 byte ascii character)
+#
+#              *** array type expressions ***
+#              [] (dynamic type array) must have a size type(integers) in advance ( ex.
+#                                                                                   arr_size : u32
+#                                                                                   arr : u32[] )
+#              [<integer constant>] static sized array expression ( ex.
+#                                                                   arr : u32[64])
+#
+#              str8 [] | [<integer constant>] (1 byte utf-8 array)
+#              str16 [] | [<integer constant>] (2 byte utf-16 array)
+#              str32 [] | [<integer constant>] (4 byte utf-32 array)
 
 ns example:
 

@@ -4,9 +4,11 @@
 
 #include <sentient/core/types.hpp>
 #include <sentient/core/type_traits.hpp>
-#include <sentient/core/object_pool.hpp>
-
+// #include <sentient/core/object_pool.hpp>
+#include <boost/lockfree/queue.hpp>
 #include <boost/hana/define_struct.hpp>
+
+#include <boost/static_string.hpp>
 
 namespace snt = sentient;
 
@@ -31,13 +33,34 @@ struct static_model :
 
 int main(int argc, char** argv)
 {
-    sentient::object_pool<example::static_model> pool(4096);
+    // sentient::object_pool<example::static_model> pool(4096);
 
-    std::shared_ptr<example::static_model> a = pool.get_object();
+    // std::shared_ptr<example::static_model> a = pool.get_object();
 
-    std::shared_ptr<int> asdfasdf;
-    std::default_delete<int> del;
+    // std::shared_ptr<int> asdfasdf;
+    // std::default_delete<int> del;
+
+    boost::lockfree::queue<int> pool_(4096);
+    pool_.push(1);
+    pool_.push(1);
+    pool_.push(1);
     
+    decltype(pool_)::value_type val = 0;
+    pool_.pop(val);
+
+    std::cout << val << std::endl;
+    
+    auto aa = u8'a';
+
+    // std::u8string str = u8"asdf";
+    // std::array<char, 128> str;
+    boost::static_string<128> str;
+
+    constexpr auto ssize = sizeof(str);
+
+    std::strcpy(str.data(), reinterpret_cast<const char*>(u8"안녕하세요😃"));
+
+    std::cout << str.data() << ssize << " " << str.size() << std::endl;
 
     // constexpr const char* obj_name =
         
