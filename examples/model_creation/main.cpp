@@ -13,19 +13,16 @@
 #include <array>
 #include <vector>
 
-#include <sentient/core/define_struct.hpp>
+#include <sentient/core/define_model.hpp>
 #include <sentient/core/types.hpp>
 #include <sentient/core/string.hpp>
 #include <sentient/core/type_traits.hpp>
 #include <sentient/core/object_pool.hpp>
+
 #include <boost/lockfree/queue.hpp>
-#include <boost/hana/define_struct.hpp>
 #include <boost/fiber/all.hpp>
 
 #include <boost/static_string.hpp>
-
-#include "../../build/etl-20.27.1/include/etl/string.h"
-
 namespace snt = sentient;
 
 namespace example
@@ -49,7 +46,17 @@ struct static_model :
 
 int main(int argc, char** argv)
 {
-    etl::string<33> str;
+    constexpr size_t pool_size = 5;
+    sentient::object_pool<example::static_model> pool(pool_size);
+
+    {
+        std::vector<std::shared_ptr<example::static_model>> vec;
+
+        for (int i = 0; i < pool_size; i++)
+            vec.push_back(pool.get_object());
+    }
+
+    std::cout << "ah\n";
 
     return 0;
 }
