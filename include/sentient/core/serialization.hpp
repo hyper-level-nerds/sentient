@@ -1,6 +1,17 @@
 #ifndef __SENTIENT_CORE_SERIALIZATION_HPP__
 #define __SENTIENT_CORE_SERIALIZATION_HPP__
 
+/**
+ * @file serialization.hpp
+ * @author Jin (jaehwanspin@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-04-01
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <sentient/core/types.hpp>
 #include <sentient/core/type_traits.hpp>
 

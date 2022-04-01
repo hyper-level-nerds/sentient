@@ -57,9 +57,10 @@ struct dynamic_model_attr : sentient_model_attr
  * 
  * @tparam _DatabaseName 
  */
-template <typename _Derived, char ... _DatabaseName>
+template <typename _Derived, size_t _PkIdx, char ... _DatabaseName>
 struct dbms_compatible_attr : sentient_model_attr
 {
+    static constexpr size_t dbms_pk_idx_value = _PkIdx;
 	using dbms_compatible_type = _Derived;
 	// static constexpr std::tuple<_DatabaseName ...> param_pack = { _DatabaseName... };
 	static constexpr const char database_name[sizeof...(_DatabaseName)] = { (_DatabaseName)... };

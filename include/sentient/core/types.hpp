@@ -57,7 +57,7 @@ using byte_array_t = std::unique_ptr<std::byte[], _Deleter>;
 template <typename _Deleter = std::default_delete<std::byte>>
 using byte_buffer_t = std::pair<byte_array_t<_Deleter>, size_t>;
 
-struct subcentry_datetime32_t
+struct subcentry_datetime32
 {
 	u32_t year : 7;
 	u32_t month : 4;
@@ -73,7 +73,7 @@ struct subcentry_datetime32_t
 	}
 };
 
-struct subcentry_datetime64_t
+struct subcentry_datetime64
 {
 	u32_t year : 7;
 	u32_t month : 4;
@@ -90,7 +90,7 @@ struct subcentry_datetime64_t
 	}
 };
 
-struct datetime64_t
+struct datetime64
 {
 	u32_t year;
 	u8_t month;

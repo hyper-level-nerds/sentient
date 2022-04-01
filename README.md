@@ -1,3 +1,47 @@
 # sentient
 
 Generic model data serialization and ORM (to be added later) library and compiler
+
+```
+ns example:
+    example_model:
+        number : u64 $pk
+        email_address : str8[256]
+        password : str8[33] $encrypt(sha-256)
+        health : f64
+        created_time : dt64
+        updated_time : dt64
+```
+
+compile ↓
+
+C++
+
+```C++
+namespace example
+{
+
+#pragma pack(push, 1)
+struct example_model :
+    sentient::type_traits::static_model_attr,
+    sentient::type_traits::dbms_compatible_attr<static_model, 'o', 'i', 'o', 'i', '\0'>
+{
+    BOOST_HANA_DEFINE_STRUCT(example::example_model,
+        (sentient::u64_t, number),
+        (sentient::str8_t<32>, email_address),
+        (sentient::pass8_t<sentient::str8_t<33>, sentient::cred<sentient::sha_256>, password),
+        (sentient::f64_t, health)
+        (sentient::dt64_t, created_time)
+        (sentient::dt64_t, updated_time));
+    );
+};
+#pragma pack(pop)
+
+}
+```
+
+C#
+
+```C#
+Console.WriteLine("ah");
+```
