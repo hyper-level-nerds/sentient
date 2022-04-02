@@ -54,6 +54,31 @@ struct subcentury_datetime32
 	u32_t minutes : 6; /* [0-59] */
 	u32_t seconds : 5; /* [0-29] 0-59 in 2-second intervals */
 
+
+    /**
+     * @author Jin
+     * @brief 
+     * 
+     * @return boost::gregorian::date 
+     */
+    operator boost::gregorian::date()
+    {
+        return subcentury_datetime32::operator boost::posix_time::ptime();
+    }
+
+    operator std::tm()
+    {
+        return std::tm {
+        static_cast<decltype(std::declval<std::tm>().tm_sec)>(this->seconds) * 2,
+        static_cast<decltype(std::declval<std::tm>().tm_min)>(this->minutes),
+        static_cast<decltype(std::declval<std::tm>().tm_hour)>(this->hours),
+        static_cast<decltype(std::declval<std::tm>().tm_mday)>(this->day),
+        static_cast<decltype(std::declval<std::tm>().tm_mon)>(this->month),
+        static_cast<decltype(std::declval<std::tm>().tm_year)>(
+            this->year + this_year - 1900)
+        };
+    }
+
     /**
      * @author Jin
      * @brief 
@@ -63,14 +88,18 @@ struct subcentury_datetime32
     operator boost::posix_time::ptime()
     {
         return boost::posix_time::ptime_from_tm(
-            std::tm {
-                static_cast<int>(this->seconds),
-                static_cast<int>(this->minutes),
-                static_cast<int>(this->hours),
-                static_cast<int>(this->day),
-                static_cast<int>(this->month),
-                // static_cast<int>(this->year) + ,
-                0, });
+            operator std::tm()
+        );
+    }
+
+    static subcentury_datetime32 from_tm(const std::tm& tm)
+    {
+        this->year = static_cast<u32_t>(1900 + tm.tm_year) - this_year;
+        this->month = static_cast<u32_t>(tm.tm_mon);
+        this->day = static_cast<u32_t>(tm.tm_mday);
+        this->hours = static_cast<u32_t>(tm.tm_hour);
+        this->minutes = static_cast<u32_t>(tm.tm_min);
+        this->seconds = static_cast<u32_t>(tm.tm_sec / 2);
     }
 };
 
@@ -85,7 +114,6 @@ struct subcentury_datetime64 : subcentury_datetime32<_ThisCentury>
 {
 	u32_t microseconds;
 };
-
 struct datetime128
 {
 	u64_t nanosecond;
@@ -101,6 +129,8 @@ template <u64_t _ThisCentury>
 using scdt32_t = subcentury_datetime32<_ThisCentury>;
 template <u64_t _ThisCentury>
 using scdt64_t = subcentury_datetime64<_ThisCentury>;
+
+using pt64_t = u64_t;
 
 }
 

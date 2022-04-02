@@ -39,15 +39,15 @@ using crc16_t = uint16_t;
 using crc32_t = uint32_t;
 
 template <typename _Tp, size_t _Size>
-using arr_t = _Tp[_Size];
+using array_t = _Tp[_Size];
 template <size_t _Size>
-using ascii8_t = arr_t<ascii_t, _Size>;
+using ascii8_t = array_t<ascii_t, _Size>;
 template <size_t _Size>
-using str8_t = arr_t<char8_t, _Size>;
+using str8_t = array_t<char8_t, _Size>;
 template <size_t _Size>
-using str16_t = arr_t<char16_t, _Size>;
+using str16_t = array_t<char16_t, _Size>;
 template <size_t _Size>
-using str32_t = arr_t<char32_t, _Size>;
+using str32_t = array_t<char32_t, _Size>;
 
 template <typename _Deleter = std::default_delete<std::byte>>
 using byte_array_t = std::unique_ptr<std::byte[], _Deleter>;

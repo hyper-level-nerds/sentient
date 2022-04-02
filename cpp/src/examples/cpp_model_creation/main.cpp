@@ -23,7 +23,6 @@
 #include <boost/lockfree/queue.hpp>
 #include <boost/fiber/all.hpp>
 
-#include <boost/static_string.hpp>
 namespace snt = sentient;
 
 namespace example
@@ -48,36 +47,8 @@ struct static_model :
 extern "C"
 int main(int argc, char** argv)
 {
-    auto pt = boost::posix_time::microsec_clock::local_time();
-    constexpr auto ssss = sizeof(sentient::subcentury_datetime32<21>);
-
-    sentient::scdt32_t<21> dt {
-        (pt.date().year()
-         - static_cast<int>(decltype(dt)::this_year)),
-        static_cast<sentient::u32_t>(pt.date().month()) - 1,
-        pt.date().day(),
-        static_cast<sentient::u32_t>(pt.time_of_day().hours()),
-        static_cast<sentient::u32_t>(pt.time_of_day().minutes()),
-        static_cast<sentient::u32_t>(pt.time_of_day().seconds() / 2)
-        };
-
-    std::tm tm {
-        static_cast<decltype(std::declval<std::tm>().tm_sec)>(dt.seconds) * 2,
-        static_cast<decltype(std::declval<std::tm>().tm_min)>(dt.minutes),
-        static_cast<decltype(std::declval<std::tm>().tm_hour)>(dt.hours),
-        static_cast<decltype(std::declval<std::tm>().tm_mday)>(dt.day),
-        static_cast<decltype(std::declval<std::tm>().tm_mon)>(dt.month),
-        static_cast<decltype(std::declval<std::tm>().tm_year)>(
-            dt.year + decltype(dt)::this_year - 1900)
-        };
-
-    auto res = boost::posix_time::to_tm(pt);
-
-    // auto tm = boost::posix_time::to_tm(pt);
-
-    std::cout << "ah\n";
-    constexpr auto this_year = decltype(dt)::this_year;
     
+
     
 
     return 0;
