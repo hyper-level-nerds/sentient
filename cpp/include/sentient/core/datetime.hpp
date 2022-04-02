@@ -42,7 +42,7 @@ namespace internal
 template <u64_t _ThisCentury>
 struct subcentury_datetime32
 {
-    static constexpr u64_t this_centry = _ThisCentury;
+    static constexpr u64_t this_century = _ThisCentury;
     static constexpr u64_t this_year = internal::subcentury_helper<this_century>::this_year;
     static constexpr int tm_year_conversion_constant = 1900;
     // static constexpr int tm_to_this_type = 

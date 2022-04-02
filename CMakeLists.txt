@@ -30,6 +30,7 @@ option(SENTIENT_BUILD_CXX_EXAMPLES "build C++ examples" ON)
 
 include_directories(${CMAKE_INCLUDE_PATH}
                     ${CONAN_INCLUDE_DIRS}
+                    ${CMAKE_SOURCE_DIR}/c/include
                     ${CMAKE_SOURCE_DIR}/cpp/include)
 link_directories(${CONAN_LIB_DIRS})
 
