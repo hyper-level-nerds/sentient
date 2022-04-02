@@ -35,7 +35,7 @@ namespace internal
 
 /**
  * @author Jin
- * @brief bit-fielded subcentry date time type
+ * @brief bit-fielded subcentury date time type
  * 
  * @tparam _ThisCentry 
  */
@@ -43,7 +43,7 @@ template <u64_t _ThisCentury>
 struct subcentury_datetime32
 {
     static constexpr u64_t this_centry = _ThisCentury;
-    static constexpr u64_t this_year = internal::subcentry_helper<this_century>::this_year;
+    static constexpr u64_t this_year = internal::subcentury_helper<this_century>::this_year;
     static constexpr int tm_year_conversion_constant = 1900;
     // static constexpr int tm_to_this_type = 
 
