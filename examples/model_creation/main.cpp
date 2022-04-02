@@ -15,6 +15,7 @@
 
 #include <sentient/core/define_model.hpp>
 #include <sentient/core/types.hpp>
+#include <sentient/core/datetime.hpp>
 #include <sentient/core/string.hpp>
 #include <sentient/core/type_traits.hpp>
 #include <sentient/core/object_pool.hpp>
@@ -44,19 +45,40 @@ struct static_model :
 
 }
 
+extern "C"
 int main(int argc, char** argv)
 {
-    constexpr size_t pool_size = 5;
-    sentient::object_pool<example::static_model> pool(pool_size);
+    auto pt = boost::posix_time::microsec_clock::local_time();
+    constexpr auto ssss = sizeof(sentient::subcentry_datetime32<21>);
 
-    {
-        std::vector<std::shared_ptr<example::static_model>> vec;
+    sentient::scdt32_t<21> dt {
+        (pt.date().year()
+         - static_cast<int>(decltype(dt)::this_year)),
+        static_cast<sentient::u32_t>(pt.date().month()) - 1,
+        pt.date().day(),
+        static_cast<sentient::u32_t>(pt.time_of_day().hours()),
+        static_cast<sentient::u32_t>(pt.time_of_day().minutes()),
+        static_cast<sentient::u32_t>(pt.time_of_day().seconds() / 2)
+        };
 
-        for (int i = 0; i < pool_size; i++)
-            vec.push_back(pool.get_object());
-    }
+    std::tm tm {
+        static_cast<decltype(std::declval<std::tm>().tm_sec)>(dt.seconds) * 2,
+        static_cast<decltype(std::declval<std::tm>().tm_min)>(dt.minutes),
+        static_cast<decltype(std::declval<std::tm>().tm_hour)>(dt.hours),
+        static_cast<decltype(std::declval<std::tm>().tm_mday)>(dt.day),
+        static_cast<decltype(std::declval<std::tm>().tm_mon)>(dt.month),
+        static_cast<decltype(std::declval<std::tm>().tm_year)>(
+            dt.year + decltype(dt)::this_year - 1900)
+        };
+
+    auto res = boost::posix_time::to_tm(pt);
+
+    // auto tm = boost::posix_time::to_tm(pt);
 
     std::cout << "ah\n";
+    constexpr auto this_year = decltype(dt)::this_year;
+    
+    
 
     return 0;
 }

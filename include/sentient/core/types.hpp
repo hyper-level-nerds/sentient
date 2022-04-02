@@ -17,9 +17,6 @@
 #include <map>
 #include <memory>
 
-#include <boost/date_time/gregorian/greg_date.hpp>
-#include <boost/date_time/posix_time/ptime.hpp>
-
 namespace sentient
 {
 
@@ -56,50 +53,6 @@ template <typename _Deleter = std::default_delete<std::byte>>
 using byte_array_t = std::unique_ptr<std::byte[], _Deleter>;
 template <typename _Deleter = std::default_delete<std::byte>>
 using byte_buffer_t = std::pair<byte_array_t<_Deleter>, size_t>;
-
-struct subcentry_datetime32
-{
-	u32_t year : 7;
-	u32_t month : 4;
-	u32_t day : 5;
-	u32_t hours : 4;
-	u32_t minutes : 6;
-	u32_t seconds : 6;
-
-	boost::gregorian::date to_date()
-	{
-		return boost::gregorian::date(
-			this->year, this->month, this->day);
-	}
-};
-
-struct subcentry_datetime64
-{
-	u32_t year : 7;
-	u32_t month : 4;
-	u32_t day : 5;
-	u32_t hours : 4;
-	u32_t minutes : 6;
-	u32_t seconds : 6;
-	u32_t microseconds;
-
-	boost::gregorian::date to_date()
-	{
-		return boost::gregorian::date(
-			this->year, this->month, this->day);
-	}
-};
-
-struct datetime64
-{
-	u32_t year;
-	u8_t month;
-	u8_t day;
-	u8_t hour;
-	u8_t minute;
-	u8_t second;
-	u16_t milliseconds;
-};
 
 }
 
