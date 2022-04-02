@@ -24,25 +24,17 @@ conan_cmake_run(CONANFILE conanfile.txt
                 BASIC_SETUIP
                 BUILD missing)
 
-option(SENTIENT_ENABLE_SHARED "build shared library" OFF)
-option(SENTIENT_BUILD_CLI "build CLI tool" ON)
-option(SENTIENT_BUILD_CORE "build core library" ON)
+option(SENTIENT_BUILD_COMPILER "build schema compiler" ON)
 option(SENTIENT_BUILD_EXAMPLES "build examples" ON)
-option(SENTIENT_BUILD_CSHARP "build C# library" OFF)
-option(SENTIENT_BUILD_JAVA "build java library" OFF)
-option(SENTIENT_BUILD_KOTLIN "build kotlin library" OFF)
-option(SENTIENT_BUILD_PYTHON "build python library" OFF)
-option(SENTIENT_BUILD_JAVASCRIPT "build javascript library" OFF)
-option(SENTIENT_BUILD_TYPESCRIPT "build typescript library" OFF)
 
 include_directories(${CMAKE_INCLUDE_PATH}
                     ${CONAN_INCLUDE_DIRS}
-                    include)
+                    ${CMAKE_SOURCE_DIR}/cpp/include)
 link_directories(${CONAN_LIB_DIRS})
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/src)
-
-if (SENTIENT_BUILD_EXAMPLES)
-  message(${SENTIENT_MSG_PREFIX}"sentient examples enabled")
-  add_subdirectory(${CMAKE_SOURCE_DIR}/examples)
+if (SENTIENT_BUILD_COMPILER)
+  message(${SENTIENT_MSG_PREFIX}"sentient compiler enabled")
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/sentient_compiler)
 endif ()
+
+add_subdirectory(${CMAKE_SOURCE_DIR}/cpp)
