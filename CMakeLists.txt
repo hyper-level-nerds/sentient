@@ -25,7 +25,8 @@ conan_cmake_run(CONANFILE conanfile.txt
                 BUILD missing)
 
 option(SENTIENT_BUILD_COMPILER "build schema compiler" ON)
-option(SENTIENT_BUILD_EXAMPLES "build examples" ON)
+option(SENTIENT_BUILD_C_EXAMPLES "build C examples" ON)
+option(SENTIENT_BUILD_CXX_EXAMPLES "build C++ examples" ON)
 
 include_directories(${CMAKE_INCLUDE_PATH}
                     ${CONAN_INCLUDE_DIRS}
@@ -38,3 +39,4 @@ if (SENTIENT_BUILD_COMPILER)
 endif ()
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/cpp)
+add_subdirectory(${CMAKE_SOURCE_DIR}/c)

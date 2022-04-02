@@ -1,2 +1,0 @@
-add_executable(model_creation main.cpp)
-target_link_libraries(model_creation sentient-core)
