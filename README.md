@@ -1,4 +1,4 @@
-# sentient
+![image info](./docs/sentient.png)
 
 Generic model data serialization and ORM (to be added later) library and compiler
 

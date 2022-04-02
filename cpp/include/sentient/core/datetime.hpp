@@ -94,12 +94,14 @@ struct subcentury_datetime32
 
     static subcentury_datetime32 from_tm(const std::tm& tm)
     {
-        this->year = static_cast<u32_t>(1900 + tm.tm_year) - this_year;
-        this->month = static_cast<u32_t>(tm.tm_mon);
-        this->day = static_cast<u32_t>(tm.tm_mday);
-        this->hours = static_cast<u32_t>(tm.tm_hour);
-        this->minutes = static_cast<u32_t>(tm.tm_min);
-        this->seconds = static_cast<u32_t>(tm.tm_sec / 2);
+        subcentury_datetime32 res;
+        res.year = static_cast<u32_t>(1900 + tm.tm_year) - this_year;
+        res.month = static_cast<u32_t>(tm.tm_mon);
+        res.day = static_cast<u32_t>(tm.tm_mday);
+        res.hours = static_cast<u32_t>(tm.tm_hour);
+        res.minutes = static_cast<u32_t>(tm.tm_min);
+        res.seconds = static_cast<u32_t>(tm.tm_sec / 2);
+        return res;
     }
 };
 

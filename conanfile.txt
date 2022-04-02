@@ -1,5 +1,6 @@
 [requires]
 boost/1.78.0
+yaml-cpp/0.7.0
 soci/4.0.3
 mongo-cxx-driver/3.6.6
 

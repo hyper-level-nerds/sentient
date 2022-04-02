@@ -1,9 +1,9 @@
 #include "./framework.hpp"
 #include "./version.hpp"
 
-#include <cstring>
+#include <iostream>
 
-#include <type_traits>
+#include <yaml-cpp/yaml.h>
 
 int main(int argc, char** argv)
 {
@@ -11,8 +11,7 @@ int main(int argc, char** argv)
 
     std::sprintf(sentient_compiler_title, "%s\n%s",
         sentient::compiler::compiler_version_base,
-        sentient::compiler::options_output);
-    
+        sentient::compiler::options_output);    
 
     return sentient::compiler::framework(argc, argv, sentient_compiler_title).execute();
 }
