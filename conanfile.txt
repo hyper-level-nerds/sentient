@@ -1,8 +1,10 @@
 [requires]
 boost/1.78.0
 soci/4.0.3
+mongo-cxx-driver/3.6.6
 
 [generators]
 cmake
 
 [options]
+soci:with_boost=True

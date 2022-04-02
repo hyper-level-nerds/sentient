@@ -20,17 +20,15 @@
 #              str32 [] | [ < integer constant > ] (4 byte utf-32 array)
 #              
 #              *** datetime types ***
-#              dt32 (4 bytes datetime type)
-#              dt64 (8 bytes datetime type includes microseconds)
+#              scdt32 (4 bytes datetime type)
+#              scdt64 (8 bytes datetime type includes microseconds)
 #              pt64 (8 bytes posix time integer type)
 #              
 
 ns example
-
-    example_model : model
+    example_model:
         number : u64 $pk
         email_address : str8[256]
-        # credential field
         password : str8[33] $encrypt(sha-256)
         health : f64
         created_time : dt64

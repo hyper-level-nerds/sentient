@@ -49,7 +49,7 @@ extern "C"
 int main(int argc, char** argv)
 {
     auto pt = boost::posix_time::microsec_clock::local_time();
-    constexpr auto ssss = sizeof(sentient::subcentry_datetime32<21>);
+    constexpr auto ssss = sizeof(sentient::subcentury_datetime32<21>);
 
     sentient::scdt32_t<21> dt {
         (pt.date().year()

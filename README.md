@@ -2,15 +2,8 @@
 
 Generic model data serialization and ORM (to be added later) library and compiler
 
-```
-ns example:
-    example_model:
-        number : u64 $pk
-        email_address : str8[256]
-        password : str8[33] $encrypt(sha-256)
-        health : f64
-        created_time : dt64
-        updated_time : dt64
+```TOML
+
 ```
 
 compile ↓
