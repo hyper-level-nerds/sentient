@@ -1,4 +1,7 @@
 obj
+bin
 build
+target
+Cargo.lock
 .vscode
 .vs
