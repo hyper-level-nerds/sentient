@@ -25,10 +25,10 @@ namespace sentient
 
 namespace internal
 {
-    template <u64_t _ThisCentry>
-    struct subcentry_helper
+    template <u64_t _ThisCentury>
+    struct subcentury_helper
     {
-        static constexpr u64_t this_year = ((_ThisCentry - 1) * 100);
+        static constexpr u64_t this_year = ((_ThisCentury - 1) * 100);
     };
 
 }
@@ -39,11 +39,11 @@ namespace internal
  * 
  * @tparam _ThisCentry 
  */
-template <u64_t _ThisCentry>
-struct subcentry_datetime32
+template <u64_t _ThisCentury>
+struct subcentury_datetime32
 {
-    static constexpr u64_t this_centry = _ThisCentry;
-    static constexpr u64_t this_year = internal::subcentry_helper<this_centry>::this_year;
+    static constexpr u64_t this_centry = _ThisCentury;
+    static constexpr u64_t this_year = internal::subcentry_helper<this_century>::this_year;
     static constexpr int tm_year_conversion_constant = 1900;
     // static constexpr int tm_to_this_type = 
 
@@ -78,10 +78,10 @@ struct subcentry_datetime32
  * @author Jin
  * @brief 
  * 
- * @tparam _ThisCentry 
+ * @tparam _ThisCentury 
  */
-template <u64_t _ThisCentry>
-struct subcentry_datetime64 : subcentry_datetime32<_ThisCentry>
+template <u64_t _ThisCentury>
+struct subcentury_datetime64 : subcentury_datetime32<_ThisCentury>
 {
 	u32_t microseconds;
 };
@@ -97,10 +97,10 @@ struct datetime128
 	u8_t second;
 };
 
-template <u64_t _ThisCentry>
-using scdt32_t = subcentry_datetime32<_ThisCentry>;
-template <u64_t _ThisCentry>
-using scdt64_t = subcentry_datetime64<_ThisCentry>;
+template <u64_t _ThisCentury>
+using scdt32_t = subcentury_datetime32<_ThisCentury>;
+template <u64_t _ThisCentury>
+using scdt64_t = subcentury_datetime64<_ThisCentury>;
 
 }
 
