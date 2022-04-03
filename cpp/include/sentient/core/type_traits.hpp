@@ -224,7 +224,8 @@ template <typename _Tp>
 struct protocol_crc { using crc_type = _Tp; };
 template <typename _Tp, _Tp _Val>
 struct protocol_etx 
-{ using etx_type = _Tp; static constexpr etx_type etx_value = _Val; };
+{
+    using etx_type = _Tp; static constexpr etx_type etx_value = _Val; };
 
 }
 

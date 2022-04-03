@@ -43,7 +43,8 @@ template <u64_t _ThisCentury>
 struct subcentury_datetime32
 {
     static constexpr u64_t this_century = _ThisCentury;
-    static constexpr u64_t this_year = internal::subcentury_helper<this_century>::this_year;
+    static constexpr u64_t this_year =
+        internal::subcentury_helper<this_century>::this_year;
     static constexpr int tm_year_conversion_constant = 1900;
     // static constexpr int tm_to_this_type = 
 
@@ -53,7 +54,6 @@ struct subcentury_datetime32
 	u32_t hours : 5;   /* [0-11] */
 	u32_t minutes : 6; /* [0-59] */
 	u32_t seconds : 5; /* [0-29] 0-59 in 2-second intervals */
-
 
     /**
      * @author Jin
@@ -116,21 +116,25 @@ struct subcentury_datetime64 : subcentury_datetime32<_ThisCentury>
 {
 	u32_t microseconds;
 };
+
+#pragma pack(push, 1)
 struct datetime128
 {
-	u64_t nanosecond;
 	u64_t year;
 	u8_t month;
 	u8_t day;
 	u8_t hour;
 	u8_t minute;
 	u8_t second;
+	u64_t nanosecond;
 };
+#pragma pack(pop)
 
 template <u64_t _ThisCentury>
 using scdt32_t = subcentury_datetime32<_ThisCentury>;
 template <u64_t _ThisCentury>
 using scdt64_t = subcentury_datetime64<_ThisCentury>;
+
 
 using pt64_t = u64_t;
 

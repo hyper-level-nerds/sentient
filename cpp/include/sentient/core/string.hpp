@@ -6,7 +6,7 @@
 namespace sentient
 {
 
-template <typename _CharacterType>
+template <typename _CharacterType, typename CharTraits>
 struct basic_string
 {
     

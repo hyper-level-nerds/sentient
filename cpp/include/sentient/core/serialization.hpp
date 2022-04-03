@@ -18,16 +18,15 @@
 namespace sentient
 {
 
-struct fucking : type_traits::static_model_attr
-{
-
-};
 
 /**
  * @author Jin
- * @brief
- *
- * @tparam _Model
+ * @brief 
+ * 
+ * @tparam _Tp 
+ * @tparam _Up 
+ * @param model 
+ * @return byte_buffer_t 
  */
 template <typename _Tp, typename _Up = void>
 byte_buffer_t make_byte_buffer(const _Tp& model)

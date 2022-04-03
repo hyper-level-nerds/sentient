@@ -25,7 +25,7 @@
 #              pt64 (8 bytes posix time integer type)
 #              
 
-ns example
+ns example:
     example_model:
         number : u64 $pk
         email_address : str8[256]
@@ -33,6 +33,10 @@ ns example
         health : f64
         created_time : dt64
         updated_time : dt64
+
+
+
+
 
     message_protocol : msg_ptcl
         stx { 0xFD }
