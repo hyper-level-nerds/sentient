@@ -3,8 +3,8 @@
 #              b8 (1 byte integral type)
 #              u8 (1 byte unsigned int)... u64 (8 bytes unsigned int)
 #              i8 (1 byte signed int)... u64 (8 bytes signed int)
-#              f4 (4 bytes floating point real number)
-#              f8 (8 bytes floating point real number)
+#              f32 (4 bytes floating point real number)
+#              f64 (8 bytes floating point real number)
 #              a8 (1 byte ascii character)
 #
 #              *** array type expressions ***
@@ -27,3 +27,6 @@
 
 namespace: example
 
+[example_model]
+number = "u64"
+name = "str8[]"
