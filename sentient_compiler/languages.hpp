@@ -13,9 +13,7 @@ enum class languages : uint8_t
     c,
     cplusplus,
     csharp,
-    python,
-    java,
-    kotlin,
+    rust,
 };
 
 }

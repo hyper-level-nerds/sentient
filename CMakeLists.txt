@@ -1,17 +1,18 @@
 cmake_minimum_required(VERSION 3.10)
 project(sentient
-    VERSION 0.0.1.0
+    VERSION 0.0.1
     DESCRIPTION "generic serialization library, tools"
     HOMEPAGE_URL "https://github.com/jaehwanspin/sentient"
     LANGUAGES C CXX)
 
 
-message("     ____  _____ _   _ _____ ___ _____ _   _ _____ ")
-message("    / ___|| ____| \\ | |_   _|_ _| ____| \\ | |_   _|")
-message("    \\___ \\|  _| |  \\| | | |  | ||  _| |  \\| | | |  ")
-message("     ___) | |___| |\\  | | |  | || |___| |\\  | | |  ")
-message("    |____/|_____|_| \\_| |_| |___|_____|_| \\_| |_|")
-message(" ")
+message("     ____  _____ _   _ _____ ___ _____ _   _ _____ \n"
+        "    / ___|| ____| \\ | |_   _|_ _| ____| \\ | |_   _|\n"
+        "    \\___ \\|  _| |  \\| | | |  | ||  _| |  \\| | | |  \n"
+        "     ___) | |___| |\\  | | |  | || |___| |\\  | | |  \n"
+        "    |____/|_____|_| \\_| |_| |___|_____|_| \\_| |_|\n"
+        "\n"
+        "The generic model generation compiler / serianlization libraries\n")
 
 
 set(SENTIENT_MSG_PREFIX "[SENTIENT]")
