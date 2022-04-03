@@ -5,6 +5,15 @@ project(sentient
     HOMEPAGE_URL "https://github.com/jaehwanspin/sentient"
     LANGUAGES C CXX)
 
+
+message("     ____  _____ _   _ _____ ___ _____ _   _ _____ ")
+message("    / ___|| ____| \\ | |_   _|_ _| ____| \\ | |_   _|")
+message("    \\___ \\|  _| |  \\| | | |  | ||  _| |  \\| | | |  ")
+message("     ___) | |___| |\\  | | |  | || |___| |\\  | | |  ")
+message("    |____/|_____|_| \\_| |_| |___|_____|_| \\_| |_|")
+message(" ")
+
+
 set(SENTIENT_MSG_PREFIX "[SENTIENT]")
 
 set(CMAKE_CXX_STANDARD 20)
