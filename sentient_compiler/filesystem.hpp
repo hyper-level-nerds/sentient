@@ -8,13 +8,7 @@ namespace sentient
 namespace compiler
 {
 
-class filesystem
-{
-public:
-    filesystem(const std::string&);
-private:
-    std::filesystem::path definition_file_path_;
-};
+std::filesystem::path compiler_path();
 
 }
 }
