@@ -1,4 +1,4 @@
-![image info](./docs/sentient.png)
+![image info](./docs/sentient_with_background.png)
 
 Generic model data serialization and ORM (to be added later) library and compiler
 
