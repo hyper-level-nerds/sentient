@@ -1,4 +1,5 @@
-#include <sentient/core_c.h>
+#include <sentient/core_c/types.h>
+#include <sentient/core_c/reflection.h>
 
 int main(int argc, char** argv)
 {

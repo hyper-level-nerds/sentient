@@ -23,6 +23,9 @@
 #include <boost/lockfree/queue.hpp>
 #include <boost/fiber/all.hpp>
 
+#include <glm/glm.hpp>
+#include <boost/qvm.hpp>
+
 namespace snt = sentient;
 
 namespace example
@@ -46,6 +49,9 @@ struct static_model :
 int main(int argc, char** argv)
 {
     example::static_model m { {}, };
+
+    constexpr size_t fucking = sizeof(boost::qvm::vec<int32_t, 2>);
+    constexpr size_t fuckingg = sizeof(glm::ivec2);
 
     
 

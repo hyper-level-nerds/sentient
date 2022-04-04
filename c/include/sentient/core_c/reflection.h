@@ -12,12 +12,21 @@
  * 
  */
 
+#include <sentient/core_c/types.h>
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-#define SENTIENT_DEFINE_MODEL
+/**
+ * @author Jin
+ * @brief 
+ * 
+ */
+#define SENTIENT_DEFINE_MODEL(...) SENTIENT_DEFINE_MODEL_INTERNAL (STRUCT, __VA_ARGS__)
+
+#define SENTIENT_DEFINE_MODEL_INTERNAL(...) 
 
 #ifdef __cplusplus
 }
