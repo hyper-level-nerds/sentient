@@ -14,7 +14,7 @@ namespace compiler
 class framework
 {
 public:
-    explicit framework(int argc, char** argv, const std::string& arg_title);
+    explicit framework(int argc, char** argv);
 
     int execute();
 
@@ -24,6 +24,7 @@ private:
     arg_parser argh_;
     languages lang_;
     bool model_or_protocol_;
+    bool verbose_;
 };
 
 }

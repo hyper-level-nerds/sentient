@@ -11,7 +11,7 @@ class version_output
 private:
 
 public:
-    version_output();
+    version_output(bool verbose);
 };
 
 }
