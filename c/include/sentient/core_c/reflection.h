@@ -24,9 +24,10 @@ extern "C"
  * @brief 
  * 
  */
-#define SENTIENT_DEFINE_MODEL(...) SENTIENT_DEFINE_MODEL_INTERNAL (STRUCT, __VA_ARGS__)
+#define SENTIENT_DEFINE_MODEL(...) \
+    SENTIENT_DEFINE_MODEL_IMPL (STRUCT, __VA_ARGS__)
 
-#define SENTIENT_DEFINE_MODEL_INTERNAL(...) 
+#define SENTIENT_DEFINE_MODEL_IMPL(...) 
 
 #ifdef __cplusplus
 }
