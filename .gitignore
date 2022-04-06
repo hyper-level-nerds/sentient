@@ -2,6 +2,8 @@ obj
 bin
 build
 target
+out
+CMakeSettings.json
 Cargo.lock
 .vscode
 .vs

@@ -28,24 +28,25 @@ extern "C"
  * 
  */
 
-typedef uint8_t  snt_u8;
-typedef uint16_t snt_u16;
-typedef uint32_t snt_u32;
-typedef uint64_t snt_u64;
-typedef int8_t   snt_i8;
-typedef int16_t  snt_i16;
-typedef int32_t  snt_i32;
-typedef int64_t  snt_i64;
+typedef uint8_t  sentient_u8;
+typedef uint16_t sentient_u16;
+typedef uint32_t sentient_u32;
+typedef uint64_t sentient_u64;
+typedef int8_t   sentient_i8;
+typedef int16_t  sentient_i16;
+typedef int32_t  sentient_i32;
+typedef int64_t  sentient_i64;
 
-typedef float    snt_f32;
-typedef double   snt_f64;
+typedef float    sentient_f32;
+typedef double   sentient_f64;
 
-typedef char     snt_str8;
-typedef snt_i16  snt_str16;
-typedef snt_i32  snt_str32;
+typedef char          sentient_str8;
+typedef sentient_i16  sentient_str16;
+typedef sentient_i32  sentient_str32;
 
 #ifndef SENTIENT_DEFINE_STATIC_STRING_N
-#define SENTIENT_DEFINE_STATIC_STRING_N(STR_TYPE, N) \    typedef STR_TYPE STR_TYPE## _ ##N## _t[N];
+#define SENTIENT_DEFINE_STATIC_STRING_N(STR_TYPE, N) \
+	typedef STR_TYPE STR_TYPE## _ ##N## [ N ];
 #endif
 
 #include <sentient/core_c/internal/string_types.h>

@@ -5,8 +5,8 @@
 #define SENTIENT_API
 #endif
 
-#ifndef SENTIENT_PACK
-#define SENTIENT_PACK(...)
+#ifndef SENTIENT_PACK_BEGIN
+#define SENTIENT_PACK_BEGIN()
 #endif
 
 #endif
