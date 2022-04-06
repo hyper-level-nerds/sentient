@@ -27,12 +27,11 @@
 
 ns example
     example_model:
-        number : u64 $pk
+        number : u64 $pk $ai
         email_address : str8[256]
-        password : str8[33] $encrypt(sha-256)
-        health : f64
-        created_time : dt64
-        updated_time : dt64
+        password : str8[33] $donutread
+        created_time : pt64 $auto
+        updated_time : pt64
 
     message_protocol : msg_ptcl
         stx { 0xFD }

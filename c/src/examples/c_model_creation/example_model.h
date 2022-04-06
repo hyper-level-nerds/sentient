@@ -7,7 +7,8 @@
 #include <sentient/sentient.h>
 
 SENTIENT_DEFINE_MODEL(example_model,
-	(INTEGER, uint64_t, model_no),
-	(INTEGER, uint32_t, ah))
+	(U64, uint64_t, model_no),
+	(STR8, char, name, 32),
+	(U32, uint32_t, ah))
 
 #endif
