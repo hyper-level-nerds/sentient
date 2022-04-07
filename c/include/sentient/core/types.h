@@ -14,6 +14,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include <float.h>
 #include <time.h>
 
@@ -66,7 +67,14 @@ struct sentient_subcentury_datetime64
 	sentient_u32 microseconds;
 };
 
-typedef sentient_u64 sentient_pt64;
+typedef struct sentient_subcentury_datetime32 sentient_scdt32;
+typedef struct sentient_subcentury_datetime64 sentient_scdt64;
+typedef sentient_u64                          sentient_pt64;
+
+bool sentient_get_tm_from_scdt32(struct tm*, sentient_scdt32*);
+bool sentient_get_scdt32_from_tm(sentient_scdt32*, struct tm*);
+bool sentient_get_tm_from_scdt64(struct tm*, sentient_scdt32*);
+bool sentient_get_scdt64_from_tm(sentient_scdt32*, struct tm*);
 
 #ifdef __cplusplus
 }

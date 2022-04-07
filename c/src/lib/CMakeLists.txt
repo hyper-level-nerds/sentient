@@ -1,4 +1,5 @@
 set(SENTIENT_C_LIBRARY_SRC
-    sentient.c)
+    sentient.c
+    core/types.c)
 
 add_library(sentient_c ${SENTIENT_C_LIBRARY_SRC})
