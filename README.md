@@ -22,6 +22,22 @@ ns example:
 
 compile ↓
 
+C
+
+```C
+SENTIENT_DEFINE_MODEL(example_example_model
+    (u64, number),
+    (str8, email_address, 256),
+    (str8, password, 33),
+    (f64, health),
+    (scdt64, created_time),
+    (scdt64, updated_time),
+)
+SENTIENT_DEFINE_ATTR(example_example_model
+    (0, PK)
+)
+```
+
 C++
 
 ```C++

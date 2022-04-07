@@ -28,28 +28,45 @@ extern "C"
  * 
  */
 
-typedef uint8_t  sentient_u8;
-typedef uint16_t sentient_u16;
-typedef uint32_t sentient_u32;
-typedef uint64_t sentient_u64;
-typedef int8_t   sentient_i8;
-typedef int16_t  sentient_i16;
-typedef int32_t  sentient_i32;
-typedef int64_t  sentient_i64;
+typedef uint8_t       sentient_u8;
+typedef uint16_t      sentient_u16;
+typedef uint32_t      sentient_u32;
+typedef uint64_t      sentient_u64;
+typedef int8_t        sentient_i8;
+typedef int16_t       sentient_i16;
+typedef int32_t       sentient_i32;
+typedef int64_t       sentient_i64;
 
-typedef float    sentient_f32;
-typedef double   sentient_f64;
+typedef float         sentient_f32;
+typedef double        sentient_f64;
 
 typedef char          sentient_str8;
 typedef sentient_i16  sentient_str16;
 typedef sentient_i32  sentient_str32;
 
-#ifndef SENTIENT_DEFINE_STATIC_STRING_N
-#define SENTIENT_DEFINE_STATIC_STRING_N(STR_TYPE, N) \
-	typedef STR_TYPE STR_TYPE## _ ##N## [ N ];
-#endif
+struct sentient_subcentury_datetime32
+{
+	sentient_u32 year : 7;    /* [0-99] a centry */
+	sentient_u32 month : 4;   /* [0-11] */
+	sentient_u32 day : 5;     /* [0-31] */
+	sentient_u32 hours : 5;   /* [0-11] */
+	sentient_u32 minutes : 6; /* [0-59] */
+	sentient_u32 seconds : 5; /* [0-29] 0-59 in 2-second intervals */
+};
 
-#include <sentient/core_c/internal/string_types.h>
+struct sentient_subcentury_datetime64
+{
+	sentient_u32 year : 7;    /* [0-99] a centry */
+	sentient_u32 month : 4;   /* [0-11] */
+	sentient_u32 day : 5;     /* [0-31] */
+	sentient_u32 hours : 5;   /* [0-11] */
+	sentient_u32 minutes : 6; /* [0-59] */
+	sentient_u32 seconds : 5; /* [0-29] 0-59 in 2-second intervals */
+
+	sentient_u32 microseconds;
+};
+
+typedef sentient_u64 sentient_pt64;
 
 #ifdef __cplusplus
 }

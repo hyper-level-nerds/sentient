@@ -6,8 +6,6 @@
 
 #include <sentient/core/types.h>
 
-#define AH(TYPE) #TYPE
-
 int main(int argc, char** argv)
 {
     
