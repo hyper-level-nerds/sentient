@@ -1,8 +1,12 @@
 [package]
 name = "sentient"
 version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+edition = "2023"
+authors = ["Jin", "Lucky"]
+repository = "https://github.com/hyper-level-nerds/sentient"
+readme = "README.md"
+license = "BSL-1.0"
+keywords = ["serialization", "ORM"]
+description = "library"
 
 [dependencies]

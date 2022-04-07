@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <sentient/core_c/types.h>
+#include <sentient/core/types.h>
 
 #define AH(TYPE) #TYPE
 

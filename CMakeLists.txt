@@ -5,18 +5,16 @@ project(sentient
     HOMEPAGE_URL "https://github.com/jaehwanspin/sentient"
     LANGUAGES C CXX)
 
-
-message("     ____  _____ _   _ _____ ___ _____ _   _ _____ \n"
-        "    / ___|| ____| \\ | |_   _|_ _| ____| \\ | |_   _|\n"
-        "    \\___ \\|  _| |  \\| | | |  | ||  _| |  \\| | | |  \n"
-        "     ___) | |___| |\\  | | |  | || |___| |\\  | | |  \n"
-        "    |____/|_____|_| \\_| |_| |___|_____|_| \\_| |_|\n"
-        "\n"
-        "The generic model generation compiler / serianlization libraries\n")
-
-
 set(SENTIENT_MSG_PREFIX "[SENTIENT]")
 
+message("${SENTIENT_MSG_PREFIX}      ____  _____ _   _ _____ ___ _____ _   _ _____ \n"
+        "${SENTIENT_MSG_PREFIX}     / ___|| ____| \\ | |_   _|_ _| ____| \\ | |_   _|\n"
+        "${SENTIENT_MSG_PREFIX}     \\___ \\|  _| |  \\| | | |  | ||  _| |  \\| | | |  \n"
+        "${SENTIENT_MSG_PREFIX}      ___) | |___| |\\  | | |  | || |___| |\\  | | |  \n"
+        "${SENTIENT_MSG_PREFIX}     |____/|_____|_| \\_| |_| |___|_____|_| \\_| |_|\n"
+        "${SENTIENT_MSG_PREFIX} \n"
+        "${SENTIENT_MSG_PREFIX} The generic model generation compiler / serianlization libraries\n")
+        
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -49,7 +47,7 @@ include_directories(${CMAKE_INCLUDE_PATH}
 link_directories(${CONAN_LIB_DIRS})
 
 if (SENTIENT_BUILD_COMPILER)
-  message(${SENTIENT_MSG_PREFIX}"sentient compiler enabled")
+  message("${SENTIENT_MSG_PREFIX} sentient compiler enabled")
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/sentient_compiler)
 endif ()
 
