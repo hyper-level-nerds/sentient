@@ -253,6 +253,7 @@ struct TYPE_NAME \
 struct sentient_type_info* sentient_get_##TYPE_NAME##_type_info(void); \
 SENTIENT_DEFINE_GET_METHOD(TYPE_NAME, __VA_ARGS__) \
 
+
 #ifdef __cplusplus
 }
 #endif

@@ -7,31 +7,21 @@
 
 #include "./example_model.h"
 
+typedef int fucking;
+
 void ahah(void* arg)
 {
 
 }
 
+
+
 int main(int argc, char** argv)
 {
-    struct example_model m = { 123, "ahah", };
+    int shit = 0;
+    int a = __builtin_types_compatible_p(int, typeof(shit));
     
-    struct sentient_type_info* info = 
-        sentient_get_example_model_type_info();
-
-    printf("field name: %s\n", info->name);
-
-    for (size_t i = 0; i < info->fields_count; i++)
-    {
-        struct sentient_field_info* field_info = &info->fields[i];
-        
-        const char* field_name = field_info->field_name;
-        
-        printf("field name: %s, offset: %lu, type: %d\n",
-            field_name, field_info->offset, field_info->data_type);
-    }
-
-    
+    printf("%d\n", a);
 
     return 0;
 };
