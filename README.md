@@ -11,7 +11,7 @@ Sentient schema language
 
 ```
 ns example:
-    example_model:
+    model model:
         number : u64 $pk
         email_address : str8[256]
         password : str8[33] $dontread
@@ -25,7 +25,7 @@ compile ↓
 C
 
 ```C
-SENTIENT_DEFINE_MODEL(example_example_model
+SENTIENT_DEFINE_MODEL(example_model
     (u64, number),
     (str8, email_address, 256),
     (str8, password, 33),
@@ -50,7 +50,7 @@ struct example_model :
     sentient::type_traits::dbms_compatible_attr<static_model, 0>,
     sentient::type_traits::credential_dontread_attr<3>
 {
-    SENTIENT_DEFINE_MODEL(example::example_model,
+    SENTIENT_DEFINE_MODEL(example::model,
         (sentient::u64_t, number),
         (sentient::str8_t<256>, email_address),
         (sentient::str8_t<33>, password),

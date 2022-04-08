@@ -2,7 +2,7 @@
 #define __SENTIENT_CORE_C_H__
 
 /**
- * @file core_c.h
+ * @file core.h
  * @author Jin (jaehwanspin@gmail.com)
  * @brief 
  * @version 0.1
@@ -12,8 +12,7 @@
  * 
  */
 
-#include <sentient/core_c/reflection.h>
-#include <sentient/core_c/types.h>
+#include <sentient/core/types.h>
 
 #ifdef __cplusplus
 extern "C"

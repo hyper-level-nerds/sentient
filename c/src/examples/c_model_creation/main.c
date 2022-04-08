@@ -1,20 +1,16 @@
 #include <sys/time.h>
-
+#include <stdio.h>
+#include <stddef.h>
 #include <dlfcn.h>
+#include <sys/time.h>
 
 #include <sentient/core/types.h>
 
 int main(int argc, char** argv)
 {
-    sentient_scdt32 fucking = { 23, 4, 8, 1, 38, 0 };
+    sentient_str8_32 str = "fucking";
+
     struct timeval tv = { 0, };
-    gettimeofday(&tv, NULL);
-
-    void* self = dlopen(NULL, RTLD_LAZY);
-
-    
-
-    dlclose(self);
 
     return 0;
 };

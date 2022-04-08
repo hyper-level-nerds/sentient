@@ -45,6 +45,10 @@ typedef char          sentient_str8;
 typedef sentient_i16  sentient_str16;
 typedef sentient_i32  sentient_str32;
 
+#define SENTIENT_DEFINE_STR_N(TYPE, SIZE) \
+	typedef TYPE TYPE##_##SIZE[SIZE];
+#include <sentient/core/internal/string_types.h>
+
 struct sentient_subcentury_datetime32
 {
 	sentient_u32 year : 7;    /* [0-99] a centry */
@@ -75,6 +79,7 @@ bool sentient_get_tm_from_scdt32(struct tm*, sentient_scdt32*);
 bool sentient_get_scdt32_from_tm(sentient_scdt32*, struct tm*);
 bool sentient_get_tm_from_scdt64(struct tm*, sentient_scdt32*);
 bool sentient_get_scdt64_from_tm(sentient_scdt32*, struct tm*);
+
 
 #ifdef __cplusplus
 }

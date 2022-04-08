@@ -28,7 +28,7 @@ namespace example
 #pragma pack(push, 1)
 struct static_model :
     sentient::type_traits::static_model_attr,
-    sentient::type_traits::dbms_compatible_attr<static_model, 0, 't', 'b', 'l', '\0'>
+    sentient::type_traits::dbms_compatible_attr<static_model, 0>
 {
     SENTIENT_DEFINE_MODEL(example::static_model,
         (sentient::u64_t, model_no),
