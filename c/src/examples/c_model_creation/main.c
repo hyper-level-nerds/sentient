@@ -1,16 +1,21 @@
-#include <sys/time.h>
 #include <stdio.h>
 #include <stddef.h>
-#include <dlfcn.h>
+#include <threads.h>
+#include <signal.h>
+#include <string.h>
 #include <sys/time.h>
+#include <sys/unistd.h>
+#include <sys/time.h>
+#include <sys/fcntl.h>
+
+#include <cmocka.h>
 
 #include <sentient/core/types.h>
 
 int main(int argc, char** argv)
 {
-    sentient_str8_32 str = "fucking";
+    
 
-    struct timeval tv = { 0, };
 
     return 0;
 };

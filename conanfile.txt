@@ -1,8 +1,7 @@
 [requires]
 boost/1.78.0
-yaml-cpp/0.7.0
+cmocka/1.1.5
 soci/4.0.3
-glm/0.9.9.8
 mongo-cxx-driver/3.6.6
 
 [generators]
