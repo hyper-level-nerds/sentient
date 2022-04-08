@@ -45,7 +45,7 @@ namespace example
 {
 
 #pragma pack(push, 1)
-struct example_model :
+struct model :
     sentient::type_traits::static_model_attr,
     sentient::type_traits::dbms_compatible_attr<static_model, 0>,
     sentient::type_traits::credential_dontread_attr<3>
