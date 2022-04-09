@@ -8,8 +8,6 @@
 #include <sys/time.h>
 #include <sys/fcntl.h>
 
-#include <cmocka.h>
-
 #include <sentient/core/types.h>
 
 int main(int argc, char** argv)

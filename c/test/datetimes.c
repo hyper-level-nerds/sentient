@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <cmocka.h>
 
 #include <sentient/sentient.h>
