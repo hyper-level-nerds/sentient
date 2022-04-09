@@ -17,6 +17,11 @@ extern "C"
 {
 #endif
 
+struct sentient_model_info
+{
+    
+};
+
 #ifdef __cplusplus
 }
 #endif
