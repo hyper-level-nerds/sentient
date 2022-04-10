@@ -71,5 +71,13 @@ struct model :
 C#
 
 ```C#
-Console.WriteLine("ah");
+namespace example;
+
+[Serializable]
+public struct Model
+{
+    SentientU64    Number;
+    SentientStr8[] EmailAddress = new SentientStr8[256];
+    ... // idk how to implement in the C# language
+}
 ```
