@@ -5,7 +5,6 @@
 #include <stdbool.h>
 
 #include <sentient/core/types.h>
-#include <sentient/core/model_info.h>
 
 #ifdef __cplusplus
 extern "C"
@@ -31,8 +30,9 @@ struct example_model
 	sentient_scdt64   created_date;
 	sentient_scdt64   updated_date;
 };
-struct sentient_model_info* get_model_info_example_model();
-size_t sentient_serialize_example_model(struct example_model*, sentient_u8*);
+
+const struct sentient_model_info* get_model_info_example_model();
+bool sentient_serialize_example_model(struct example_model*, sentient_u8*);
 
 
 #ifdef __cplusplus

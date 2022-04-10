@@ -1,6 +1,10 @@
 #ifndef __SENTIENT_CORE_MODEL_INFO_H__
 #define __SENTIENT_CORE_MODEL_INFO_H__
 
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+
 /**
  * @file model_info.h
  * @author Jin (jaehwanspin@gmail.com)
@@ -19,7 +23,10 @@ extern "C"
 
 struct sentient_model_info
 {
-    
+    bool                        is_static_model;
+    size_t                      total_size;
+    size_t                      fields_count;
+    struct sentient_field_info* fields;
 };
 
 #ifdef __cplusplus
