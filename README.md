@@ -25,16 +25,20 @@ compile ↓
 C
 
 ```C
-SENTIENT_DEFINE_MODEL(example_model
-    (u64, number),
-    (str8, email_address, 256),
-    (str8, password, 33),
-    (f64, health),
-    (scdt64, created_time),
-    (scdt64, updated_time),
-)
-SENTIENT_DEFINE_ATTR(example_example_model
-    (0, PK)
+struct example_model
+{
+	sentient_u64      number;
+	sentient_str8_256 email_address;
+	sentient_str8_33  password;
+	sentient_f64      health;
+	sentient_scdt64   created_date;
+	sentient_scdt64   updated_date;
+};
+
+const struct sentient_model_info* sentient_get_model_info_example_model();
+sentient_size sentient_serialize_example_model(const struct example_model*, sentient_u8*);
+sentient_size sentient_protocol_serialize_example_model(const struct sentient_protocol_info*,
+	const struct example_model*, sentient_u8*);
 )
 ```
 
