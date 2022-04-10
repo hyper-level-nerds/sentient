@@ -21,7 +21,7 @@ static struct sentient_model_info sentient_model_info_example_model = {
     sentient_fields_info_example_model
 };
 
-const struct sentient_model_info* get_model_info_example_model()
+const struct sentient_model_info* sentient_get_model_info_example_model()
 {
     return &sentient_model_info_example_model;
 }

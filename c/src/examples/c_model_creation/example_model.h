@@ -31,7 +31,7 @@ struct example_model
 	sentient_scdt64   updated_date;
 };
 
-const struct sentient_model_info* get_model_info_example_model();
+const struct sentient_model_info* sentient_get_model_info_example_model();
 bool sentient_serialize_example_model(struct example_model*, sentient_u8*);
 
 
