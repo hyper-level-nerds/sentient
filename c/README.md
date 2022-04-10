@@ -1,3 +1,3 @@
-# SENTIENT C Library
+# SENTIENT C
 
 the SENTIENT library for C
