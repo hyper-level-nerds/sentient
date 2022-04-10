@@ -23,7 +23,8 @@ extern "C"
 
 struct sentient_protocol_info
 {
-
+    bool has_stx;
+    bool has_etx;
 };
 
 #ifdef __cplusplus

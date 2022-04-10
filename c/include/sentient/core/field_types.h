@@ -1,5 +1,5 @@
-#ifndef __SENTIENT_CORE_MODEL_TYPES_H__
-#define __SENTIENT_CORE_MODEL_TYPES_H__
+#ifndef __SENTIENT_CORE_FIELD_TYPES_H__
+#define __SENTIENT_CORE_FIELD_TYPES_H__
 
 /**
  * @file field_types.h
@@ -19,6 +19,7 @@ extern "C"
 
 enum sentient_field_types
 {
+    SENTIENT_FIELD_TYPES_NONE,
     SENTIENT_FIELD_TYPES_U8,
     SENTIENT_FIELD_TYPES_U16,
     SENTIENT_FIELD_TYPES_U32,

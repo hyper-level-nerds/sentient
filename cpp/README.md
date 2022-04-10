@@ -1,4 +1,4 @@
-# SENTIENT C++ Library
+# SENTIENT C++
 
 header-only reflection library
 
