@@ -22,7 +22,9 @@ static struct sentient_model_info model_info_example_model = {
     SENTIENT_FIELD_TYPES_NONE,
     sizeof(struct example_model),
     sizeof(sentient_fields_info_example_model) / sizeof(struct sentient_field_info),
-    sentient_fields_info_example_model
+    sentient_fields_info_example_model,
+    false,
+    0
 };
 
 const struct sentient_model_info* sentient_get_model_info_example_model()

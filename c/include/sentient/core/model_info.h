@@ -1,10 +1,7 @@
 #ifndef __SENTIENT_CORE_MODEL_INFO_H__
 #define __SENTIENT_CORE_MODEL_INFO_H__
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdbool.h>
-
+#include <sentient/core/types.h>
 #include <sentient/core/field_types.h>
 
 /**
@@ -25,12 +22,14 @@ extern "C"
 
 struct sentient_model_info
 {
-    bool                        is_static_model;
-    bool                        has_command_code;
+    sentient_bool               is_static_model;
+    sentient_bool               has_command_code;
     enum sentient_field_types   command_code_type;
-    size_t                      total_size;
-    size_t                      fields_count;
+    sentient_bool               total_size;
+    sentient_size               fields_count;
     struct sentient_field_info* fields;
+    sentient_bool               has_primary_key;
+    sentient_size               primary_key_field_idx;
 };
 
 #ifdef __cplusplus
