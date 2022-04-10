@@ -5,6 +5,7 @@
 #include <stdbool.h>
 
 #include <sentient/core/types.h>
+#include <sentient/core/protocol_info.h>
 
 #ifdef __cplusplus
 extern "C"
@@ -32,7 +33,9 @@ struct example_model
 };
 
 const struct sentient_model_info* sentient_get_model_info_example_model();
-bool sentient_serialize_example_model(struct example_model*, sentient_u8*);
+sentient_size sentient_serialize_example_model(const struct example_model*, sentient_u8*);
+sentient_size sentient_protocol_serialize_example_model(const struct sentient_protocol_info*,
+	const struct example_model*, sentient_u8*);
 
 
 #ifdef __cplusplus

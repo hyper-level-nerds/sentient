@@ -8,23 +8,38 @@
  * @version 0.1
  * @date 2023-04-10
  *
- * @copyright Copyright (c) 2023
+ * @copyright Copyright (c) 2022
  *
  */
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdbool.h>
+#include <sentient/core/types.h>
+#include <sentient/core/protocol/protocol_node.h>
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
+/**
+ * @author Jin
+ * @brief protocol info
+ * 
+ */
 struct sentient_protocol_info
 {
-    bool has_stx;
-    bool has_etx;
+    sentient_bool                  has_stx;
+    sentient_size                  stx_size;
+    sentient_void*                 stx_value;
+    sentient_bool                  is_stx_processed;
+
+    struct sentient_protocol_node* curr_node;
+    
+    sentient_bool                  has_etx;
+    sentient_size                  etx_size;
+    sentient_void*                 etx_value;
+    sentient_bool                  is_etx_processed;
+
+    struct sentient_buffer_stream* buffer_stream;
 };
 
 #ifdef __cplusplus

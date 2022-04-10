@@ -33,6 +33,8 @@ extern "C"
 #define sentient_nullptr 0
 #endif
 
+typedef void          sentient_void;
+typedef bool          sentient_bool;
 typedef size_t        sentient_size;
 typedef uint8_t       sentient_u8;
 typedef uint16_t      sentient_u16;

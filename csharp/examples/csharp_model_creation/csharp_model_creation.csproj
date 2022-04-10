@@ -7,8 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <Reference Include="SentientSharp"></Reference>
-  </ItemGroup>
+  </ItemGroup> -->
 
 </Project>
