@@ -16,6 +16,8 @@ static struct sentient_field_info sentient_fields_info_example_model[] = {
 
 static struct sentient_model_info sentient_model_info_example_model = {
     true,
+    false,
+    SENTIENT_FIELD_TYPES_NONE,
     sizeof(struct example_model),
     sizeof(sentient_fields_info_example_model) / sizeof(struct sentient_field_info),
     sentient_fields_info_example_model

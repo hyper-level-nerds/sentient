@@ -5,6 +5,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include <sentient/core/field_types.h>
+
 /**
  * @file model_info.h
  * @author Jin (jaehwanspin@gmail.com)
@@ -24,6 +26,8 @@ extern "C"
 struct sentient_model_info
 {
     bool                        is_static_model;
+    bool                        has_command_code;
+    enum sentient_field_types   command_code_type;
     size_t                      total_size;
     size_t                      fields_count;
     struct sentient_field_info* fields;
