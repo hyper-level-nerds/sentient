@@ -32,6 +32,8 @@ struct sentient_model_info
     sentient_size               primary_key_field_idx;
 };
 
+sentient_ssize sentient_serialize_with_protocol_info();
+
 #ifdef __cplusplus
 }
 #endif

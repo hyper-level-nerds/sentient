@@ -18,6 +18,9 @@
 #include <float.h>
 #include <time.h>
 
+// so, donut(do not) use the MSVC compiler
+#include <sys/types.h>
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -36,6 +39,7 @@ extern "C"
 typedef void          sentient_void;
 typedef bool          sentient_bool;
 typedef size_t        sentient_size;
+typedef ssize_t       sentient_ssize;
 typedef uint8_t       sentient_u8;
 typedef uint16_t      sentient_u16;
 typedef uint32_t      sentient_u32;

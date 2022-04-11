@@ -29,8 +29,6 @@ sentient_size sentient_serialize_with_protocol_info(sentient_u8* buffer,
         while (protoc_node != sentient_nullptr && buffer_size != -1)
         {
 
-
-            protoc_node = sentient_protocol_node_next(protoc_node);
         }
 
         if (protoc_info->has_etx && buffer_size != -1)

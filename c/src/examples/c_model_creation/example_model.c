@@ -12,13 +12,13 @@ struct sentient_protocol_node protocol_nodes_example_protocol[] = {
     {
         .protocol_type = SENTIENT_PROTOCOL_TYPES_MAGIC_VALUE,
         .protocol_size = sizeof(sentient_u8),
-        .protocol_value = { (sentient_u8)0xA0 },
+        .protocol_value = (sentient_u8[]){ (sentient_u8)0xA0 },
         .is_processed = false
     },
     {
         .protocol_type = SENTIENT_PROTOCOL_TYPES_BODY_SIZE,
         .protocol_size = sizeof(sentient_u8),
-        .protocol_value = { (sentient_u8)0xA0 },
+        .protocol_value = (sentient_u8[]){ (sentient_u8)0xA0 },
         .is_processed = false
     }
 };
@@ -67,7 +67,7 @@ const struct sentient_model_info* sentient_get_model_info_example_model()
     return &model_info_example_model;
 }
 
-sentient_size
+sentient_ssize
 sentient_serialize_example_model(const struct example_model* model,
     sentient_u8* byte_buffer)
 {
@@ -81,7 +81,7 @@ sentient_serialize_example_model(const struct example_model* model,
     return buffer_size;
 }
 
-sentient_size
+sentient_ssize
 sentient_serialize_with_protocol_example_model(
     sentient_u8* buffer, const struct sentient_protocol_info* protoc_info,
 	const struct example_model* model)

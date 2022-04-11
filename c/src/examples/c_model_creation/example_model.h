@@ -33,8 +33,8 @@ struct example_model
 } __attribute__((aligned(1), packed));
 
 const struct sentient_model_info* sentient_get_model_info_example_model();
-sentient_size sentient_serialize_example_model(const struct example_model*, sentient_u8*);
-sentient_size sentient_serialize_with_protocol_example_model(sentient_u8*,
+sentient_ssize sentient_serialize_example_model(const struct example_model*, sentient_u8*);
+sentient_ssize sentient_serialize_with_protocol_example_model(sentient_u8*,
 	const struct sentient_protocol_info*, const struct example_model*);
 
 
