@@ -1,8 +1,11 @@
+#
+# How to define a Model
+# 
 # data types : 
 #              *** primitive types ***
 #              b8 (1 byte integral type)
-#              u8 (1 byte unsigned int)... u64 (8 bytes unsigned int)
-#              i8 (1 byte signed int)... u64 (8 bytes signed int)
+#              u8 (1 byte unsigned int) ... u64 (8 bytes unsigned int)
+#              i8 (1 byte signed int) ... u64 (8 bytes signed int)
 #              f4 (4 bytes floating point real number)
 #              f8 (8 bytes floating point real number)
 #              a8 (1 byte ascii character)
@@ -11,8 +14,8 @@
 #              [] (dynamic array type) must have a size type(unsigned integers) in advance ( ex.
 #                                                                                            arr_size : u32
 #                                                                                            arr : u32[] )
-#              [ < integer constant >] static sized array expression ( ex.
-#                                                                     arr : u32[64])
+#              [ < integer constant > ] static sized array expression ( ex.
+#                                                                       arr : u32[64])
 #
 #              *** string types ***
 #              str8 [] | [ < integer constant > ] (1 byte utf-8 array)
@@ -23,23 +26,40 @@
 #              scdt32 (4 bytes datetime type)
 #              scdt64 (8 bytes datetime type includes microseconds)
 #              pt64 (8 bytes posix time integer type)
+#
+#              *** restricts ***
+#              $pk ( primary key in RDBMS | _id in MongoDB )
+#              $ai ( auto-increment in RDBMS | creates a counter collection in MongoDB )
+#              $donutread (  )
 #              
 
 ns example
-    example_model:
+    example_model : 0x11223344
         number : u64 $pk $ai
         email_address : str8[256]
         password : str8[33] $donutread
         created_time : pt64 $auto
         updated_time : pt64
 
+
+#
+# How to define a Protocol
+# 
+# stx { [ 'ascii character' | 0x[ 1 byte hexadecimal ] , ... ] } ( start of the message )
+#
+# data_size : [ unsigned integer types ] ( model total size )
+#
+# etx { [ 'ascii character' | 0x[ 1 byte hexadecimal ] , ... ] } ( end of the message )
+#
+
     message_protocol : msg_ptcl
-        stx { 0xFD }
-        len : u8
+        stx { 0xAA, 0x55 }
+        data_size : u32
         from : u16
         to : u16
-        command : u32
-        etx { '\n' }
+        command_code : u32
+        crc : 16_fletcher
+        etx { 0xEE, 0xFF }
 
     stream_protocol : strm_ptcl:
         

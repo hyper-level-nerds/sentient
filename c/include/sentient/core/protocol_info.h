@@ -42,6 +42,8 @@ struct sentient_protocol_info
     struct sentient_buffer_stream* buffer_stream;
 };
 
+sentient_size sentient_serialize_with_protocol_info(sentient_u8*, struct sentient_protocol_info*, void*, sentient_size);
+
 #ifdef __cplusplus
 }
 #endif

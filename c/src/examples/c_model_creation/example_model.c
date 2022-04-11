@@ -34,7 +34,7 @@ const struct sentient_model_info* sentient_get_model_info_example_model()
 
 sentient_size sentient_serialize_example_model(const struct example_model* model, sentient_u8* byte_buffer)
 {
-    size_t buffer_size = sizeof(struct example_model);
+    sentient_size buffer_size = sizeof(struct example_model);
 
     if (memmove(byte_buffer, model, sizeof(struct example_model)) == sentient_nullptr)
     {
@@ -44,12 +44,12 @@ sentient_size sentient_serialize_example_model(const struct example_model* model
     return buffer_size;
 }
 
-sentient_size sentient_protocol_serialize_example_model(const struct sentient_protocol_info* protoc_info,
-	                                                    const struct example_model* model,
-                                                        sentient_u8* buffer)
+sentient_size sentient_protocol_serialize_example_model(sentient_u8* buffer,
+                                                        const struct sentient_protocol_info* protoc_info,
+	                                                    const struct example_model* model)
 {
-    size_t buffer_size;
-
+    sentient_size model_size = sizeof(struct example_model);
+    sentient_size buffer_size = 0;
     
 
     return buffer_size;

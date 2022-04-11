@@ -1,5 +1,5 @@
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  message(FATAL_ERROR "${SENTIENT_MSG_PREFIX} It dosen't support MSVC C compiler."
+  message(FATAL_ERROR "${SENTIENT_MSG_PREFIX} It dosen't support MSVC C compiler.\n"
                       "${SENTIENT_MSG_PREFIX} Go get the GNU one")
 else()
   if (SENTIENT_BUILD_C_LIBRARY)
