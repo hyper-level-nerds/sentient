@@ -5,9 +5,8 @@
 bool sentient_scdt32_local_now(sentient_scdt32* dt)
 {
     bool result = true;
+
     
-    struct tm* now = localtime(sentient_nullptr);
-    // dt->year = 
 
     return result;
 }
@@ -33,6 +32,33 @@ bool sentient_tv128_local_now(sentient_tv128* tv)
     return result;
 }
 
+bool sentient_scdt32_utc_now(sentient_scdt32* dt)
+{
+    bool result = true;
+
+    return result;
+}
+
+bool sentient_scdt64_utc_now(sentient_scdt64* dt)
+{
+    bool result = true;
+
+    return result;
+}
+
+bool sentient_pt64_utc_now(sentient_pt64* pt)
+{
+    bool result = true;
+
+    return result;
+}
+
+bool sentient_tv128_utc_now(sentient_tv128* tv)
+{
+    bool result = true;
+
+    return result;
+}
 
 bool sentient_get_tm_from_scdt32(struct tm* tm, sentient_scdt32* dt)
 {

@@ -14,6 +14,7 @@
 
 #include <sentient/core/types.h>
 #include <sentient/core/protocol/protocol_node.h>
+#include <sentient/core/model_info.h>
 
 #ifdef __cplusplus
 extern "C"
@@ -32,7 +33,8 @@ struct sentient_protocol_info
     sentient_void*                 stx_value;
     sentient_bool                  is_stx_processed;
 
-    struct sentient_protocol_node* curr_node;
+    sentient_size                  protocol_nodes_size;
+    struct sentient_protocol_node* protocol_nodes;
     
     sentient_bool                  has_etx;
     sentient_size                  etx_size;
@@ -42,7 +44,9 @@ struct sentient_protocol_info
     struct sentient_buffer_stream* buffer_stream;
 };
 
-sentient_size sentient_serialize_with_protocol_info(sentient_u8*, struct sentient_protocol_info*, void*, sentient_size);
+sentient_size sentient_serialize_with_protocol_info(sentient_u8*,
+    struct sentient_protocol_info*, struct sentient_model_info*,
+    void*, sentient_size);
 
 #ifdef __cplusplus
 }

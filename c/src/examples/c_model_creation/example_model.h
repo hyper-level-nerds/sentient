@@ -34,8 +34,14 @@ struct example_model
 
 const struct sentient_model_info* sentient_get_model_info_example_model();
 sentient_size sentient_serialize_example_model(const struct example_model*, sentient_u8*);
-sentient_size sentient_protocol_serialize_example_model(sentient_u8*,
+sentient_size sentient_serialize_with_protocol_example_model(sentient_u8*,
 	const struct sentient_protocol_info*, const struct example_model*);
+
+
+struct example_protocol_in
+{
+	
+};
 
 
 #ifdef __cplusplus

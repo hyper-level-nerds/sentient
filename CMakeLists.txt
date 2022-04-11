@@ -45,10 +45,6 @@ option(SENTIENT_BUILD_C_EXAMPLES "build C examples" ON)
 option(SENTIENT_BUILD_CXX_EXAMPLES "build C++ examples" ON)
 option(SENTIENT_TEST_CXX_LIBRARY "test C++ library" ON)
 
-option(SENTIENT_BUILD_CSHARP_LIBRARY "build C# library" ON)
-option(SENTIENT_TEST_CSHARP_LIBRARY "test C# library" ON)
-option(SENTIENT_BUILD_CSHARP_EXAMPLES "build C# examples" ON)
-
 include_directories(${CMAKE_INCLUDE_PATH}
                     ${CONAN_INCLUDE_DIRS}
                     ${CMAKE_SOURCE_DIR}/c/include
@@ -58,4 +54,3 @@ link_directories(${CONAN_LIB_DIRS})
 add_subdirectory(${CMAKE_SOURCE_DIR}/sentient_compiler)
 add_subdirectory(${CMAKE_SOURCE_DIR}/c)
 add_subdirectory(${CMAKE_SOURCE_DIR}/cpp)
-add_subdirectory(${CMAKE_SOURCE_DIR}/csharp)

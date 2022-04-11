@@ -27,36 +27,12 @@ extern "C"
  */
 struct sentient_protocol_node
 {
-    struct sentient_protocol_node* previous_node;
-
     enum sentient_protocol_types   protocol_type;
     sentient_size                  protocol_size;
-
-    sentient_bool                  is_processed;
-    
-    struct sentient_protocol_node* next_node;
+    sentient_void*                 protocol_value;
+    sentient_bool                  is_processed;   
 };
 
-const struct sentient_protocol_node* sentient_protocol_node_next(
-    const struct sentient_protocol_node*);
-
-const struct sentient_protocol_node* sentient_protocol_node_previous(
-    const struct sentient_protocol_node*);
-
-void sentient_protocol_node_set_next(struct sentient_protocol_node*,
-    const struct sentient_protocol_node*);
-
-void sentient_protocol_node_set_previous(struct sentient_protocol_node*,
-    const struct sentient_protocol_node*);
-
-struct sentient_protocol_node* sentient_protocol_node_head(
-    struct sentient_protocol_node*);
-
-struct sentient_protocol_node* sentient_protocol_node_tail(
-    struct sentient_protocol_node*);
-
-struct sentient_protocol_node* sentient_protocol_node_clear(
-    struct sentient_protocol_node*);
 
 #ifdef __cplusplus
 }

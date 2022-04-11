@@ -1,11 +1,16 @@
 #include <sentient/core/protocol_info.h>
 
+#include <memory.h>
 
-sentient_size sentient_serialize_with_protocol_info(sentient_u8* buffer, struct sentient_protocol_info* protoc_info,
-		void* model_addr, sentient_size model_size)
+#include <sentient/core/model_info.h>
+
+sentient_size sentient_serialize_with_protocol_info(sentient_u8* buffer,
+        struct sentient_protocol_info* protoc_info,
+        struct sentient_model_info* model_info,
+		void* model_buffer, sentient_size model_size)
 {
 	sentient_size buffer_size = 0;
-    struct sentient_protocol_node* protoc_node = protoc_info->curr_node;
+    struct sentient_protocol_node* protoc_node = protoc_info->protocol_nodes;
 
     if (protoc_info != sentient_nullptr)
     {
