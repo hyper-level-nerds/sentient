@@ -13,16 +13,16 @@ extern "C"
 #endif
 
 
-// ns example :
-// 	   model model:
-// 	   number: u64 $pk
-// 	   email_address : str8[256]
-// 	   password : str8[33] $dontread
-// 	   health : f64
-// 	   created_time : scdt64
-// 	   updated_time : scdt64
+// ns example >
+// 	   static_model : model
+// 	       number: u64 $pk
+// 	       email_address : str8[256]
+// 	       password : str8[33] $dontread
+// 	       health : f64
+// 	       created_time : scdt64
+// 	       updated_time : scdt64
 
-struct example_model
+struct example_static_model
 {
 	sentient_u64      number;
 	sentient_str8_256 email_address;
@@ -32,12 +32,20 @@ struct example_model
 	sentient_scdt64   updated_date;
 } __attribute__((aligned(1), packed));
 
-const struct sentient_model_info* sentient_get_model_info_example_model();
-sentient_ssize sentient_serialize_example_model(const struct example_model*, sentient_u8*);
-sentient_ssize sentient_serialize_with_protocol_example_model(sentient_u8*,
-	const struct sentient_protocol_info*, const struct example_model*);
+const struct sentient_model_info* sentient_get_model_info_example_static_model();
+sentient_ssize sentient_serialize_example_static_model(const struct example_static_model*, sentient_u8*);
+sentient_ssize sentient_serialize_with_protocol_example_static_model(sentient_u8*,
+	const struct sentient_protocol_info*, const struct example_static_model*);
 
-
+// 
+// ns example >
+//     protocol_in : protocol
+//         stx : stx [ 0xAA, 0x55 ]
+//	       cmd_code : command_code {}
+//	       
+//	       
+//	       
+//	       
 struct example_protocol_in
 {
 	

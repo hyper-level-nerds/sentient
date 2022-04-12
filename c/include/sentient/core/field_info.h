@@ -12,10 +12,6 @@
  *
  */
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdbool.h>
-
 #include <sentient/core/types.h>
 #include <sentient/core/field_types.h>
 

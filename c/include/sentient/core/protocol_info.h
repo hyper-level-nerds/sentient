@@ -14,6 +14,8 @@
 
 #include <sentient/core/types.h>
 #include <sentient/core/protocol/protocol_node.h>
+#include <sentient/core/checksum_types.h>
+#include <sentient/core/serialization_info.h>
 #include <sentient/core/model_info.h>
 
 #ifdef __cplusplus
@@ -36,6 +38,9 @@ struct sentient_protocol_info
     sentient_size                  protocol_nodes_size;
     struct sentient_protocol_node* protocol_nodes;
     
+    sentient_bool                  has_checksum;
+    enum sentient_checksum_types   checksum_type;
+
     sentient_bool                  has_etx;
     sentient_size                  etx_size;
     sentient_void*                 etx_value;
@@ -44,9 +49,7 @@ struct sentient_protocol_info
     struct sentient_buffer_stream* buffer_stream;
 };
 
-sentient_size sentient_serialize_with_protocol_info(sentient_u8*,
-    struct sentient_protocol_info*, struct sentient_model_info*,
-    void*, sentient_size);
+sentient_ssize sentient_serialize_with_protocol_info(struct sentient_serialization_info*);
 
 #ifdef __cplusplus
 }

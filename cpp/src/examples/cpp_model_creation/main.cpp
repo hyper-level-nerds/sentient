@@ -12,6 +12,9 @@
 #include <iostream>
 #include <array>
 #include <vector>
+#include <string>
+
+#include <boost/pfr.hpp>
 
 #include <sentient/core/define_model.hpp>
 #include <sentient/core/types.hpp>
@@ -19,8 +22,6 @@
 #include <sentient/core/string.hpp>
 #include <sentient/core/type_traits.hpp>
 #include <sentient/core/object_pool.hpp>
-
-namespace snt = sentient;
 
 namespace example
 {
@@ -40,10 +41,10 @@ struct static_model :
 
 }
 
+
 int main(int argc, char** argv)
 {
     example::static_model m { {}, };
-
 
     return 0;
 }

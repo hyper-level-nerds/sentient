@@ -60,6 +60,135 @@ typedef sentient_i32  sentient_str32;
 	typedef TYPE TYPE##_##SIZE[SIZE];
 #include <sentient/core/internal/string_types.h>
 
+typedef sentient_u64 sentient_u64_vec1[1];
+typedef sentient_u64 sentient_u64_vec2[2];
+typedef sentient_u64 sentient_u64_vec3[3];
+typedef sentient_u64 sentient_u64_vec4[4];
+typedef sentient_u32 sentient_u32_vec1[1];
+typedef sentient_u32 sentient_u32_vec2[2];
+typedef sentient_u32 sentient_u32_vec3[3];
+typedef sentient_u32 sentient_u32_vec4[4];
+
+typedef sentient_i64 sentient_i64_vec1[1];
+typedef sentient_i64 sentient_i64_vec2[2];
+typedef sentient_i64 sentient_i64_vec3[3];
+typedef sentient_i64 sentient_i64_vec4[4];
+typedef sentient_i32 sentient_i32_vec1[1];
+typedef sentient_i32 sentient_i32_vec2[2];
+typedef sentient_i32 sentient_i32_vec3[3];
+typedef sentient_i32 sentient_i32_vec4[4];
+
+typedef sentient_f64 sentient_f64_vec1[1];
+typedef sentient_f64 sentient_f64_vec2[2];
+typedef sentient_f64 sentient_f64_vec3[3];
+typedef sentient_f64 sentient_f64_vec4[4];
+typedef sentient_f32 sentient_f32_vec1[1];
+typedef sentient_f32 sentient_f32_vec2[2];
+typedef sentient_f32 sentient_f32_vec3[3];
+typedef sentient_f32 sentient_f32_vec4[4];
+
+typedef sentient_u32_vec1 sentient_u32_mat1x1[1];
+typedef sentient_u32_vec1 sentient_u32_mat1x2[2];
+typedef sentient_u32_vec1 sentient_u32_mat1x3[3];
+typedef sentient_u32_vec1 sentient_u32_mat1x4[4];
+typedef sentient_u32_vec2 sentient_u32_mat2x1[1];
+typedef sentient_u32_vec2 sentient_u32_mat2x2[2];
+typedef sentient_u32_vec2 sentient_u32_mat2x3[3];
+typedef sentient_u32_vec2 sentient_u32_mat2x4[4];
+typedef sentient_u32_vec3 sentient_u32_mat3x1[1];
+typedef sentient_u32_vec3 sentient_u32_mat3x2[2];
+typedef sentient_u32_vec3 sentient_u32_mat3x3[3];
+typedef sentient_u32_vec3 sentient_u32_mat3x4[4];
+typedef sentient_u32_vec4 sentient_u32_mat4x1[1];
+typedef sentient_u32_vec4 sentient_u32_mat4x2[2];
+typedef sentient_u32_vec4 sentient_u32_mat4x3[3];
+typedef sentient_u32_vec4 sentient_u32_mat4x4[4];
+
+typedef sentient_u64_vec1 sentient_u64_mat1x1[1];
+typedef sentient_u64_vec1 sentient_u64_mat1x2[2];
+typedef sentient_u64_vec1 sentient_u64_mat1x3[3];
+typedef sentient_u64_vec1 sentient_u64_mat1x4[4];
+typedef sentient_u64_vec2 sentient_u64_mat2x1[1];
+typedef sentient_u64_vec2 sentient_u64_mat2x2[2];
+typedef sentient_u64_vec2 sentient_u64_mat2x3[3];
+typedef sentient_u64_vec2 sentient_u64_mat2x4[4];
+typedef sentient_u64_vec3 sentient_u64_mat3x1[1];
+typedef sentient_u64_vec3 sentient_u64_mat3x2[2];
+typedef sentient_u64_vec3 sentient_u64_mat3x3[3];
+typedef sentient_u64_vec3 sentient_u64_mat3x4[4];
+typedef sentient_u64_vec4 sentient_u64_mat4x1[1];
+typedef sentient_u64_vec4 sentient_u64_mat4x2[2];
+typedef sentient_u64_vec4 sentient_u64_mat4x3[3];
+typedef sentient_u64_vec4 sentient_u64_mat4x4[4];
+
+typedef sentient_i32_vec1 sentient_i32_mat1x1[1];
+typedef sentient_i32_vec1 sentient_i32_mat1x2[2];
+typedef sentient_i32_vec1 sentient_i32_mat1x3[3];
+typedef sentient_i32_vec1 sentient_i32_mat1x4[4];
+typedef sentient_i32_vec2 sentient_i32_mat2x1[1];
+typedef sentient_i32_vec2 sentient_i32_mat2x2[2];
+typedef sentient_i32_vec2 sentient_i32_mat2x3[3];
+typedef sentient_i32_vec2 sentient_i32_mat2x4[4];
+typedef sentient_i32_vec3 sentient_i32_mat3x1[1];
+typedef sentient_i32_vec3 sentient_i32_mat3x2[2];
+typedef sentient_i32_vec3 sentient_i32_mat3x3[3];
+typedef sentient_i32_vec3 sentient_i32_mat3x4[4];
+typedef sentient_i32_vec4 sentient_i32_mat4x1[1];
+typedef sentient_i32_vec4 sentient_i32_mat4x2[2];
+typedef sentient_i32_vec4 sentient_i32_mat4x3[3];
+typedef sentient_i32_vec4 sentient_i32_mat4x4[4];
+
+typedef sentient_i64_vec1 sentient_i64_mat1x1[1];
+typedef sentient_i64_vec1 sentient_i64_mat1x2[2];
+typedef sentient_i64_vec1 sentient_i64_mat1x3[3];
+typedef sentient_i64_vec1 sentient_i64_mat1x4[4];
+typedef sentient_i64_vec2 sentient_i64_mat2x1[1];
+typedef sentient_i64_vec2 sentient_i64_mat2x2[2];
+typedef sentient_i64_vec2 sentient_i64_mat2x3[3];
+typedef sentient_i64_vec2 sentient_i64_mat2x4[4];
+typedef sentient_i64_vec3 sentient_i64_mat3x1[1];
+typedef sentient_i64_vec3 sentient_i64_mat3x2[2];
+typedef sentient_i64_vec3 sentient_i64_mat3x3[3];
+typedef sentient_i64_vec3 sentient_i64_mat3x4[4];
+typedef sentient_i64_vec4 sentient_i64_mat4x1[1];
+typedef sentient_i64_vec4 sentient_i64_mat4x2[2];
+typedef sentient_i64_vec4 sentient_i64_mat4x3[3];
+typedef sentient_i64_vec4 sentient_i64_mat4x4[4];
+
+typedef sentient_f32_vec1 sentient_f32_mat1x1[1];
+typedef sentient_f32_vec1 sentient_f32_mat1x2[2];
+typedef sentient_f32_vec1 sentient_f32_mat1x3[3];
+typedef sentient_f32_vec1 sentient_f32_mat1x4[4];
+typedef sentient_f32_vec2 sentient_f32_mat2x1[1];
+typedef sentient_f32_vec2 sentient_f32_mat2x2[2];
+typedef sentient_f32_vec2 sentient_f32_mat2x3[3];
+typedef sentient_f32_vec2 sentient_f32_mat2x4[4];
+typedef sentient_f32_vec3 sentient_f32_mat3x1[1];
+typedef sentient_f32_vec3 sentient_f32_mat3x2[2];
+typedef sentient_f32_vec3 sentient_f32_mat3x3[3];
+typedef sentient_f32_vec3 sentient_f32_mat3x4[4];
+typedef sentient_f32_vec4 sentient_f32_mat4x1[1];
+typedef sentient_f32_vec4 sentient_f32_mat4x2[2];
+typedef sentient_f32_vec4 sentient_f32_mat4x3[3];
+typedef sentient_f32_vec4 sentient_f32_mat4x4[4];
+
+typedef sentient_f64_vec1 sentient_f64_mat1x1[1];
+typedef sentient_f64_vec1 sentient_f64_mat1x2[2];
+typedef sentient_f64_vec1 sentient_f64_mat1x3[3];
+typedef sentient_f64_vec1 sentient_f64_mat1x4[4];
+typedef sentient_f64_vec2 sentient_f64_mat2x1[1];
+typedef sentient_f64_vec2 sentient_f64_mat2x2[2];
+typedef sentient_f64_vec2 sentient_f64_mat2x3[3];
+typedef sentient_f64_vec2 sentient_f64_mat2x4[4];
+typedef sentient_f64_vec3 sentient_f64_mat3x1[1];
+typedef sentient_f64_vec3 sentient_f64_mat3x2[2];
+typedef sentient_f64_vec3 sentient_f64_mat3x3[3];
+typedef sentient_f64_vec3 sentient_f64_mat3x4[4];
+typedef sentient_f64_vec4 sentient_f64_mat4x1[1];
+typedef sentient_f64_vec4 sentient_f64_mat4x2[2];
+typedef sentient_f64_vec4 sentient_f64_mat4x3[3];
+typedef sentient_f64_vec4 sentient_f64_mat4x4[4];
+
 struct sentient_subcentury_datetime32
 {
 	sentient_u32 year : 7;    /* [0-99] a centry */

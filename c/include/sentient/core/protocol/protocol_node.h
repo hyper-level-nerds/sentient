@@ -30,9 +30,16 @@ struct sentient_protocol_node
     enum sentient_protocol_types   protocol_type;
     sentient_size                  protocol_size;
     sentient_void*                 protocol_value;
-    sentient_bool                  is_processed;   
+    sentient_bool                  is_processed;
 };
 
+struct sentient_protocol_required_values_node
+{
+    enum sentient_protocol_types   protocol_type;
+    sentient_size                  protocol_size;
+    sentient_void*                 protocol_required_values;
+    sentient_bool                  is_processed;
+};
 
 #ifdef __cplusplus
 }
