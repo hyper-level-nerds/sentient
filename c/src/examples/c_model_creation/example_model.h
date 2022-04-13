@@ -48,6 +48,8 @@ sentient_ssize sentient_serialize_with_protocol_example_static_model(sentient_u8
 //	       
 struct example_protocol_in
 {
+	sentient_u16 src_code;
+	sentient_u16 dst_code;
 	
 };
 

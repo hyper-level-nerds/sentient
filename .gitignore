@@ -6,4 +6,5 @@ out
 CMakeSettings.json
 Cargo.lock
 .vscode
+.vscode-ctags
 .vs
