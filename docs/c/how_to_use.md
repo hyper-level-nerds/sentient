@@ -118,32 +118,65 @@ int main(void)
         .updated_date = 0
     };
 
-    sentient_u8 buffer[1024] = { 0, };
-
-    // serialization
-    sentient_size buffer_size = sentient_serialize_example_model(&m, buffer);
-
-    if (buffer_size < 0)
     {
-        perror("serialization error\n");
-        return EXIT_FAILURE;
+        sentient_u8 buffer[1024] = { 0, };
+
+        // serialization
+        sentient_size buffer_size = sentient_serialize_example_model(&m, buffer);
+
+        if (buffer_size < 0)
+        {
+            perror("serialization error\n");
+            return EXIT_FAILURE;
+        }
+
+        int fd = open("serialized.bin", O_CREAT);
+
+        if (fd >= 0)
+        {
+            // saving the file
+            ssize_t written_size = write(fd, buffer, buffer_size);
+
+            close(fd);
+
+            printf("%ld bytes written\n", written_size);
+        }
+        else
+        {
+            perror("write error\n");
+            return EXIT_FAILURE;
+        }
     }
 
-    int fd = open("serialized.bin", O_CREAT);
-
-    if (fd >= 0)
     {
-        // saving the file
-        ssize_t written_size = write(fd, buffer, buffer_size);
+        entient_u8 buffer[1024] = { 0, };
+        struct example_model decerialized = { 0, };
 
-        close(fd);
+        // serialization
+        sentient_size buffer_size = sentient_serialize_example_model(&m, buffer);
 
-        printf("%ld bytes written\n", written_size);
-    }
-    else
-    {
-        perror("write error\n");
-        return EXIT_FAILURE;
+        if (buffer_size < 0)
+        {
+            perror("serialization error\n");
+            return EXIT_FAILURE;
+        }
+
+        int fd = open("serialized.bin", O_RDONLY);
+
+        if (fd >= 0)
+        {
+            // reading the file
+            ssize_t read_size = read(fd, buffer, buffer_size);
+
+            close(fd);
+
+            printf("%ld bytes written\n", written_size);
+        }
+        else
+        {
+            perror("read error\n");
+            return EXIT_FAILURE;
+        }
     }
 
     return EXIT_SUCCESS;
