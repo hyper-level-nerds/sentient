@@ -33,7 +33,6 @@ struct sentient_protocol_info
     sentient_bool                  has_stx;
     sentient_size                  stx_size;
     sentient_void*                 stx_value;
-    sentient_bool                  is_stx_processed;
 
     sentient_size                  protocol_nodes_size;
     struct sentient_protocol_node* protocol_nodes;
@@ -44,7 +43,6 @@ struct sentient_protocol_info
     sentient_bool                  has_etx;
     sentient_size                  etx_size;
     sentient_void*                 etx_value;
-    sentient_bool                  is_etx_processed;
 
     struct sentient_buffer_stream* buffer_stream;
 };

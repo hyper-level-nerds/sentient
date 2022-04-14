@@ -1,6 +1,6 @@
 <!--![image info](./docs/sentient_with_background.png)-->
 <p align="center">
-  <img src="https://github.com/hyper-level-nerds/sentient/blob/master/docs/sentient_with_background.png">
+  <img src="https://github.com/hyper-level-nerds/sentient/blob/master/docs/resources/sentient_with_background.png">
 </p>
 
 Generic model data serialization and ORM (to be added later) library and compiler

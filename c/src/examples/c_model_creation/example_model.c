@@ -29,7 +29,6 @@ protocol_info_example_protocol_in = {
 	.has_stx = true,
 	.stx_size = sizeof(sentient_u16),
 	.stx_value = (sentient_u8[]){ (sentient_u8)0xAA, (sentient_u8)0x55 },
-	.is_stx_processed = false,
 	.protocol_nodes_size = (sentient_size)(sizeof(protocol_nodes_example_protocol) /
 		sizeof(struct sentient_protocol_node)),
 	.protocol_nodes = protocol_nodes_example_protocol,
