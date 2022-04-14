@@ -15,6 +15,8 @@
  *
  */
 
+#include <sentient/core/types.h>
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -40,6 +42,10 @@ enum sentient_checksum_types
     SENTIENT_CHECKSUM_TYPES_CRC64_ECMA_182,
     SENTIENT_CHECKSUM_TYPES_CRC128,
 };
+
+sentient_bool sentient_match_checksum(enum sentient_checksum_types,
+                                      sentient_void*,
+                                      sentient_size);
 
 #ifdef __cplusplus
 }
