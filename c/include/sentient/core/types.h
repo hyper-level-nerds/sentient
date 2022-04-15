@@ -15,6 +15,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdatomic.h>
 #include <float.h>
 #include <time.h>
 
@@ -55,6 +56,12 @@ typedef double        sentient_f64;
 typedef char          sentient_str8;
 typedef sentient_i16  sentient_str16;
 typedef sentient_i32  sentient_str32;
+
+typedef sentient_u8   sentient_stx8;
+typedef sentient_u8   sentient_cmd8;
+typedef sentient_u16  sentient_cmd16;
+typedef sentient_u32  sentient_cmd32;
+typedef sentient_u64  sentient_cmd64;
 
 #define SENTIENT_DEFINE_STR_N(TYPE, SIZE) \
 	typedef TYPE TYPE##_##SIZE[SIZE];

@@ -79,7 +79,10 @@ sentient_serialize_protocol_example_model(
 
 ### 4. Serializa the generated model
 
+**main.c**
+
 ```C
+#include "model.h"
 // ...
 int main(void)
 {
@@ -122,7 +125,7 @@ int main(void)
         sentient_u8 buffer[1024] = { 0, };
 
         // serialization
-        sentient_size buffer_size = sentient_serialize_example_model(&m, buffer);
+        sentient_ssize buffer_size = sentient_serialize_example_model(&m, buffer);
 
         if (buffer_size < 0)
         {
@@ -152,15 +155,6 @@ int main(void)
         entient_u8 buffer[1024] = { 0, };
         struct example_model decerialized = { 0, };
 
-        // serialization
-        sentient_size buffer_size = sentient_serialize_example_model(&m, buffer);
-
-        if (buffer_size < 0)
-        {
-            perror("serialization error\n");
-            return EXIT_FAILURE;
-        }
-
         int fd = open("serialized.bin", O_RDONLY);
 
         if (fd >= 0)
@@ -170,7 +164,18 @@ int main(void)
 
             close(fd);
 
-            printf("%ld bytes written\n", written_size);
+            printf("%ld bytes read\n", read_size);
+
+            if (read_size > 0)
+            {
+                sentient_ssize deserialized_size =
+                    sentient_deserialize_example_model(&decerialized, buffer);
+
+                if (deserialized_size != read_size)
+                {
+                    perror("deserialization failed\n");
+                }
+            }
         }
         else
         {
@@ -181,7 +186,20 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
-
-
-
 ```
+
+### 5. Serialize the model with a protocol
+
+```C
+// ...
+int main(void)
+{
+    struct example_model m = {
+
+    }
+
+    
+}
+```
+
+
