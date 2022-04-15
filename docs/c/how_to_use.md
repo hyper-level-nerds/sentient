@@ -86,28 +86,27 @@ sentient_serialize_protocol_example_model(
 // ...
 int main(void)
 {
-    struct example_model childs[] = {
-        {
-            .number = 1,
-            .name = "Junior1",
-            .email_address = "junior1@gmail.com",
-            .phone_number = "+821012345678",
-            .childs_size = 0
-            .childs = sentient_nullptr
-            .created_date = 0
-            .updated_date = 0
-        },
-        {
-            .number = 1,
-            .name = "Junior2",
-            .email_address = "junior2@gmail.com",
-            .phone_number = "+821012346789",
-            .childs_size = 0
-            .childs = sentient_nullptr
-            .created_date = 0
-            .updated_date = 0
-        }
-    };
+    const sentient_size children_size;
+    struct example_model* children =
+        sentient_calloc_from_stack_pool_example_model(childs_size);
+    
+    children[0]->number = 1;
+    children[0]->name = "Child 1";
+    children[0]->email_address = "child1@gmail.com";
+    children[0]->phone_number = "+821012346789";
+    children[0]->childs_size = 0;
+    children[0]->childs = sentient_nullptr;
+    children[0]->created_date = 0;
+    children[0]->updated_date = 0;
+        
+    children[1]->number = 2;
+    children[1]->name = "Child 2";
+    children[1]->email_address = "child2@gmail.com";
+    children[1]->phone_number = "+821012345678";
+    children[1]->childs_size = 0;
+    children[1]->childs = sentient_nullptr;
+    children[1]->created_date = 0;
+    children[1]->updated_date = 0;
 
     // the parent model has two children
     struct example_model m = {
@@ -115,8 +114,8 @@ int main(void)
         .name = "Jin",
         .email_address = "jaehwanspin@gmail.com",
         .phone_number = "+821012342345",
-        .childs_size = 2,
-        .childs = childs,
+        .childs_size = children_size,
+        .childs = children,
         .created_date $dbms_now = 0,
         .updated_date = 0
     };
@@ -125,6 +124,7 @@ int main(void)
         sentient_u8 buffer[1024] = { 0, };
 
         // serialization
+        // the children return after serialization to the pool
         sentient_ssize buffer_size = sentient_serialize_example_model(&m, buffer);
 
         if (buffer_size < 0)
@@ -194,9 +194,40 @@ int main(void)
 // ...
 int main(void)
 {
-    struct example_model m = {
+    struct example_model childs[] = {
+        {
+            .number = 1,
+            .name = "Junior1",
+            .email_address = "junior1@gmail.com",
+            .phone_number = "+821012345678",
+            .childs_size = 0
+            .childs = sentient_nullptr
+            .created_date = 0
+            .updated_date = 0
+        },
+        {
+            .number = 1,
+            .name = "Junior2",
+            .email_address = "junior2@gmail.com",
+            .phone_number = "+821012346789",
+            .childs_size = 0
+            .childs = sentient_nullptr
+            .created_date = 0
+            .updated_date = 0
+        }
+    };
 
-    }
+    // the parent model has two children
+    struct example_model m = {
+        .number = 1,
+        .name = "Jin",
+        .email_address = "jaehwanspin@gmail.com",
+        .phone_number = "+821012342345",
+        .childs_size = 2,
+        .childs = childs,
+        .created_date $dbms_now = 0,
+        .updated_date = 0
+    };
 
     
 }
