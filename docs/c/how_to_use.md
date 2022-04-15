@@ -86,7 +86,7 @@ sentient_serialize_protocol_example_model(
 // ...
 int main(void)
 {
-    const sentient_size children_size;
+    const sentient_size children_size = 2;
     struct example_model* children =
         sentient_calloc_from_stack_pool_example_model(childs_size);
     
