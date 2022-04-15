@@ -88,24 +88,24 @@ int main(void)
 {
     struct example_model childs[] = {
         {
-        .number = 1,
-        .name = "Junior1",
-        .email_address = "junior1@gmail.com",
-        .phone_number = "+821012345678",
-        .childs_size = 0
-        .childs = sentient_nullptr
-        .created_date = 0
-        .updated_date = 0
+            .number = 1,
+            .name = "Junior1",
+            .email_address = "junior1@gmail.com",
+            .phone_number = "+821012345678",
+            .childs_size = 0
+            .childs = sentient_nullptr
+            .created_date = 0
+            .updated_date = 0
         },
         {
-        .number = 1,
-        .name = "Junior2",
-        .email_address = "junior2@gmail.com",
-        .phone_number = "+821012346789",
-        .childs_size = 0
-        .childs = sentient_nullptr
-        .created_date = 0
-        .updated_date = 0
+            .number = 1,
+            .name = "Junior2",
+            .email_address = "junior2@gmail.com",
+            .phone_number = "+821012346789",
+            .childs_size = 0
+            .childs = sentient_nullptr
+            .created_date = 0
+            .updated_date = 0
         }
     };
 
