@@ -88,7 +88,7 @@ int main(void)
 {
     const sentient_size children_size = 2;
     struct example_model* children =
-        sentient_calloc_from_stack_pool_example_model(childs_size);
+        calloc(children_size, sizeof(struct example_model));
     
     children[0]->number = 1;
     children[0]->name = "Child 1";
@@ -124,7 +124,7 @@ int main(void)
         sentient_u8 buffer[1024] = { 0, };
 
         // serialization
-        // the children return after serialization to the pool
+        // the children deacllocated after serialization
         sentient_ssize buffer_size = sentient_serialize_example_model(&m, buffer);
 
         if (buffer_size < 0)
@@ -229,7 +229,8 @@ int main(void)
         .updated_date = 0
     };
 
-    
+    struct example_protoc protoc = { 0, };
+
 }
 ```
 
