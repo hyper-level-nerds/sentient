@@ -22,8 +22,8 @@ example: ns
         phone_number : str8[32]
         childs_size : u16
         childs : model[]
-        created_date : dt64
-        updated_date : dt64
+        created_date : scdt64
+        updated_date : scdt64
 ```
 
 ### 2. compile the model schema
@@ -46,14 +46,14 @@ struct example_protoc
 
 struct example_model
 {
-    sentient_u64     number;
-    sentient_str8_32 name;
-    sentient_str8_64 email_address;
-    sentient_str8_32 phone_number;
-    sentient_u16     childs_size;
-    example_model*   childs;
-    sentient_dt64    created_date $dbms_now;
-    sentient_dt64    updated_date;
+    sentient_u64            number;
+    sentient_str8_32        name;
+    sentient_str8_64        email_address;
+    sentient_str8_32        phone_number;
+    sentient_u16            children_size;
+    struct example_model*   children;
+    sentient_dt64           created_date $dbms_now;
+    sentient_dt64           updated_date;
 } __attribute__((aligned(1), packed));
 
 sentient_size
@@ -62,7 +62,7 @@ sentient_serialize_example_model(
     struct example_model*);
 
 sentient_size
-sentient_serialize_protocol_example_model(
+sentient_serialize_protocol_with_example_model(
     sentient_u8*,
     struct sentient_protocol_info*,
     struct example_model*);

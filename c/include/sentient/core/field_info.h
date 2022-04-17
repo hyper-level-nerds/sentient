@@ -25,9 +25,11 @@ struct sentient_field_info
     enum sentient_field_types field_type;
     sentient_str8*            field_name;
     sentient_size             model_offset;
-    sentient_bool             is_array;
     sentient_size             array_size;
 };
+
+sentient_ssize sentient_field_info_get_field_size(
+    struct sentient_field_info*);
 
 #ifdef __cplusplus
 }

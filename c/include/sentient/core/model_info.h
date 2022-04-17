@@ -22,10 +22,11 @@ extern "C"
 
 struct sentient_model_info
 {
+    sentient_str8*              model_name;
     sentient_bool               is_static_model;
     sentient_bool               has_command_code;
     enum sentient_field_types   command_code_type;
-    sentient_bool               total_size;
+    sentient_void*              command_code_value;
     sentient_size               fields_count;
     struct sentient_field_info* fields;
     sentient_bool               has_primary_key;
