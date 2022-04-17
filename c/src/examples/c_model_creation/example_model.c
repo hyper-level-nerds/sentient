@@ -158,7 +158,7 @@ sentient_serialize_example_dynamic_model(
 	const struct example_dynamic_model* model)
 {
 	sentient_ssize buffer_size = 0;
-	struct sentient_field_info* fields_info =
+	const struct sentient_field_info* fields_info =
 		sentient_field_info_get_example_dynamic_model();
 
 	for (int idx = 0;
@@ -174,8 +174,18 @@ sentient_serialize_example_dynamic_model(
 				model_info_example_dynamic_model.fields[idx].model_offset);
 			if (ptr != sentient_nullptr)
 			{
-				sentient_ssize copied_size = 0;
-				
+				sentient_ssize copied_size =
+					sentient_serialize_example_dynamic_model(
+						byte_buffer + buffer_size, (const struct example_dynamic_model*)ptr);
+				if (copied_size < 0)
+				{
+					buffer_size = -1;
+					break;
+				}
+				else
+				{
+					buffer_size += copied_size;
+				}
 			}
 		}
 		default:

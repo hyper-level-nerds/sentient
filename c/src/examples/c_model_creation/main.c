@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <sys/unistd.h>
 #include <sys/fcntl.h>
 
 #include <sentient/core/field_info.h>
@@ -12,8 +13,6 @@ int main(int argc, char** argv)
 {
     const struct sentient_model_info* mi =
         sentient_model_info_get_example_dynamic_model();
-    const struct sentient_field_info* fi =
-        sentient_field_info_get_example_dynamic_model();
 
     printf("model name : %s\n", mi->model_name);
     for (int i = 0; i < mi->fields_count; i++)
@@ -21,6 +20,8 @@ int main(int argc, char** argv)
         printf("filed name : %s\n", fi[i].field_name);
         printf("field offset : %lu\n\n", fi[i].model_offset);
     }
+
+    printf("%d %d\n", SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL, SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR);
 
     const sentient_size children_size = 2;
     struct example_dynamic_model* children =
