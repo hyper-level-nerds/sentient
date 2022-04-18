@@ -195,8 +195,11 @@ sentient_serialize_example_dynamic_model(
 				sentient_field_info_get_field_size(
 					&model_info_example_dynamic_model.fields[idx]);
 			
+			sentient_size offset =
+				model_info_example_dynamic_model.fields[idx].model_offset;
+
 			if (memmove(byte_buffer + buffer_size,
-						model + model_info_example_dynamic_model.fields[idx].model_offset,
+						((sentient_u8*)model) + offset,
 						size_to_copy) == sentient_nullptr)
 			{
 				buffer_size = -1;
