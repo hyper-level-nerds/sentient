@@ -13,6 +13,8 @@ int main(int argc, char** argv)
 {
     const struct sentient_model_info* mi =
         sentient_model_info_get_example_dynamic_model();
+    const struct sentient_field_info* fi =
+        sentient_field_info_get_example_dynamic_model();
 
     printf("model name : %s\n", mi->model_name);
     for (int i = 0; i < mi->fields_count; i++)

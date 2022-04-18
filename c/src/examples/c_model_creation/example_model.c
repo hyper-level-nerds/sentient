@@ -169,14 +169,14 @@ sentient_serialize_example_dynamic_model(
 		{
 		case SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR:
 		{
-			void* ptr =
-				*(((sentient_u8*)model) +
-				model_info_example_dynamic_model.fields[idx].model_offset);
+			const struct example_dynamic_model* ptr = (const struct example_dynamic_model*)
+				(sentient_u8*)model + model_info_example_dynamic_model.fields[idx].model_offset;
+			
 			if (ptr != sentient_nullptr)
 			{
 				sentient_ssize copied_size =
 					sentient_serialize_example_dynamic_model(
-						byte_buffer + buffer_size, (const struct example_dynamic_model*)ptr);
+						byte_buffer + buffer_size, ptr);
 				if (copied_size < 0)
 				{
 					buffer_size = -1;
@@ -185,6 +185,7 @@ sentient_serialize_example_dynamic_model(
 				else
 				{
 					buffer_size += copied_size;
+					break;
 				}
 			}
 		}
@@ -193,6 +194,18 @@ sentient_serialize_example_dynamic_model(
 			sentient_ssize size_to_copy =
 				sentient_field_info_get_field_size(
 					&model_info_example_dynamic_model.fields[idx]);
+			
+			if (memmove(byte_buffer + buffer_size,
+						model + model_info_example_dynamic_model.fields[idx].model_offset,
+						size_to_copy) == sentient_nullptr)
+			{
+				buffer_size = -1;
+			}
+			else
+			{
+				buffer_size += size_to_copy;
+			}
+
 			break;
 		}
 		}
