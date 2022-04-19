@@ -20,11 +20,12 @@ int main(int argc, char** argv)
     for (int i = 0; i < mi->fields_count; i++)
     {
         printf("filed name : %s\n", fi[i].field_name);
-        printf("field offset : %lu\n\n", fi[i].model_offset);
+        printf("field offset : %lu\n\n", fi[i].field_offset);
     }
 
     printf("%d %d\n", SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL, SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR);
 
+    // allocate two child models
     const sentient_size children_size = 2;
     struct example_dynamic_model* children =
         calloc(children_size, sizeof(struct example_dynamic_model));

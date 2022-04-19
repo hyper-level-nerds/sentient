@@ -51,13 +51,13 @@ field_info_example_dynamic_model[] = {
 	{
 		.field_type = SENTIENT_FIELD_TYPES_U64,
 		.field_name = "number",
-		.model_offset = 0,
+		.field_offset = 0,
 		.array_size = 0
 	},
 	{
 		.field_type = SENTIENT_FIELD_TYPES_STR8,
 		.field_name = "name",
-		.model_offset =
+		.field_offset =
 			__builtin_offsetof(struct example_dynamic_model,
 				name),
 		.array_size = 32
@@ -65,7 +65,7 @@ field_info_example_dynamic_model[] = {
 	{
 		.field_type = SENTIENT_FIELD_TYPES_STR8,
 		.field_name = "email_address",
-		.model_offset =
+		.field_offset =
 			__builtin_offsetof(struct example_dynamic_model,
 				email_address),
 		.array_size = 64
@@ -73,7 +73,7 @@ field_info_example_dynamic_model[] = {
 	{
 		.field_type = SENTIENT_FIELD_TYPES_STR8,
 		.field_name = "phone_number",
-		.model_offset =
+		.field_offset =
 			__builtin_offsetof(struct example_dynamic_model,
 				phone_number),
 		.array_size = 32
@@ -81,7 +81,7 @@ field_info_example_dynamic_model[] = {
 	{
 		.field_type = SENTIENT_FIELD_TYPES_U16,
 		.field_name = "children_size",
-		.model_offset =
+		.field_offset =
 			__builtin_offsetof(struct example_dynamic_model,
 				children_size),
 		.array_size = 0
@@ -89,7 +89,7 @@ field_info_example_dynamic_model[] = {
 	{
 		.field_type = SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR,
 		.field_name = "children",
-		.model_offset =
+		.field_offset =
 			__builtin_offsetof(struct example_dynamic_model,
 				children),
 		.array_size = 0
@@ -97,7 +97,7 @@ field_info_example_dynamic_model[] = {
 	{
 		.field_type = SENTIENT_FIELD_TYPES_SCDT64,
 		.field_name = "created_date",
-		.model_offset =
+		.field_offset =
 			__builtin_offsetof(struct example_dynamic_model,
 			created_date),
 		.array_size = 0
@@ -105,7 +105,7 @@ field_info_example_dynamic_model[] = {
 	{
 		.field_type = SENTIENT_FIELD_TYPES_SCDT64,
 		.field_name = "updated_date",
-		.model_offset =
+		.field_offset =
 			__builtin_offsetof(struct example_dynamic_model,
 			updated_date),
 		.array_size = 0
@@ -170,7 +170,7 @@ sentient_serialize_example_dynamic_model(
 		case SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR:
 		{
 			const struct example_dynamic_model* ptr = (const struct example_dynamic_model*)
-				(sentient_u8*)model + model_info_example_dynamic_model.fields[idx].model_offset;
+				(sentient_u8*)model + model_info_example_dynamic_model.fields[idx].field_offset;
 			
 			if (ptr != sentient_nullptr)
 			{
@@ -196,7 +196,7 @@ sentient_serialize_example_dynamic_model(
 					&model_info_example_dynamic_model.fields[idx]);
 			
 			sentient_size offset =
-				model_info_example_dynamic_model.fields[idx].model_offset;
+				model_info_example_dynamic_model.fields[idx].field_offset;
 
 			if (memmove(byte_buffer + buffer_size,
 						((sentient_u8*)model) + offset,
