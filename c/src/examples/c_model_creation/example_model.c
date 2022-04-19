@@ -8,9 +8,10 @@
 #include <sentient/core/protocol/protocol_node.h>
 #include <sentient/core/checksum_types.h>
 
+
 static
 struct sentient_protocol_node
-	protocol_nodes_example_dynamic_protocol[] = {
+protocol_nodes_example_dynamic_protocol[] = {
 		{
 			.protocol_type = SENTIENT_PROTOCOL_TYPES_MAGIC_VALUE,
 			.protocol_size = sizeof(sentient_u8),
@@ -25,7 +26,8 @@ struct sentient_protocol_node
 		}
 };
 
-static struct sentient_protocol_info
+static
+struct sentient_protocol_info
 protocol_info_example_protocol_in = {
 	.has_stx = true,
 	.stx_size = sizeof(sentient_u16),
@@ -46,7 +48,8 @@ sentient_get_protocol_info_example_protocol_in()
 }
 
 
-static const struct sentient_field_info
+static
+const struct sentient_field_info
 field_info_example_dynamic_model[] = {
 	{
 		.field_type = SENTIENT_FIELD_TYPES_U64,
@@ -111,6 +114,7 @@ field_info_example_dynamic_model[] = {
 		.array_size = 0
 	},
 };
+
 const struct sentient_field_info*
 sentient_field_info_get_example_dynamic_model()
 {
@@ -136,6 +140,8 @@ model_info_example_dynamic_model = {
 	.has_primary_key = true,
 	.primary_key_field_idx = 0
 };
+
+#define EXAMPLE_DYNAMIC_MODEL_INFO_UID_IDX 0U
 
 const
 struct sentient_model_info*

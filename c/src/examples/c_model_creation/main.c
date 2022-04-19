@@ -9,8 +9,17 @@
 
 #include "./example_model.h"
 
+struct ah
+{
+    sentient_u32 fucking;
+} __attribute__((align_value(64)));
+
 int main(int argc, char** argv)
 {
+    struct ah ah = { 0, };
+
+    sizeof(struct ah);
+
     const struct sentient_model_info* mi =
         sentient_model_info_get_example_dynamic_model();
     const struct sentient_field_info* fi =

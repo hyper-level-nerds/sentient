@@ -1,5 +1,5 @@
 #include <sentient/core/field_info.h>
-
+#include <sentient/core/model_info.h>
 
 /**
  * @brief get field size;
