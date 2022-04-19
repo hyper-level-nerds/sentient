@@ -74,8 +74,8 @@ sentient_serialize_example_dynamic_model(
 
 sentient_ssize
 sentient_deserialize_example_dynamic_model(
-	sentient_u8*,
-	const struct example_dynamic_model*);
+    struct example_dynamic_model*,
+    sentient_u8*);
 
 sentient_ssize
 sentient_serialize_protocol_with_example_dynamic_model(

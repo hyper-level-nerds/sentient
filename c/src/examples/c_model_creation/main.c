@@ -75,7 +75,7 @@ int main(int argc, char** argv)
             return EXIT_FAILURE;
         }
 
-        int fd = open("serialized.bin", O_CREAT);
+        int fd = open("serialized.bin", O_CREAT | O_WRONLY);
 
         if (fd >= 0)
         {
@@ -89,6 +89,7 @@ int main(int argc, char** argv)
         else
         {
             perror("write error\n");
+
             return EXIT_FAILURE;
         }
     }

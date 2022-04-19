@@ -169,25 +169,48 @@ sentient_serialize_example_dynamic_model(
 		{
 		case SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR:
 		{
-			const struct example_dynamic_model* ptr = (const struct example_dynamic_model*)
-				(sentient_u8*)model + model_info_example_dynamic_model.fields[idx].field_offset;
-			
-			if (ptr != sentient_nullptr)
+			sentient_size array_field_size = 0;
+			const struct example_dynamic_model* array_field_ptr = (const struct example_dynamic_model*)
+				*(sentient_uptr*)((sentient_u8*)model + model_info_example_dynamic_model.fields[idx].field_offset);
+
+			if (array_field_ptr != sentient_nullptr)
 			{
-				sentient_ssize copied_size =
-					sentient_serialize_example_dynamic_model(
-						byte_buffer + buffer_size, ptr);
-				if (copied_size < 0)
 				{
-					buffer_size = -1;
-					break;
+					sentient_ssize size_to_copy =
+						sentient_field_info_get_field_size(
+							&model_info_example_dynamic_model.fields[idx - 1]);
+
+					sentient_size offset =
+						model_info_example_dynamic_model.fields[idx - 1].field_offset;
+
+					if (memmove(&array_field_size,
+						((sentient_u8*)model) + offset,
+						size_to_copy) == sentient_nullptr)
+					{
+						buffer_size = -1;
+						break;
+					}
 				}
-				else
+
+				for (int array_field_idx = 0;
+					 array_field_idx < array_field_size && buffer_size != -1;
+					 array_field_idx++)
 				{
-					buffer_size += copied_size;
-					break;
+					sentient_ssize copied_size =
+						sentient_serialize_example_dynamic_model(
+							byte_buffer + buffer_size, &array_field_ptr[array_field_idx]);
+					if (copied_size < 0)
+					{
+						buffer_size = -1;
+					}
+					else
+					{
+						buffer_size += copied_size;
+					}
 				}
 			}
+
+			break;
 		}
 		default:
 		{
@@ -212,6 +235,28 @@ sentient_serialize_example_dynamic_model(
 			break;
 		}
 		}
+	}
+
+	return buffer_size;
+}
+
+#include <stdio.h>
+
+sentient_ssize
+sentient_deserialize_example_dynamic_model(
+	struct example_dynamic_model* model,
+	sentient_u8* byte_buffer)
+{
+	sentient_ssize buffer_size = 0;
+
+	const struct sentient_field_info* fields_info =
+		sentient_field_info_get_example_dynamic_model();
+
+	for (int idx = 0;
+		idx < model_info_example_dynamic_model.fields_count;
+		idx++)
+	{
+
 	}
 
 	return buffer_size;

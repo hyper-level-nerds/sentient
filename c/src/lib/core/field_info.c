@@ -47,7 +47,7 @@ sentient_ssize sentient_field_info_get_field_size(
         }
         else
         {
-            field_size = sizeof(sentient_u8);
+            field_size = sizeof(sentient_u16);
         }
         break;
     }
