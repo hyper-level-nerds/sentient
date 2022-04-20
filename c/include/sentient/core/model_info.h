@@ -23,7 +23,7 @@ extern "C"
 struct sentient_model_info
 {
     sentient_str8*              model_name;
-    sentient_bool               is_static_model;
+    sentient_size               model_struct_size;
     sentient_bool               has_command_code;
     enum sentient_field_types   command_code_type;
     sentient_void*              command_code_value;
@@ -37,6 +37,9 @@ sentient_ssize sentient_serialize_with_protocol_info();
 
 const struct sentient_model_info*
 sentient_get_model_info(sentient_model_uid);
+
+const sentient_ssize
+sentient_get_model_struct_size(sentient_model_uid);
 
 #ifdef __cplusplus
 }

@@ -1,4 +1,5 @@
 #include <sentient/core/types.h>
+#include <sentient/core/model_info.h>
 
 #include <sys/time.h>
 

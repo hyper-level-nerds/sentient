@@ -8,8 +8,6 @@
 #include <sentient/core/protocol/protocol_node.h>
 #include <sentient/core/checksum_types.h>
 
-volatile int arr___[sizeof(sentient_u32)];
-
 extern struct sentient_model_info
 	sentient_global_model_info_types[];
 extern sentient_size
@@ -132,10 +130,10 @@ sentient_u32
 example_dynamic_model_command_code = 0x00000001;
 
 static
-const
-struct sentient_model_info
+const struct sentient_model_info
 model_info_example_dynamic_model = {
 	.model_name = "example_dynamic_model",
+	.model_struct_size = sizeof(struct example_dynamic_model),
 	.has_command_code = true,
 	.command_code_type = SENTIENT_FIELD_TYPES_U32,
 	.command_code_value = (sentient_u32*)&example_dynamic_model_command_code,

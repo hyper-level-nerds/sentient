@@ -11,9 +11,10 @@ extern "C"
 
 #define sentient_model(reserved_words, model_name_without_struct) \
 	__sentient_model_impl(reserved_words, model_name_without_struct)
-#define __sentient_model_impl(RESERVED, MODEL_NAME) \
-	volatile const sentient_model_uid SENTIENT_UNIQUE_NAME(MODEL_NAME) = SENTIENT_FIELD_TYPES_ ## MODEL_NAME ; \
-	RESERVED MODEL_NAME
+#define __sentient_model_impl(reserved_words, model_name_without_struct) \
+	volatile const sentient_model_uid SENTIENT_UNIQUE_NAME(model_name_without_struct) = \
+		SENTIENT_FIELD_TYPES_ ## model_name_without_struct ; \
+	reserved_words model_name_without_struct
 
 #ifdef __cplusplus
 }

@@ -1,6 +1,9 @@
 #include <sentient/core/memory.h>
 #include <sentient/core/types.h>
+#include <sentient/core/model_info.h>
+
 #include <stdlib.h>
+#include <string.h>
 
 
 #ifdef SENTIENT_C_USE_ZEPHYR
@@ -18,33 +21,79 @@
 #define SENTIENT_FREE_API   free
 #endif
 
-
-static
-const sentient_size
-sentient_type_info_prealloc_size =
-	sizeof(sentient_model_uid);
-
+/**
+ * @author Jin
+ * @brief 
+ * 
+ * @param type 
+ * @return sentient_void* 
+ */
 sentient_void*
-sentient_malloc(enum sentient_field_types type)
+__sentient_malloc_impl(sentient_model_uid type)
 {
 	sentient_void* ptr = sentient_nullptr;
 
-	ptr = SENTIENT_MALLOC_API(
-		sentient_type_info_prealloc_size + 1);
+	sentient_ssize model_size = 0;
 
-	return ptr;
+	model_size =
+		sentient_get_model_struct_size(type);
+
+	if (model_size != -1)
+	{
+		ptr = SENTIENT_MALLOC_API(
+			sizeof(sentient_model_uid) + model_size);
+	}
+
+	if (ptr != sentient_nullptr)
+	{
+		ptr = memmove(ptr, &type, sizeof(sentient_model_uid));
+	}
+
+	return ptr + sizeof(sentient_model_uid);
 }
 
+/**
+ * @author Jin
+ * @brief 
+ * 
+ * @param type 
+ * @param count 
+ * @return sentient_void* 
+ */
 sentient_void*
-sentient_calloc(enum sentient_field_types type, sentient_size count)
+__sentient_calloc_impl(sentient_model_uid type, sentient_size count)
 {
 	sentient_void* ptr = sentient_nullptr;
 
-	return ptr;
+	sentient_ssize model_size = 0;
+
+	model_size =
+		sentient_get_model_struct_size(type);
+
+	if (model_size != -1)
+	{
+		ptr = SENTIENT_CALLOC_API(
+			count,
+			sizeof(sentient_model_uid) + model_size);
+	}
+
+	if (ptr != sentient_nullptr)
+	{
+		ptr = memmove(ptr, &type, sizeof(sentient_model_uid));
+	}
+
+	return ptr + sizeof(sentient_model_uid);
 }
 
+/**
+ * @author Jin
+ * @brief 
+ * 
+ * @param model_ptr 
+ * @return sentient_void 
+ */
 sentient_void
 sentient_free(void* model_ptr)
 {
-
+	SENTIENT_FREE_API(model_ptr - sizeof(sentient_model_uid));
 }

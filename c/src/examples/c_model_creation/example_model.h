@@ -33,11 +33,8 @@ extern "C"
 //         created_date : scdt64
 //         updated_date : scdt64
 
-enum sentient_field_types_ext_example_model_h
-{
-	SENTIENT_FIELD_TYPES_example_dynamic_model =
-		SENTIENT_FIELD_TYPES_EXT + __COUNTER__ + 1,
-};
+#define SENTIENT_FIELD_TYPES_example_dynamic_model \
+		(sentient_model_uid)(SENTIENT_FIELD_TYPES_EXT + __COUNTER__ + 1)
 
 struct example_protoc
 {
