@@ -20,8 +20,6 @@ extern "C"
 {
 #endif
 
-typedef sentient_u64 sentient_model_uid_t;
-
 struct sentient_model_info
 {
     sentient_str8*              model_name;
@@ -38,7 +36,7 @@ struct sentient_model_info
 sentient_ssize sentient_serialize_with_protocol_info();
 
 const struct sentient_model_info*
-sentient_get_model_info(sentient_model_uid_t);
+sentient_get_model_info(sentient_model_uid);
 
 #ifdef __cplusplus
 }

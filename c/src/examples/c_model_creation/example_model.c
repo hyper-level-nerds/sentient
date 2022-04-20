@@ -8,6 +8,12 @@
 #include <sentient/core/protocol/protocol_node.h>
 #include <sentient/core/checksum_types.h>
 
+volatile int arr___[sizeof(sentient_u32)];
+
+extern struct sentient_model_info
+	sentient_global_model_info_types[];
+extern sentient_size
+sentient_global_model_info_types_idx;
 
 static
 struct sentient_protocol_node
@@ -90,7 +96,7 @@ field_info_example_dynamic_model[] = {
 		.array_size = 0
 	},
 	{
-		.field_type = SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR,
+		.field_type = SENTIENT_FIELD_TYPES_example_dynamic_model,
 		.field_name = "children",
 		.field_offset =
 			__builtin_offsetof(struct example_dynamic_model,
@@ -173,7 +179,7 @@ sentient_serialize_example_dynamic_model(
 	{
 		switch (model_info_example_dynamic_model.fields[idx].field_type)
 		{
-		case SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR:
+		case SENTIENT_FIELD_TYPES_example_dynamic_model:
 		{
 			sentient_size array_field_size = 0;
 			const struct example_dynamic_model* array_field_ptr = (const struct example_dynamic_model*)

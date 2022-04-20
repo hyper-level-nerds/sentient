@@ -1,0 +1,19 @@
+#ifndef __SENTIENT_CORE_INTERNAL_PP_UTILS_H__
+#define __SENTIENT_CORE_INTERNAL_PP_UTILS_H__
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+#define SENTIENT_CONCAT(T1, T2) SENTIENT_CONCAT_IMPL(T1, T2)
+#define SENTIENT_CONCAT_IMPL(T1, T2) T1 ## T2
+
+#define SENTIENT_UNIQUE_NAME(NAME) SENTIENT_UNIQUE_NAME_IMPL(NAME)
+#define SENTIENT_UNIQUE_NAME_IMPL(NAME) SENTIENT_CONCAT(NAME, __LINE__)
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

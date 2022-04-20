@@ -35,9 +35,7 @@ extern "C"
 
 enum sentient_field_types_ext_example_model_h
 {
-	SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL =
-		SENTIENT_FIELD_TYPES_EXT + __COUNTER__ + 1,
-	SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR = 
+	SENTIENT_FIELD_TYPES_example_dynamic_model =
 		SENTIENT_FIELD_TYPES_EXT + __COUNTER__ + 1,
 };
 

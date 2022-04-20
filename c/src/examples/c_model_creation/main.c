@@ -6,19 +6,14 @@
 #include <sys/fcntl.h>
 
 #include <sentient/core/field_info.h>
+#include <sentient/core/sentient_model.h>
 
 #include "./example_model.h"
 
-struct ah
-{
-    sentient_u32 fucking;
-} __attribute__((align_value(64)));
-
 int main(int argc, char** argv)
 {
-    struct ah ah = { 0, };
-
-    sizeof(struct ah);
+    sentient_model(struct, example_dynamic_model) m1;
+    sentient_model(struct, example_dynamic_model) m2;
 
     const struct sentient_model_info* mi =
         sentient_model_info_get_example_dynamic_model();
@@ -31,8 +26,6 @@ int main(int argc, char** argv)
         printf("filed name : %s\n", fi[i].field_name);
         printf("field offset : %lu\n\n", fi[i].field_offset);
     }
-
-    printf("%d %d\n", SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL, SENTIENT_FIELD_TYPES_EXAMPLE_DYNAMIC_MODEL_PTR);
 
     // allocate two child models
     const sentient_size children_size = 2;
