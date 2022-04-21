@@ -11,14 +11,9 @@
 
 #include "./example_model.h"
 
-
-volatile struct sentient_model_info i1 __attribute__((section(".fuck"))) = {};
-volatile struct sentient_model_info i2 __attribute__((section(".fuck"))) = {};
-volatile struct sentient_model_info i3 __attribute__((section(".fuck"))) = {};
-volatile struct sentient_model_info i4 = {};
-
 int main(int argc, char** argv)
 {
+    
     printf("%lu\n", asdfasdf);
 
     const struct sentient_model_info* mi =

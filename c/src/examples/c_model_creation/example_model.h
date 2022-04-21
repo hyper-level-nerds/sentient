@@ -42,7 +42,7 @@ struct example_protoc
     sentient_protocol_size16 payload_size;
 };
 
-extern sentient_u64 asdfasdf;
+extern const sentient_u64 asdfasdf;
 
 struct example_dynamic_model
 {

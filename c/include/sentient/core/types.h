@@ -66,6 +66,8 @@ typedef sentient_u16  sentient_cmd16;
 typedef sentient_u32  sentient_cmd32;
 typedef sentient_u64  sentient_cmd64;
 
+typedef sentient_u64 sentient_model_uid;
+
 #ifndef SENTIENT_MODEL_UID_SIZE
 #define SENTIENT_MODEL_UID_SIZE 16
 #elif SENTIENT_MODEL_UID_SIZE != 32 || \
@@ -74,13 +76,6 @@ typedef sentient_u64  sentient_cmd64;
 #error "Sentient model uid size must be 64 or 32 or 16"
 #endif
 
-#if SENTIENT_MODEL_UID_SIZE == 32
-typedef sentient_u32 sentient_model_uid;
-#elif SENTIENT_MODEL_UID_SIZE == 16
-typedef sentient_u16 sentient_model_uid;
-#elif SENTIENT_MODEL_UID_SIZE == 8
-typedef sentient_u8 sentient_model_uid;
-#endif
 
 #define SENTIENT_DEFINE_STR_N(TYPE, SIZE) \
 	typedef TYPE TYPE##_##SIZE[SIZE];

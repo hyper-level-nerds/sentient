@@ -20,6 +20,15 @@ extern "C"
 {
 #endif
 
+extern const sentient_model_uid sentient_model_info_uid_sentient_u8;
+extern const sentient_model_uid sentient_model_info_uid_sentient_u16;
+extern const sentient_model_uid sentient_model_info_uid_sentient_u32;
+extern const sentient_model_uid sentient_model_info_uid_sentient_u64;
+extern const sentient_model_uid sentient_model_info_uid_sentient_i8;
+extern const sentient_model_uid sentient_model_info_uid_sentient_i16;
+extern const sentient_model_uid sentient_model_info_uid_sentient_i32;
+extern const sentient_model_uid sentient_model_info_uid_sentient_i64;
+
 struct sentient_model_info
 {
     sentient_str8*              model_name;
