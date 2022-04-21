@@ -8,10 +8,7 @@
 #include <sentient/core/protocol/protocol_node.h>
 #include <sentient/core/checksum_types.h>
 
-extern struct sentient_model_info
-	sentient_global_model_info_types[];
-extern sentient_size
-sentient_global_model_info_types_idx;
+
 
 static
 struct sentient_protocol_node
@@ -144,6 +141,13 @@ model_info_example_dynamic_model = {
 	.has_primary_key = true,
 	.primary_key_field_idx = 0
 };
+
+sentient_u64 asdfasdf = (sentient_u64)&model_info_example_dynamic_model;
+
+//sentient_global_model_info_types[SENTIENT_FIELD_TYPES_example_dynamic_model] =
+//(struct sentient_model_info*)&model_info_example_dynamic_model;
+//sentient_global_model_info_types[SENTIENT_FIELD_TYPES_example_dynamic_model] =
+//
 
 #define EXAMPLE_DYNAMIC_MODEL_INFO_UID_IDX 0U
 

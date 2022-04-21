@@ -7,10 +7,14 @@
 
 
 #ifdef SENTIENT_C_USE_ZEPHYR
+#include <zephyr/zephyr.h>
+
 #define SENTIENT_MALLOC_API k_malloc
 #define SENTIENT_CALLOC_API k_calloc
 #define SENTIENT_FREE_API   k_free
 #elif SENTIENT_C_USE_FREERTOS
+#include <FreeRTOS.h>
+
 #define SENTIENT_MALLOC_API pvPortMalloc
 #define SENTIENT_CALLOC_API(CNT, SIZE) \
 	SENTIENT_MALLOC_API(CNT * SIZE)
@@ -20,6 +24,8 @@
 #define SENTIENT_CALLOC_API calloc
 #define SENTIENT_FREE_API   free
 #endif
+
+
 
 /**
  * @author Jin

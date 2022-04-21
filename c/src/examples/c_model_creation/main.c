@@ -11,12 +11,15 @@
 
 #include "./example_model.h"
 
+
+volatile struct sentient_model_info i1 __attribute__((section(".fuck"))) = {};
+volatile struct sentient_model_info i2 __attribute__((section(".fuck"))) = {};
+volatile struct sentient_model_info i3 __attribute__((section(".fuck"))) = {};
+volatile struct sentient_model_info i4 = {};
+
 int main(int argc, char** argv)
 {
-    sentient_model(struct, example_dynamic_model) m1;
-    sentient_model(struct, example_dynamic_model) m2;
-
-    struct example_dynamic_model dm = sentient_malloc(example_dynamic_model);
+    printf("%lu\n", asdfasdf);
 
     const struct sentient_model_info* mi =
         sentient_model_info_get_example_dynamic_model();

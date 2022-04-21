@@ -34,13 +34,15 @@ extern "C"
 //         updated_date : scdt64
 
 #define SENTIENT_FIELD_TYPES_example_dynamic_model \
-		(sentient_model_uid)(SENTIENT_FIELD_TYPES_EXT + __COUNTER__ + 1)
+		(sentient_model_uid)1234
 
 struct example_protoc
 {
     sentient_protocol_cmd32  command;
     sentient_protocol_size16 payload_size;
 };
+
+extern sentient_u64 asdfasdf;
 
 struct example_dynamic_model
 {
