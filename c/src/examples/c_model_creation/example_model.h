@@ -5,8 +5,6 @@
 #include <stdbool.h>
 
 #include <sentient/core/types.h>
-#include <sentient/core/protocol.h>
-#include <sentient/core/protocol_info.h>
 
 #ifdef __cplusplus
 extern "C"
@@ -33,16 +31,11 @@ extern "C"
 //         created_date : scdt64
 //         updated_date : scdt64
 
-#define SENTIENT_FIELD_TYPES_example_dynamic_model \
-		(sentient_model_uid)1234
-
-struct example_protoc
-{
-    sentient_protocol_cmd32  command;
-    sentient_protocol_size16 payload_size;
-};
-
-extern const sentient_u64 asdfasdf;
+// struct example_protoc
+// {
+//     sentient_protocol_cmd32  command;
+//     sentient_protocol_size16 payload_size;
+// };
 
 struct example_dynamic_model
 {
@@ -55,30 +48,6 @@ struct example_dynamic_model
     sentient_scdt64               created_date;
     sentient_scdt64               updated_date;
 };
-
-const
-struct sentient_field_info*
-sentient_field_info_get_example_dynamic_model();
-
-const
-struct sentient_model_info*
-sentient_model_info_get_example_dynamic_model();
-
-sentient_ssize
-sentient_serialize_example_dynamic_model(
-	sentient_u8*,
-	const struct example_dynamic_model*);
-
-sentient_ssize
-sentient_deserialize_example_dynamic_model(
-    struct example_dynamic_model*,
-    sentient_u8*);
-
-sentient_ssize
-sentient_serialize_protocol_with_example_dynamic_model(
-    sentient_u8*,
-    const struct sentient_protocol_info*,
-    const struct example_dynamic_model*);
 
 #ifdef __cplusplus
 }
