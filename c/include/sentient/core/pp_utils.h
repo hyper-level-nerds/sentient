@@ -1,25 +1,24 @@
 #ifndef __SENTIENT_CORE_INTERNAL_PP_UTILS_H__
 #define __SENTIENT_CORE_INTERNAL_PP_UTILS_H__
 
+
+/**
+ * @file pp_utils.h
+ * @author Jin (jaehwanspin@gmail.com)
+ * @brief preprocessor utilities
+ * @version 0.1
+ * @date 2022-04-23
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-#define SENTIENT_CONCAT(T1, T2) SENTIENT_CONCAT_IMPL(T1, T2)
-#define SENTIENT_CONCAT_IMPL(T1, T2) T1 ## T2
-
-#define SENTIENT_CONCAT_STR(T1, T2) SENTIENT_CONCAT_STR_IMPL(T1, T2)
-#define SENTIENT_CONCAT_STR_IMPL(T1, T2) # T1 ## T2
-
-#define SENTIENT_UNIQUE_NAME(NAME) SENTIENT_UNIQUE_NAME_IMPL(NAME)
-#define SENTIENT_UNIQUE_NAME_IMPL(NAME) SENTIENT_CONCAT(NAME, __LINE__)
-
-#define SENTIENT_UNIQUE_NAME_STR(NAME) SENTIENT_UNIQUE_NAME_STR_IMPL(NAME)
-#define SENTIENT_UNIQUE_NAME_STR_IMPL(NAME) SENTIENT_CONCAT_STR(NAME, __LINE__)
-
-//#define SENTIENT_FOREACH_EXPR(...) __VA_ARGS__
-//#define SENTIENT_FOREACH_EXPR_IMPL(EXPR, ...) SENTIENT_FOREACH_EXPR0()
+#include <sentient/core/pp_utils/basic_pp.h>
 
 #ifdef __cplusplus
 }

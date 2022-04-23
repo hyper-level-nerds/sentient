@@ -4,91 +4,169 @@
 
 #include "./example_model.h"
 
+#include <stdio.h>
+#include <stdbool.h>
+
+// /**
+//  * @author Jin
+//  * @brief preprocessor if interface implementation
+//  * 
+//  */
+// #define __sentient_pp_i_if(cond) \
+//         __sentient_pp_i_if_impl(__sentient_pp_i_if_case_, cond)
+// #define __sentient_pp_i_if_case_0(t, ...) __VA_ARGS__
+// #define __sentient_pp_i_if_case_1(t, ...) t 
+
+// #define __sentient_pp_i_if_impl(arg, ...) \
+//         __sentient_pp_i_if_impl_impl(arg, __VA_ARGS__)
+// #define __sentient_pp_i_if_impl_impl(arg, ...) \
+//                                      arg ## __VA_ARGS__
+
+// /**
+//  * @author Jin
+//  * @brief preprocessor complement implementation
+//  * 
+//  */
+// #define __sentient_pp_complement(arg) \
+//         __sentient_pp_complement_impl(__sentient_pp_complement_, arg)
+// #define __sentient_pp_complement_1 0
+// #define __sentient_pp_complement_0 1
+
+// #define __sentient_pp_complement_impl(arg, ...) \
+//         __sentient_pp_complement_impl_impl(arg, __VA_ARGS__)
+// #define __sentient_pp_complement_impl_impl(arg, ...) \
+//                                            arg ## __VA_ARGS__
+
+// /**
+//  * @author Jin
+//  * @brief preprocessor and implementation
+//  * 
+//  */
+// #define __sentient_pp_and(arg) \
+//         __sentient_pp_and_impl(__sentient_pp_and_, arg)
+// #define __sentient_pp_and_1(arg) 0
+// #define __sentient_pp_and_0(arg) arg
+
+// #define __sentient_pp_and_impl(arg, ...) \
+//         __sentient_pp_and_impl_impl(arg, __VA_ARGS__)
+// #define __sentient_pp_and_impl_impl(arg, ...) \
+//                                     arg ## __VA_ARGS__
+
+// /**
+//  * @author Jin
+//  * @brief preprocessor increase implementation
+//  * 
+//  */
+// #define __sentient_pp_increase(i) \
+//         __sentient_pp_increase_impl(__sentient_pp_increase_impl_, i)
+
+// #define __sentient_pp_increase_impl(arg, ...) \
+//         __sentient_pp_increase_impl_impl(arg, __VA_ARGS__)
+// #define __sentient_pp_increase_impl_impl(arg, ...) \
+//                                          arg ## __VA_ARGS__
+
+// /**
+//  * @author Jin
+//  * @brief preprocessor increase implementation
+//  * 
+//  */
+// #define __sentient_pp_decrease(i) \
+//         __sentient_pp_decrease_impl(__sentient_pp_decrease_impl_, i)
+
+// #define __sentient_pp_decrease_impl(arg, ...) \
+//         __sentient_pp_decrease_impl_impl(arg, __VA_ARGS__)
+// #define __sentient_pp_decrease_impl_impl(arg, ...) \
+//                                          arg ## __VA_ARGS__
+
+// #include <sentient/core/internal/inc_dec.h>
+
+// /**
+//  * @author Jin
+//  * @brief 
+//  * 
+//  */
+// #define __sentient_pp_check(...) \
+//         __sentient_pp_check_impl(__VA_ARGS__, 0,)
+// #define __sentient_pp_check_impl(x, n, ...) n
+
+// /**
+//  * @author Jin
+//  * @brief what the hell is this
+//  * 
+//  */
+// #define __sentient_pp_probe(x) x, 1,
+
+// #define __sentient_pp_is_paren(x) \
+//         __sentient_pp_check(__sentient_pp_is_paren_probe x)
+
+// #define __sentient_pp_is_paren_probe(...) \
+//         __sentient_pp_probe(~)
+
+// /**
+//  * @author Jin
+//  * @brief meta logical not implementation
+//  * 
+//  */
+// #define __sentient_pp_not(x) \
+//         __sentient_pp_check(__sentient_pp_not_impl(__sentient_pp_not_impl_, x))
+// #define __sentient_pp_not_impl_0 \
+//         __sentient_pp_probe(~)
+
+// #define __sentient_pp_not_impl(arg, ...) \
+//         __sentient_pp_not_impl_impl(arg, __VA_ARGS__)
+// #define __sentient_pp_not_impl_impl(arg, ...) \
+//                                     arg ## __VA_ARGS__
+
+// /**
+//  * @author Jin
+//  * @brief 
+//  * 
+//  */
+// #define __sentient_pp_bool(x) \
+//         __sentient_pp_complement(__sentient_pp_not(x))
+
+// /**
+//  * @author Jin
+//  * @brief 
+//  * 
+//  */
+// #define __sentient_pp_if(cond) \
+//         __sentient_pp_i_if(__sentient_pp_bool(cond))
+
+// /**
+//  * @author Jin
+//  * @brief 
+//  * 
+//  */
+// #define __sentient_pp_expand(...) __VA_ARGS__
+// #define __sentient_pp_eat(...)
+// #define __sentient_pp_when(cond) \
+//         __sentient_pp_if(cond)(__sentient_pp_expand, __sentient_pp_eat)
+
+// #define __sentient_pp_empty()
+// #define __sentient_pp_defer(x) x __sentient_pp_empty()
+// #define __sentient_pp_obstruct(...) \
+//         __VA_ARGS__ __sentient_pp_defer(__sentient_pp_empty)()
+
+// #define __sentient_pp_repeat(count, expr, ...) \
+//     __sentient_pp_when(count) \
+//     ( \
+//         __sentient_pp_obstruct(__sentient_pp_indirect) () \
+//         ( \
+//             __sentient_pp_decrease(count), expr, __VA_ARGS__ \
+//         ) \
+//         __sentient_pp_obstruct(expr) \
+//         ( \
+//             __sentient_pp_decrease(count), __VA_ARGS__ \
+//         ) \
+//     )
+
+// #define __sentient_pp_indirect() __sentient_pp_repeat
+
 int main(int argc, char** argv)
 {
-    
-    // printf("%lu\n", asdfasdf);
+    const int cond = __sentient_pp_expand(__sentient_pp_defer(1));
 
-    // const struct sentient_model_info* mi =
-    //     sentient_model_info_get_example_dynamic_model();
-    // const struct sentient_field_info* fi =
-    //     sentient_field_info_get_example_dynamic_model();
-
-    // printf("model name : %s\n", mi->model_name);
-    // for (int i = 0; i < mi->fields_count; i++)
-    // {
-    //     printf("filed name : %s\n", fi[i].field_name);
-    //     printf("field offset : %lu\n\n", fi[i].field_offset);
-    // }
-
-    // // allocate two child models
-    // const sentient_size children_size = 2;
-    // struct example_dynamic_model* children =
-    //     calloc(children_size, sizeof(struct example_dynamic_model));
-    
-    // children[0].number = 2;
-    // strcpy(children[0].name, "Child 1");
-    // strcpy(children[0].email_address, "child1@gmail.com");
-    // strcpy(children[0].phone_number, "+821012346789");
-    // children[0].children_size = 0;
-    // children[0].children = sentient_nullptr;
-    // sentient_scdt64_local_now(&children[0].created_date);
-    // sentient_scdt64_local_now(&children[0].updated_date);
-        
-    // children[1].number = 3;
-    // strcpy(children[1].name, "Child 2");
-    // strcpy(children[1].email_address, "child2@gmail.com");
-    // strcpy(children[1].phone_number, "+821012345678");
-    // children[1].children_size = 0;
-    // children[1].children = sentient_nullptr;
-    // sentient_scdt64_local_now(&children[1].created_date);
-    // sentient_scdt64_local_now(&children[1].updated_date);
-
-    // // the parent model has two children
-    // struct example_dynamic_model m = {
-    //     .number = 1,
-    //     .name = "Jin",
-    //     .email_address = "jaehwanspin@gmail.com",
-    //     .phone_number = "+821012342345",
-    //     .children_size = children_size,
-    //     .children = children,
-    // };
-    // sentient_scdt64_local_now(&m.created_date);
-    // sentient_scdt64_local_now(&m.updated_date);
-
-    // {
-    //     sentient_u8 buffer[1024] = { 0, };
-
-    //     // serialization
-    //     // the children deacllocated after serialization
-    //     sentient_ssize buffer_size =
-    //         sentient_serialize_example_dynamic_model(buffer,
-    //             &m);
-
-    //     if (buffer_size < 0)
-    //     {
-    //         perror("serialization error\n");
-    //         return EXIT_FAILURE;
-    //     }
-
-    //     int fd = open("serialized.bin", O_CREAT | O_WRONLY);
-
-    //     if (fd >= 0)
-    //     {
-    //         // saving the file
-    //         ssize_t written_size = write(fd, buffer, buffer_size);
-
-    //         close(fd);
-
-    //         printf("%ld bytes written\n", written_size);
-    //     }
-    //     else
-    //     {
-    //         perror("write error\n");
-
-    //         return EXIT_FAILURE;
-    //     }
-    // }
 
     return 0;
 };
