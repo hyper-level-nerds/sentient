@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #include "./example_model.h"
-
-#include <stdio.h>
-#include <stdbool.h>
 
 // /**
 //  * @author Jin
@@ -163,10 +161,13 @@
 
 // #define __sentient_pp_indirect() __sentient_pp_repeat
 
+#include <sentient/core/pp_utils.h>
+
 int main(int argc, char** argv)
 {
-    const int cond = __sentient_pp_expand(__sentient_pp_defer(1));
+    const int i = ___sentient_pp_1(5, 6, 7);
 
+    const int ii = ___sentient_pp_1(___sentient_pp_indirect(5));
 
     return 0;
 };
