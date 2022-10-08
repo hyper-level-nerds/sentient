@@ -1,9 +1,6 @@
 include(cmake/autogen.cmake)
 
-set(SENTIENT_C_LIBRARY_SRC
-    sentient.c
-    core/types.c
-    core/checksum_types.c)
+set(SENTIENT_C_LIBRARY_SRC serialization.c)
 
 add_library(sentient ${SENTIENT_C_LIBRARY_SRC})
 target_include_directories(sentient PRIVATE

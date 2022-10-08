@@ -1,8 +1,3 @@
-#ifndef __SENTIENT_SENTIENT_H__
-#define __SENTIENT_SENTIENT_H__
-
-#include <stddef.h>
-
 /**
  * @file sentient.h
  * @author Jin (jaehwanspin@gmail.com)
@@ -14,7 +9,8 @@
  * 
  */
 
-#include <sentient/core.h>
+#ifndef __SENTIENT_SENTIENT_H__
+#define __SENTIENT_SENTIENT_H__
 
 #ifdef __cplusplus
 extern "C"

@@ -1,1 +1,0 @@
-# the Sentient C++ library

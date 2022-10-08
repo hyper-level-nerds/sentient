@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
-project(sentient
+project(sentient_compiler
     VERSION 0.0.1
-    DESCRIPTION "generic serialization library, tools"
-    HOMEPAGE_URL "https://github.com/jaehwanspin/sentient"
+    DESCRIPTION "The toolset for application protocols / models definition and serialization"
+    HOMEPAGE_URL "https://github.com/hyper-level-nerds/sentient"
     LANGUAGES C CXX)
 
 set(SENTIENT_MSG_PREFIX "[SENTIENT]")
@@ -13,13 +13,12 @@ message("${SENTIENT_MSG_PREFIX}      ____  _____ _   _ _____ ___ _____ _   _ ___
         "${SENTIENT_MSG_PREFIX}      ___) | |___| |\\  | | |  | || |___| |\\  | | |  \n"
         "${SENTIENT_MSG_PREFIX}     |____/|_____|_| \\_| |_| |___|_____|_| \\_| |_|\n"
         "${SENTIENT_MSG_PREFIX} \n"
-        "${SENTIENT_MSG_PREFIX} The generic model generation compiler / serianlization libraries\n")
+        "${SENTIENT_MSG_PREFIX} The Sentient toolset \n")
         
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
 
 if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
   message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
@@ -38,19 +37,9 @@ conan_cmake_run(CONANFILE conanfile.txt
 option(SENTIENT_BUILD_COMPILER "build schema compiler" ON)
 option(SENTIENT_TEST_COMPILER "test schema compiler" ON)
 
-option(SENTIENT_BUILD_C_LIBRARY "build C library" ON)
-option(SENTIENT_TEST_C_LIBRARY "test C library" ON)
-option(SENTIENT_BUILD_C_EXAMPLES "build C examples" ON)
-
-option(SENTIENT_BUILD_CXX_EXAMPLES "build C++ examples" ON)
-option(SENTIENT_TEST_CXX_LIBRARY "test C++ library" ON)
-
-include_directories(${CMAKE_INCLUDE_PATH}
-                    ${CONAN_INCLUDE_DIRS}
-                    ${CMAKE_SOURCE_DIR}/c/include
-                    ${CMAKE_SOURCE_DIR}/cpp/include)
+include_directories(${CONAN_INCLUDE_DIRS})
 link_directories(${CONAN_LIB_DIRS})
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/sentient_compiler)
-add_subdirectory(${CMAKE_SOURCE_DIR}/c)
-add_subdirectory(${CMAKE_SOURCE_DIR}/cpp)
+# add_subdirectory(${CMAKE_SOURCE_DIR}/c)
+# add_subdirectory(${CMAKE_SOURCE_DIR}/cpp)
