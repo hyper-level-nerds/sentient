@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "outDir": "dist",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "skipDefaultLibCheck": true,
+        "sourceMap": true,
+        "declaration": true,
+        "experimentalDecorators": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noFallthroughCasesInSwitch": true,
+        "removeComments": true,
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "lib": ["dom", "es2015"]
+    },
+    "include": [
+        "typescript/src/**/*"
+    ]
+}

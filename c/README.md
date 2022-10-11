@@ -1,3 +1,3 @@
-# SENTIENT C
+# The Sentient C Library
 
-the SENTIENT library for C
+

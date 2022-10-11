@@ -1,41 +1,45 @@
 <a name="readme-top"></a>
-
 <br/>
+
 <div align="center">
     <a href="https://github.com/hyper-level-nerds/sentient">
         <img src="docs/resources/sentient_with_background.png" alt="logo">
     </a>
-    <h2 align="center">Sentient</h2>
+    <h1 align="center">Sentient</h1>
         <br />
     <p align="center">
-        It will allow you to define message protocols and transmit models easily, and can be used in multiple programming languages
+        Application Layer Protocol Definition / Binary Serialization Toolset
         <br/>
         <a href="https://github.com/hyper-level-nerds/sentient/issues">Report Bug</a>·
         <a href="https://github.com/hyper-level-nerds/sentient/issues">Request Feature</a>
     </p>
 </div>
-
-<!-- TABLE OF CONTENTS -->
-<!-- <details> -->
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#about-the-sentient-project">About The Sentient Project</a></li>
+    <summary>Table of Contents</summary>
+    <ol>
+        <li><a href="#about-the-sentient-project">About The Sentient Project</a></li>
+        <ul>
+            <li><a href="#concepts">Concepts</a></li>
+            <li><a href="#brief-specifications">Brief Specifications</a></li>
+            <li><a href="#about-the-schema-language">About The Schema Language</a></li>
+        </ul>
     <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li>
-            <a href="#installation">Installation</a>
-            <ul>
-                <li><a href="#sentient-compiler">Sentient Compiler</a></li>
-                <li><a href="#c">C Library</a></li>
-                <li><a href="#c++">C++ Library</a></li>
-                <li><a href="#csharp">C# Library</a></li>
-                <li><a href="#rust">Rust Library</a></li>
-                <li><a href="#python">Python Library</a></li>
-            </ul>
-        </li>
-      </ul>
+        <a href="#getting-started">Getting Started</a>
+        <ul>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li>
+                <a href="#installation">Installation</a>
+                <ul>
+                    <li><a href="#sentient-compiler">Sentient Compiler</a></li>
+                    <li><a href="#c-library">C Library</a></li>
+                    <li><a href="#c++-library">C++ Library</a></li>
+                    <li><a href="#csharp-library">C# Library</a></li>
+                    <li><a href="#rust-library">Rust Library</a></li>
+                    <li><a href="#python-library">Python Library</a></li>
+                    <li><a href="#typescript-library">TypeScript Library</a></li>
+                </ul>
+            </li>
+            <li><a href="#writing-in-the-sentient-schema-language">Sentiency - The Sentient Schema Language</a></li>
+        </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -43,44 +47,359 @@
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
+</ol>
 
+# This project is still in a draft
 
 ## About The Sentient Project
 
+### Concepts
+
 This toolset is being written for those who wants to transmit models fast with both famous ready-made and custom application layer protocols. Application layer protocols you defined without the Sentient toolset would be annoying since you need to implement in various programming languages. however, with the Sentient library, you just need to compile the Sentient schema language source code and use it immediately. In addition, models for transmission could be serialized/deserialized easily with the Sentient library features even if the programming language has no reflection syntax <br/><br/>
 
-This project is being researched to clarify the concepts and specific features. The three main functions that are clearly defined are <br/>
+This project is being researched to clarify the concepts and specific features. Some features that are clearly defined are <br/>
 * Application layer protocol definition, model for transport definition
 * Schema language
 * Model/Protocol source code generation of various programming languages using schema compiler<br/><br/>
 
+### Brief Specifications
+
 In order to implement the Sentient library in a specific programming language, some common features must be implemented below
-* some types, utilities as below
 
-|  C | C++ | C# | Python |  |
-|---|---|---|---|---|
-| snt_u8 | snt::u8 | System.Byte | sentient.u8 | unsigned 8 bit integer |
-| snt_u16 | snt::u16 | System.UInt16 | sentient.u16 | unsigned 16 bit integer |
-| snt_u32 | snt::u32 | System.UInt32 | sentient.u32 | unsigned 32 bit integer |
-| snt_u64 | snt::u64 | System.UInt64 | sentient.u64 | unsigned 64 bit integer |
-| snt_i8 | snt::i8 | System.SByte | sentient.i8 | signed 8 bit integer |
-| snt_i16 | snt::i16 | System.Int16 | sentient.i16 | signed 16 bit integer |
-| snt_i32 | snt::i32 | System.Int32 | sentient.i32 | signed 32 bit integer |
-| snt_i64 | snt::i64 | System.Int64 | sentient.i64 | signed 64 bit integer |
-| snt_f32 | snt::f32 | System.Single | sentient.f32 | 32 bit floating point |
-| snt_f64 | snt::f64 | System.Double | sentient.f64 | 64 bit floating point |
-| snt_t64 | snt::t64 | Sentient.PosixTimeStamp | sentient.t64 | unsigned 64 bit contains posix timestamp |
-| snt_t128 | snt::t128 | Sentient.TimeSpec | sentient.t128 | unsigned 64 bit contains posix timestamp with unsigned 64 bit contains nanoseconds |
-| snt_g32 | snt::g32 | Sentient.GregorianDateTime | sentient.g32 |  |
-| snt_g64 | snt::g64 | Sentient.GregorianDateTimeExt | sentient.g64 |  |
-| snt_arr_{model}_{elements_size} | snt::array<T, n> | Sentient.Array<T, n> | sentient.arr |  |
-| snt_vec_{model}_{size_type} | snt::vector<T, S> | Sentient.List<T, S> | sentient.varr |  |
-| snt_list_{model}_{size_type} | snt::list<T, S> | Sentient.LinkedList<T, S> | sentient.llist |  |
-| snt_str_{model}_{size_type} | snt::string<S> | Sentient.String<S> | sentient.s8 |  |
+* 8/16/32/64 bit integer, 32/64 bit floating point types as below<br/>In some languages, they have the types as primitive types and it would be much better to have aliased to be the Sentient names(u8, u16, u32, u64, i8, i16, i32, i64, f32, f64) if they have the type name aliasing syntax<br/>
+Also, In several languages having only simple number types(Python, TypeScript...), They should have all types u8 through f64 as wrapper classes. Whenever possible, operator overloading functions (if the syntax exists) should satisfy the user experience
 
-* Generic (tuple if no generic syntax) data containers with a size type of specific bytes, e.g.  <b>snt::vector&lt;T, snt::u16&gt;</b> in <b>the Sentient C++ </b> implementation
-* 
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>u8</b></td>
+            <td>Unsigned 8 bit integer type</td>
+        </tr>
+        <tr>
+            <td><b>u16</b></td>
+            <td>Unsigned 16 bit integer type</td>
+        </tr>
+        <tr>
+            <td><b>u32</b></td>
+            <td>Unsigned 32 bit integer type</td>
+        </tr>
+        <tr>
+            <td><b>u64</b></td>
+            <td>Unsigned 64 bit integer type</td>
+        </tr>
+        <tr>
+            <td><b>i8</b></td>
+            <td>Signed 8 bit integer type</td>
+        </tr>
+        <tr>
+            <td><b>i16</b></td>
+            <td>Signed 16 bit integer type</td>
+        </tr>
+        <tr>
+            <td><b>i32</b></td>
+            <td>Signed 32 bit integer type</td>
+        </tr>
+        <tr>
+            <td><b>i64</b></td>
+            <td>Signed 64 bit integer type</td>
+        </tr>
+        <tr>
+            <td><b>f32</b></td>
+            <td>32 bit floating point type</td>
+        </tr>
+        <tr>
+            <td><b>f64</b></td>
+            <td>64 bit floating point type</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+
+* Structures containing time information<br/>
+There are a lot of way to transmit the time information in various programming languages and in many user space protocols not in text stream base, As far as I know, some type are mostly used as below<br>
+In the implementation of the Sentient library of each programming language, all time info types should be convertible to the standard library time info types of each language<br>In addition, the time info types of Sentient do not necessarily have to be implemented using bit fields, and the fields can be compressed to the corresponding bit size when serialized to binary<br>
+
+
+    - t64 / PosixTime
+        - unsigned 64 bit integer contains UNIX timestamp(in seconds)
+    - t128 / TimeSpec
+        - unsigned 64 bit contains UNIX timestamp with unsigned 64 bit integer contains nanoseconds
+        - Fields/Descriptions
+        <table>
+            <thead>
+                <tr>
+                    <td>Field</td>
+                    <td>Signed ? / Size in bits</td>
+                    <td>Value Range</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>seconds</td>
+                    <td>unsigned / 64</td>
+                    <td>0~</td>
+                    <td>UNIX Timestamp</td>
+                </tr>
+                <tr>
+                    <td>nanoseconds</td>
+                    <td>unsigned / 64</td>
+                    <td>0~999,999,999</td>
+                    <td>nanoseconds</td>
+                </tr>
+            </tbody>
+        </table>
+    - cg32 / CompactGregorianCalendar
+        - There are several traditional ways to transmit time information in the Gregorian calendar format<br/>The most used way to transmit it is to put the year, month, day, hour, minute, and second values ​​excluding century into a 32-bit structure
+        - Fields/Descriptions
+        <table>
+            <thead>
+                <tr>
+                    <td>Field</td>
+                    <td>Signed ? / Size in bits</td>
+                    <td>Value Range</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>year</td>
+                    <td>unsigned / 7</td>
+                    <td>0~99</td>
+                    <td>year not containing century information</td>
+                </tr>
+                <tr>
+                    <td>month</td>
+                    <td>unsigned / 4</td>
+                    <td>1~12</td>
+                    <td>month</td>
+                </tr>
+                <tr>
+                    <td>day</td>
+                    <td>unsigned / 5</td>
+                    <td>1~31</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>hours</td>
+                    <td>unsigned / 5</td>
+                    <td>0~23</td>
+                    <td>hours</td>
+                </tr>
+                <tr>
+                    <td>minutes</td>
+                    <td>unsigned / 6</td>
+                    <td>0~59</td>
+                    <td>minutes</td>
+                </tr>
+                <tr>
+                    <td>seconds</td>
+                    <td>unsigned / 5</td>
+                    <td>0~29</td>
+                    <td>seconds increment by 2</td>
+                </tr>
+            </tbody>
+        </table>
+    - cg64 / PrecisionCompactGregorianCalendar
+        - Lengthened the seconds field to 6 bits in order to contain complete 0~59 second values and added an unsigned 64 bit integer field contains nanoseconds at the end of the cg32/CompactGregorianCalendar type
+        - Fields/Descriptions
+        <table>
+            <thead>
+                <tr>
+                    <td>Field</td>
+                    <td>Signed ? / Size in bits</td>
+                    <td>Value Range</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>year</td>
+                    <td>unsigned / 7</td>
+                    <td>0~99</td>
+                    <td>year not containing century information</td>
+                </tr>
+                <tr>
+                    <td>month</td>
+                    <td>unsigned / 4</td>
+                    <td>1~12</td>
+                    <td>month</td>
+                </tr>
+                <tr>
+                    <td>day</td>
+                    <td>unsigned / 5</td>
+                    <td>1~31</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>hours</td>
+                    <td>unsigned / 5</td>
+                    <td>0~23</td>
+                    <td>hours</td>
+                </tr>
+                <tr>
+                    <td>minutes</td>
+                    <td>unsigned / 6</td>
+                    <td>0~59</td>
+                    <td>minutes</td>
+                </tr>
+                <tr>
+                    <td>seconds</td>
+                    <td>unsigned / 6</td>
+                    <td>0~59</td>
+                    <td>seconds increment by 2</td>
+                </tr>
+                <tr>
+                    <td>nanoseconds</td>
+                    <td>unsigned / 64</td>
+                    <td>0~999,999,999</td>
+                    <td>nanoseconds</td>
+                </tr>
+            </tbody>
+        </table>
+    - g64 / GregorianCalendar
+        - If you guys wanna include century information in cg32 type, you can use this type
+        - Fields/Descriptions
+        <table>
+            <thead>
+                <tr>
+                    <td>Field</td>
+                    <td>Signed ? / Size in bits</td>
+                    <td>Value Range</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>year</td>
+                    <td>signed / 38</td>
+                    <td>-137,438,953,472~137,438,953,471</td>
+                    <td>BC~AD year</td>
+                </tr>
+                <tr>
+                    <td>month</td>
+                    <td>unsigned / 4</td>
+                    <td>1~12</td>
+                    <td>month</td>
+                </tr>
+                <tr>
+                    <td>day</td>
+                    <td>unsigned / 5</td>
+                    <td>1~31</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>hours</td>
+                    <td>unsigned / 5</td>
+                    <td>0~23</td>
+                    <td>hours</td>
+                </tr>
+                <tr>
+                    <td>minutes</td>
+                    <td>unsigned / 6</td>
+                    <td>0~59</td>
+                    <td>minutes</td>
+                </tr>
+                <tr>
+                    <td>seconds</td>
+                    <td>unsigned / 6</td>
+                    <td>0~59</td>
+                    <td>seconds</td>
+                </tr>
+            </tbody>
+        </table>
+    - g128 / PrecisionGregorianCalendar
+        - Nanoseconds with g64/GregorianCalendar!
+        <table>
+            <thead>
+                <tr>
+                    <td>Field</td>
+                    <td>Signed ? / Size in bits</td>
+                    <td>Value Range</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>year</td>
+                    <td>signed / 38</td>
+                    <td>-137,438,953,472~137,438,953,471</td>
+                    <td>BC~AD year</td>
+                </tr>
+                <tr>
+                    <td>month</td>
+                    <td>unsigned / 4</td>
+                    <td>1~12</td>
+                    <td>month</td>
+                </tr>
+                <tr>
+                    <td>day</td>
+                    <td>unsigned / 5</td>
+                    <td>1~31</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>hours</td>
+                    <td>unsigned / 5</td>
+                    <td>0~23</td>
+                    <td>hours</td>
+                </tr>
+                <tr>
+                    <td>minutes</td>
+                    <td>unsigned / 6</td>
+                    <td>0~59</td>
+                    <td>minutes</td>
+                </tr>
+                <tr>
+                    <td>seconds</td>
+                    <td>unsigned / 6</td>
+                    <td>0~59</td>
+                    <td>seconds</td>
+                </tr>
+                <tr>
+                    <td>nanoseconds</td>
+                    <td>unsigned / 64</td>
+                    <td>0~999,999,999</td>
+                    <td>nanoseconds</td>
+                </tr>
+            </tbody>
+        </table>
+<br/>
+* Data Containers (Sometimes called collections)
+    
+<!-- <table>
+    <thead>
+        <tr>
+            <th>Layer 1</th>
+            <th>Layer 2</th>
+            <th>Layer 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>L1 Name</td>
+            <td rowspan=2>L2 Name A</td>
+            <td>L3 Name A</td>
+        </tr>
+        <tr>
+            <td>L3 Name B</td>
+        </tr>
+        <tr>
+            <td rowspan=2>L2 Name B</td>
+            <td>L3 Name C</td>
+        </tr>
+        <tr>
+            <td>L3 Name D</td>
+        </tr>
+    </tbody>
+</table> -->
+
 
 <br/>
 

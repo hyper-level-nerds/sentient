@@ -1,0 +1,8 @@
+
+class Integer {
+
+}
+
+class FloatingPoint {
+    
+}

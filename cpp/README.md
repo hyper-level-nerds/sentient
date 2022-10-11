@@ -1,5 +1,2 @@
-# SENTIENT C++
+# The Sentient C++ Library
 
-header-only reflection library
-
-Boost/SOCI needed

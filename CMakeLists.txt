@@ -41,5 +41,3 @@ include_directories(${CONAN_INCLUDE_DIRS})
 link_directories(${CONAN_LIB_DIRS})
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/sentient_compiler)
-# add_subdirectory(${CMAKE_SOURCE_DIR}/c)
-# add_subdirectory(${CMAKE_SOURCE_DIR}/cpp)

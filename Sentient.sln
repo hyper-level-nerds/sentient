@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp", "csharp", "{1C86A1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{DB6D0976-9A89-4A64-A431-7BFE7C9AB5C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp_model_creation", "csharp\examples\csharp_model_creation\csharp_model_creation.csproj", "{DF2D5C10-1F0B-445F-96BC-942F098F8253}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp_model_creation", "csharp\Examples\CSharpModelCreation\CSharpModelCreation.csproj", "{DF2D5C10-1F0B-445F-96BC-942F098F8253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sentient", "csharp\lib\sentient.csproj", "{4836F9C2-9AA0-41F7-8185-AED533EE91F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sentient", "csharp\lib\Sentient.csproj", "{4836F9C2-9AA0-41F7-8185-AED533EE91F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

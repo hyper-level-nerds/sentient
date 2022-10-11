@@ -1,6 +1,8 @@
 include(cmake/autogen.cmake)
 
-set(SENTIENT_C_LIBRARY_SRC serialization.c)
+set(SENTIENT_C_LIBRARY_SRC
+    reflection.c
+    serialization.c)
 
 add_library(sentient ${SENTIENT_C_LIBRARY_SRC})
 target_include_directories(sentient PRIVATE
