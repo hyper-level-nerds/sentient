@@ -20,6 +20,11 @@
         <ul>
             <li><a href="#concepts">Concepts</a></li>
             <li><a href="#brief-specifications">Brief Specifications</a></li>
+                <ul>
+                    <li><a href="#basic-types">Basic Types</a></li>
+                    <li><a href="#time-types">Time Types</a></li>
+                    <li><a href="#data-containers">Data Containers</a></li>
+                </ul>
             <li><a href="#about-the-schema-language">About The Schema Language</a></li>
         </ul>
     <li>
@@ -50,10 +55,9 @@
 </ol>
 
 # This project is still in a draft
+# About The Sentient Project
 
-## About The Sentient Project
-
-### Concepts
+## Concepts
 
 This toolset is being written for those who wants to transmit models fast with both famous ready-made and custom application layer protocols. Application layer protocols you defined without the Sentient toolset would be annoying since you need to implement in various programming languages. however, with the Sentient library, you just need to compile the Sentient schema language source code and use it immediately. In addition, models for transmission could be serialized/deserialized easily with the Sentient library features even if the programming language has no reflection syntax <br/><br/>
 
@@ -62,11 +66,13 @@ This project is being researched to clarify the concepts and specific features. 
 * Schema language
 * Model/Protocol source code generation of various programming languages using schema compiler<br/><br/>
 
-### Brief Specifications
+## Brief Specifications
 
 In order to implement the Sentient library in a specific programming language, some common features must be implemented below
 
-* 8/16/32/64 bit integer, 32/64 bit floating point types as below<br/>In some languages, they have the types as primitive types and it would be much better to have aliased to be the Sentient names(u8, u16, u32, u64, i8, i16, i32, i64, f32, f64) if they have the type name aliasing syntax<br/>
+### Basic Types
+
+In the implementation, the library should have 8/16/32/64 bit integer, 32/64 bit floating point types<br/>In some languages, they have the types as primitive types and it would be much better to have aliased to be the Sentient names(u8, u16, u32, u64, i8, i16, i32, i64, f32, f64) if they have the type name aliasing syntax<br/>
 Also, In several languages having only simple number types(Python, TypeScript...), They should have all types u8 through f64 as wrapper classes. Whenever possible, operator overloading functions (if the syntax exists) should satisfy the user experience
 
 <table>
@@ -121,378 +127,334 @@ Also, In several languages having only simple number types(Python, TypeScript...
 </table>
 <br/>
 
-* Structures containing time information<br/>
+### Time Types
+
 There are a lot of way to transmit the time information in various programming languages and in many user space protocols not in text stream base, As far as I know, some type are mostly used as below<br>
 In the implementation of the Sentient library of each programming language, all time info types should be convertible to the standard library time info types of each language<br>In addition, the time info types of Sentient do not necessarily have to be implemented using bit fields, and the fields can be compressed to the corresponding bit size when serialized to binary<br>
 
 
-    - t64 / PosixTime
-        - unsigned 64 bit integer contains UNIX timestamp(in seconds)
-    - t128 / TimeSpec
-        - unsigned 64 bit contains UNIX timestamp with unsigned 64 bit integer contains nanoseconds
-        - Fields/Descriptions
-        <table>
-            <thead>
-                <tr>
-                    <td>Field</td>
-                    <td>Signed ? / Size in bits</td>
-                    <td>Value Range</td>
-                    <td>Description</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>seconds</td>
-                    <td>unsigned / 64</td>
-                    <td>0~</td>
-                    <td>UNIX Timestamp</td>
-                </tr>
-                <tr>
-                    <td>nanoseconds</td>
-                    <td>unsigned / 64</td>
-                    <td>0~999,999,999</td>
-                    <td>nanoseconds</td>
-                </tr>
-            </tbody>
-        </table>
-    - cg32 / CompactGregorianCalendar
-        - There are several traditional ways to transmit time information in the Gregorian calendar format<br/>The most used way to transmit it is to put the year, month, day, hour, minute, and second values ​​excluding century into a 32-bit structure
-        - Fields/Descriptions
-        <table>
-            <thead>
-                <tr>
-                    <td>Field</td>
-                    <td>Signed ? / Size in bits</td>
-                    <td>Value Range</td>
-                    <td>Description</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>year</td>
-                    <td>unsigned / 7</td>
-                    <td>0~99</td>
-                    <td>year not containing century information</td>
-                </tr>
-                <tr>
-                    <td>month</td>
-                    <td>unsigned / 4</td>
-                    <td>1~12</td>
-                    <td>month</td>
-                </tr>
-                <tr>
-                    <td>day</td>
-                    <td>unsigned / 5</td>
-                    <td>1~31</td>
-                    <td>day</td>
-                </tr>
-                <tr>
-                    <td>hours</td>
-                    <td>unsigned / 5</td>
-                    <td>0~23</td>
-                    <td>hours</td>
-                </tr>
-                <tr>
-                    <td>minutes</td>
-                    <td>unsigned / 6</td>
-                    <td>0~59</td>
-                    <td>minutes</td>
-                </tr>
-                <tr>
-                    <td>seconds</td>
-                    <td>unsigned / 5</td>
-                    <td>0~29</td>
-                    <td>seconds increment by 2</td>
-                </tr>
-            </tbody>
-        </table>
-    - cg64 / PrecisionCompactGregorianCalendar
-        - Lengthened the seconds field to 6 bits in order to contain complete 0~59 second values and added an unsigned 64 bit integer field contains nanoseconds at the end of the cg32/CompactGregorianCalendar type
-        - Fields/Descriptions
-        <table>
-            <thead>
-                <tr>
-                    <td>Field</td>
-                    <td>Signed ? / Size in bits</td>
-                    <td>Value Range</td>
-                    <td>Description</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>year</td>
-                    <td>unsigned / 7</td>
-                    <td>0~99</td>
-                    <td>year not containing century information</td>
-                </tr>
-                <tr>
-                    <td>month</td>
-                    <td>unsigned / 4</td>
-                    <td>1~12</td>
-                    <td>month</td>
-                </tr>
-                <tr>
-                    <td>day</td>
-                    <td>unsigned / 5</td>
-                    <td>1~31</td>
-                    <td>day</td>
-                </tr>
-                <tr>
-                    <td>hours</td>
-                    <td>unsigned / 5</td>
-                    <td>0~23</td>
-                    <td>hours</td>
-                </tr>
-                <tr>
-                    <td>minutes</td>
-                    <td>unsigned / 6</td>
-                    <td>0~59</td>
-                    <td>minutes</td>
-                </tr>
-                <tr>
-                    <td>seconds</td>
-                    <td>unsigned / 6</td>
-                    <td>0~59</td>
-                    <td>seconds increment by 2</td>
-                </tr>
-                <tr>
-                    <td>nanoseconds</td>
-                    <td>unsigned / 64</td>
-                    <td>0~999,999,999</td>
-                    <td>nanoseconds</td>
-                </tr>
-            </tbody>
-        </table>
-    - g64 / GregorianCalendar
-        - If you guys wanna include century information in cg32 type, you can use this type
-        - Fields/Descriptions
-        <table>
-            <thead>
-                <tr>
-                    <td>Field</td>
-                    <td>Signed ? / Size in bits</td>
-                    <td>Value Range</td>
-                    <td>Description</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>year</td>
-                    <td>signed / 38</td>
-                    <td>-137,438,953,472~137,438,953,471</td>
-                    <td>BC~AD year</td>
-                </tr>
-                <tr>
-                    <td>month</td>
-                    <td>unsigned / 4</td>
-                    <td>1~12</td>
-                    <td>month</td>
-                </tr>
-                <tr>
-                    <td>day</td>
-                    <td>unsigned / 5</td>
-                    <td>1~31</td>
-                    <td>day</td>
-                </tr>
-                <tr>
-                    <td>hours</td>
-                    <td>unsigned / 5</td>
-                    <td>0~23</td>
-                    <td>hours</td>
-                </tr>
-                <tr>
-                    <td>minutes</td>
-                    <td>unsigned / 6</td>
-                    <td>0~59</td>
-                    <td>minutes</td>
-                </tr>
-                <tr>
-                    <td>seconds</td>
-                    <td>unsigned / 6</td>
-                    <td>0~59</td>
-                    <td>seconds</td>
-                </tr>
-            </tbody>
-        </table>
-    - g128 / PrecisionGregorianCalendar
-        - Nanoseconds with g64/GregorianCalendar!
-        <table>
-            <thead>
-                <tr>
-                    <td>Field</td>
-                    <td>Signed ? / Size in bits</td>
-                    <td>Value Range</td>
-                    <td>Description</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>year</td>
-                    <td>signed / 38</td>
-                    <td>-137,438,953,472~137,438,953,471</td>
-                    <td>BC~AD year</td>
-                </tr>
-                <tr>
-                    <td>month</td>
-                    <td>unsigned / 4</td>
-                    <td>1~12</td>
-                    <td>month</td>
-                </tr>
-                <tr>
-                    <td>day</td>
-                    <td>unsigned / 5</td>
-                    <td>1~31</td>
-                    <td>day</td>
-                </tr>
-                <tr>
-                    <td>hours</td>
-                    <td>unsigned / 5</td>
-                    <td>0~23</td>
-                    <td>hours</td>
-                </tr>
-                <tr>
-                    <td>minutes</td>
-                    <td>unsigned / 6</td>
-                    <td>0~59</td>
-                    <td>minutes</td>
-                </tr>
-                <tr>
-                    <td>seconds</td>
-                    <td>unsigned / 6</td>
-                    <td>0~59</td>
-                    <td>seconds</td>
-                </tr>
-                <tr>
-                    <td>nanoseconds</td>
-                    <td>unsigned / 64</td>
-                    <td>0~999,999,999</td>
-                    <td>nanoseconds</td>
-                </tr>
-            </tbody>
-        </table>
-<br/>
-* Data Containers (Sometimes called collections)
-    
-<!-- <table>
-    <thead>
-        <tr>
-            <th>Layer 1</th>
-            <th>Layer 2</th>
-            <th>Layer 3</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan=4>L1 Name</td>
-            <td rowspan=2>L2 Name A</td>
-            <td>L3 Name A</td>
-        </tr>
-        <tr>
-            <td>L3 Name B</td>
-        </tr>
-        <tr>
-            <td rowspan=2>L2 Name B</td>
-            <td>L3 Name C</td>
-        </tr>
-        <tr>
-            <td>L3 Name D</td>
-        </tr>
-    </tbody>
-</table> -->
-
-
+- t64 / PosixTime
+    - unsigned 64 bit integer contains UNIX timestamp(in seconds)
+- t128 / TimeSpec
+    - unsigned 64 bit contains UNIX timestamp with unsigned 64 bit integer contains nanoseconds
+    - Fields/Descriptions
+    <table>
+        <thead>
+            <tr>
+                <td>Field</td>
+                <td>Signed ? / Size in bits</td>
+                <td>Value Range</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>seconds</td>
+                <td>unsigned / 64</td>
+                <td>0~</td>
+                <td>UNIX Timestamp</td>
+            </tr>
+            <tr>
+                <td>nanoseconds</td>
+                <td>unsigned / 64</td>
+                <td>0~999,999,999</td>
+                <td>nanoseconds</td>
+            </tr>
+        </tbody>
+    </table>
+- cg32 / CompactGregorianCalendar
+    - There are several traditional ways to transmit time information in the Gregorian calendar format<br/>The most used way to transmit it is to put the year, month, day, hour, minute, and second values ​​excluding century into a 32-bit structure
+    - Fields/Descriptions
+    <table>
+        <thead>
+            <tr>
+                <td>Field</td>
+                <td>Signed ? / Size in bits</td>
+                <td>Value Range</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>year</td>
+                <td>unsigned / 7</td>
+                <td>0~99</td>
+                <td>year not containing century information</td>
+            </tr>
+            <tr>
+                <td>month</td>
+                <td>unsigned / 4</td>
+                <td>1~12</td>
+                <td>month</td>
+            </tr>
+            <tr>
+                <td>day</td>
+                <td>unsigned / 5</td>
+                <td>1~31</td>
+                <td>day</td>
+            </tr>
+            <tr>
+                <td>hours</td>
+                <td>unsigned / 5</td>
+                <td>0~23</td>
+                <td>hours</td>
+            </tr>
+            <tr>
+                <td>minutes</td>
+                <td>unsigned / 6</td>
+                <td>0~59</td>
+                <td>minutes</td>
+            </tr>
+            <tr>
+                <td>seconds</td>
+                <td>unsigned / 5</td>
+                <td>0~29</td>
+                <td>seconds increment by 2</td>
+            </tr>
+        </tbody>
+    </table>
+- cg64 / PrecisionCompactGregorianCalendar
+    - Lengthened the seconds field to 6 bits in order to contain complete 0~59 second values and added an unsigned 64 bit integer field contains nanoseconds at the end of the cg32/CompactGregorianCalendar type
+    - Fields/Descriptions
+    <table>
+        <thead>
+            <tr>
+                <td>Field</td>
+                <td>Signed ? / Size in bits</td>
+                <td>Value Range</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>year</td>
+                <td>unsigned / 7</td>
+                <td>0~99</td>
+                <td>year not containing century information</td>
+            </tr>
+            <tr>
+                <td>month</td>
+                <td>unsigned / 4</td>
+                <td>1~12</td>
+                <td>month</td>
+            </tr>
+            <tr>
+                <td>day</td>
+                <td>unsigned / 5</td>
+                <td>1~31</td>
+                <td>day</td>
+            </tr>
+            <tr>
+                <td>hours</td>
+                <td>unsigned / 5</td>
+                <td>0~23</td>
+                <td>hours</td>
+            </tr>
+            <tr>
+                <td>minutes</td>
+                <td>unsigned / 6</td>
+                <td>0~59</td>
+                <td>minutes</td>
+            </tr>
+            <tr>
+                <td>seconds</td>
+                <td>unsigned / 6</td>
+                <td>0~59</td>
+                <td>seconds increment by 2</td>
+            </tr>
+            <tr>
+                <td>nanoseconds</td>
+                <td>unsigned / 64</td>
+                <td>0~999,999,999</td>
+                <td>nanoseconds</td>
+            </tr>
+        </tbody>
+    </table>
+- g64 / GregorianCalendar
+    - If you guys wanna include century information in cg32 type, you can use this type
+    - Fields/Descriptions
+    <table>
+        <thead>
+            <tr>
+                <td>Field</td>
+                <td>Signed ? / Size in bits</td>
+                <td>Value Range</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>year</td>
+                <td>signed / 38</td>
+                <td>-137,438,953,472~137,438,953,471</td>
+                <td>BC~AD year</td>
+            </tr>
+            <tr>
+                <td>month</td>
+                <td>unsigned / 4</td>
+                <td>1~12</td>
+                <td>month</td>
+            </tr>
+            <tr>
+                <td>day</td>
+                <td>unsigned / 5</td>
+                <td>1~31</td>
+                <td>day</td>
+            </tr>
+            <tr>
+                <td>hours</td>
+                <td>unsigned / 5</td>
+                <td>0~23</td>
+                <td>hours</td>
+            </tr>
+            <tr>
+                <td>minutes</td>
+                <td>unsigned / 6</td>
+                <td>0~59</td>
+                <td>minutes</td>
+            </tr>
+            <tr>
+                <td>seconds</td>
+                <td>unsigned / 6</td>
+                <td>0~59</td>
+                <td>seconds</td>
+            </tr>
+        </tbody>
+    </table>
+- g128 / PrecisionGregorianCalendar
+    - Nanoseconds with g64/GregorianCalendar!
+    <table>
+        <thead>
+            <tr>
+                <td>Field</td>
+                <td>Signed ? / Size in bits</td>
+                <td>Value Range</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>year</td>
+                <td>signed / 38</td>
+                <td>-137,438,953,472~137,438,953,471</td>
+                <td>BC~AD year</td>
+            </tr>
+            <tr>
+                <td>month</td>
+                <td>unsigned / 4</td>
+                <td>1~12</td>
+                <td>month</td>
+            </tr>
+            <tr>
+                <td>day</td>
+                <td>unsigned / 5</td>
+                <td>1~31</td>
+                <td>day</td>
+            </tr>
+            <tr>
+                <td>hours</td>
+                <td>unsigned / 5</td>
+                <td>0~23</td>
+                <td>hours</td>
+            </tr>
+            <tr>
+                <td>minutes</td>
+                <td>unsigned / 6</td>
+                <td>0~59</td>
+                <td>minutes</td>
+            </tr>
+            <tr>
+                <td>seconds</td>
+                <td>unsigned / 6</td>
+                <td>0~59</td>
+                <td>seconds</td>
+            </tr>
+            <tr>
+                <td>nanoseconds</td>
+                <td>unsigned / 64</td>
+                <td>0~999,999,999</td>
+                <td>nanoseconds</td>
+            </tr>
+        </tbody>
+    </table>
 <br/>
 
-Sentient schema language <br/>
-model.snt
-```
-ns example:
-    arr_pl(65536)
-    mdl my_model:
-        number : u64
-        email_address : sstr8[256]
-        password: sstr8[33]
-        gender: u8,
-        created_time: ts128
-        updated_time: ts128
-}
-    
-```
+### Data Containers
 
-compile ↓ <br/><br/>
+The reason why I started this project, serializing/deserializing variable sized data containers was a huge pain for me<br/>
+However, it is also painful to modify objects in service logic without using the highly abstracted standard data containers provided by each programming language<br>
+In binary serialization, variable-size arrays are usually divided into a size field and a data field, and the number of bytes in the size field must first be defined in the payload definition<br>
+Let's say there is a payload definition has variable-sized array at the end of its fields, and the size field is 16 bit unsigned and each element field is 32 bit signed
 
-C <br/>
-model.h
 ```C
-#include <sentient/sentient.h>
+// example scenario in C language
 
-SNT_DECL_MODEL(example_my_model
-    (snt_u64, number),
-    (snt_char8, email_address, SNT_ARRAY, 256),
-    (snt_char8, password, SNT_ARRAY, 33, SNT_PASSWORD),
-    (snt_u8, gender),
-    (snt_ts128, created_time),
-    (snt_ts128, updated_time),
-    SNT_HAS_ARRAY_POOL(65536)
-);
-```
-model.c
-```C
-#define SNT_IMPL_MODEL
-#include "model.h"
-```
-
-C++ <br/>
-model.hpp
-
-```C++
-#include <sentient/sentient.hpp>
-
-namespace example {
-class model
-{
-    SNT_DEFINE_MODEL(example::model,
-        (snt::u64, number),
-        (snt::static_string<256>, email_address),
-        (snt::static_string<33>, password),
-        (snt::u8, gender),
-        (snt::ts128, created_time),
-        (snt::ts128, updated_time),
-        SNT_HAS_ARRAY_POOL(65536)
-    );
+struct example_variable_sized_array {
+    uint8_t meaningless_field;
+    uint16_t array_size;
+    uint32_t* array;
 };
-}
+
+const size_t size = 3;
+char serialized_buffer[256] = { 0, };
+struct example_variable_sized_array obj = { 0, };
+obj.meaningless_field = 1;
+obj.array_size = (uint16_t)size;
+obj.array = calloc(size, sizeof(struct example_variable_sized_array));
+obj.array[0] = 1;
+obj.array[1] = 2;
+obj.array[2] = 3;
+
+*(uint8_t*)(&serialized_buffer[0]) = obj.meaningless_field;
+*(uint16_t*)(&serialized_buffer[1]) = obj.array_size;
+*(uint32_t*)(&serialized_buffer[3]) = obj.array[0];
+*(uint32_t*)(&serialized_buffer[7]) = obj.array[1];
+*(uint32_t*)(&serialized_buffer[11]) = obj.array[2];
+
+//
+// Some network jobs...
+//
+
+free(obj.array);
+obj.array = NULL;
 ```
 
-C# <br/>
-Model.cs
+The shape of the example variable-sized array in binary serialization (little-endian)
+<table>
+    <tr>
+        <td>meaningless field</td>
+        <td>size</td>
+        <td>size</td>
+        <td>elem0</td>
+        <td>elem0</td>
+        <td>elem0</td>
+        <td>elem0</td>
+        <td>elem1</td>
+        <td>elem1</td>
+        <td>elem1</td>
+        <td>elem1</td>
+        <td>elem2</td>
+        <td>elem2</td>
+        <td>elem2</td>
+        <td>elem2</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>3</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>3</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+</table>
 
-```C#
-using System;
-using Sentient;
-
-namespace example
-{
-    [Model]
-    public class Model
-    {
-        [Field]
-        public UInt64 Number;
-        [Field]
-        public StaticString<IntConstant256> EmailAddress;
-        [Field]
-        public StaticString<IntConstant33> Password;
-        [Field]
-        public Byte Gender;
-        [Field]
-        public TimeSpec CreatedTime;
-        [Field]
-        public TimeSpec UpdatedTime;
-
-        public Model() {}
-    }
-}
-
-```
-
-
+<br/>
