@@ -23,7 +23,15 @@
                 <ul>
                     <li><a href="#basic-types">Basic Types</a></li>
                     <li><a href="#time-types">Time Types</a></li>
-                    <li><a href="#data-containers">Data Containers</a></li>
+                    <li>
+                        <a href="#data-containers">Data Containers</a>
+                        <ul>
+                            <li><a href="#variable-sized-array">Variable-Sized Array</a></li>
+                            <li><a href="#static-sized-array">Static-Sized Array</a></li>
+                            <li><a href="#strings">Strings</a></li>
+                            <li><a href="#dictionary">Dictionary</a></li>
+                        </ul>
+                    </li>
                 </ul>
             <li><a href="#about-the-schema-language">About The Schema Language</a></li>
         </ul>
@@ -381,6 +389,7 @@ In the implementation of the Sentient library of each programming language, all 
 
 ### Data Containers
 
+#### Variable-Sized Array
 The reason why I started this project, serializing/deserializing variable sized data containers was a huge pain for me<br/>
 However, it is also painful to modify objects in service logic without using the highly abstracted standard data containers provided by each programming language<br>
 In binary serialization, variable-size arrays are usually divided into a size field and a data field, and the number of bytes in the size field must first be defined in the payload definition<br>
@@ -412,7 +421,7 @@ obj.array[2] = 3;
 *(uint32_t*)(&serialized_buffer[11]) = obj.array[2];
 
 //
-// Some network jobs...
+// Some communication jobs...
 //
 
 free(obj.array);

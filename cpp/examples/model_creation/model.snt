@@ -1,0 +1,7 @@
+######################
+#### example model####
+######################
+
+ns example:
+    mdl model:
+        empty

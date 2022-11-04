@@ -1,0 +1,8 @@
+[requires]
+boost/1.80.0
+glm/0.9.9.8
+
+[generators]
+cmake
+
+[options]
