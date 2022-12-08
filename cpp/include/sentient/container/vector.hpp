@@ -200,7 +200,7 @@ public:
         if ((base_type::size() + count) > this->max_size())
         {
             throw std::overflow_error(exceeded_message);
-        }
+        }traits_type
         return base_type::insert(pos, count, value);
     }
 

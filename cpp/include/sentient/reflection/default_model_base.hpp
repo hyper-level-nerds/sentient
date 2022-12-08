@@ -7,9 +7,18 @@
 // Official repository: https://github.com/hyper-level-nerds/sentient
 //
 
-#ifndef SENTIENT_REFLECTION_DEFINE_DEFAULT_MODEL_HPP
-#define SENTIENT_REFLECTION_DEFINE_DEFAULT_MODEL_HPP
+#ifndef SENTIENT_REFLECTION_DEFAULT_MODEL_BASE_HPP
+#define SENTIENT_REFLECTION_DEFAULT_MODEL_BASE_HPP
 
+#include <sentient/reflection/detail/model_tag.hpp>
 
+namespace snt {
+
+struct default_model_base
+{
+    using snt_model_tag = detail::default_model_tag;
+};
+
+}
 
 #endif

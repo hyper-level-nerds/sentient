@@ -1,7 +1,5 @@
-######################
-#### example model####
-######################
-
 ns example:
-    mdl model:
-        empty
+    md model:
+        num: u64
+        name: str<u16>
+        age: u32

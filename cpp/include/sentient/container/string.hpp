@@ -41,7 +41,7 @@ private:
 
 public:
     using traits_type = typename base_type::traits_type;
-    using value_type = typename base_type::value_type;
+    using value_type = typename base_type::value_type;count
     using allocator_type = typename base_type::allocator_type;
     using size_type = typename base_type::size_type;
     using difference_type = typename base_type::difference_type;
@@ -95,6 +95,40 @@ public:
     }
 
 
+    constexpr basic_string(const basic_string& other,
+        size_type pos, const allocator_type& alc = allocator_type())
+    {
+        if (other.size() + pos > this->max_size())
+        {
+            throw std::overflow_error(exceeded_message);
+        }
+    }
+
+    constexpr basic_string(const basic_string& other,
+        size_type pos, size_type count, const allocator_type& alloc = allocator_type())
+    {
+        if (other.size() + pos + count > this->max_size())
+        {
+            throw std::overflow_error(exceeded_message);
+        }
+    }
+
+    constexpr basic_string(const value_type* s, size_type count,
+        const allocator_type& alloc = allocator_type())
+    {
+        if (count >  this->max_size())
+        {
+            throw std::overflow_error(exceeded_message);
+        }
+    }
+
+    constexpr basic_string(const value_type* s, const allocator_type& alloc = allocator_type())
+    {
+        if (::traits_type::length(s) >  this->max_size())
+        {
+            throw std::overflow_error(exceeded_message);
+        }
+    }
 
     constexpr size_type max_size() const noexcept
     {

@@ -1,6 +1,5 @@
 [requires]
 boost/1.80.0
-onetbb/2021.6.0
 
 [generators]
 cmake

@@ -7,17 +7,16 @@
 // Official repository: https://github.com/hyper-level-nerds/sentient
 //
 
-#ifndef SENTIENT_REFLECTION_DETAIL_MODEL_TAG_HPP
-#define SENTIENT_REFLECTION_DETAIL_MODEL_TAG_HPP
+#ifndef SENTIENT_DETAIL_GET_VALUE_TYPE_HPP
+#define SENTIENT_DETAIL_GET_VALUE_TYPE_HPP
 
 namespace snt {
 namespace detail {
 
-struct default_model_tag { };
-struct encapsulated_model_tag : default_model_tag { };
-struct observable_model_tag : encapsulated_model_tag { };
-struct lockfree_model_tag { };
-struct shared_enabled_model_tag { };
+template <typename Type>
+struct get_value_type { using type = typename Type::value_type; };
+template <typename Type>
+using get_value_type_t = get_value_type<Type>::type;
 
 }
 }
