@@ -51,4 +51,4 @@ include(${CMAKE_SOURCE_DIR}/cmake/autogen.cmake)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 add_subdirectory(test)
-add_subdirectory(examples)
+add_subdirectory(example)

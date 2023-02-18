@@ -19,21 +19,32 @@
 
 namespace snt {
 
+/**
+ * @author 
+ * @brief the standard spec satisfied vector class has its own size type for serialization
+ * @author Jin (jaehwanspin@gmail.com)
+ * @tparam ValueType value type
+ * @tparam PayloadSizeType payload size type for serialization
+ * @tparam Allocator allocator for string, default std::allocator<CharType>
+ * @tparam BaseContainer base vector container type, default std::vector<...>
+ */
 template <
-    typename ValueType,
-    typename PayloadSizeType,
-    typename AllocatorType = snt::allocator<ValueType>,
-    typename BaseContainerType = std::vector<ValueType, AllocatorType>
+    class ValueType,
+    class PayloadSizeType,
+    class Allocator = snt::allocator<ValueType>,
+    class BaseContainer = std::vector<ValueType, Allocator>
 >
 class vector :
-    public BaseContainerType
+    public BaseContainer
 {
 private:
     static_assert(std::is_integral_v<PayloadSizeType>, "PayloadSizeType must be integer");
     static_assert(std::is_unsigned_v<PayloadSizeType>, "PayloadSizeType must be unsigned integer");
 
     static constexpr const char* exceeded_message = "max size exceeded";
-    using base_type = BaseContainerType;
+    using this_type =
+        vector<ValueType, PayloadSizeType, Allocator, BaseContainer>;
+    using base_type = BaseContainer;
 
 public:
     using value_type = typename base_type::value_type;
@@ -50,10 +61,16 @@ public:
     using const_reverse_iterator = typename base_type::const_reverse_iterator;
     using payload_size_type = PayloadSizeType;
 
+    /**
+     * @brief 
+     */
     constexpr vector() noexcept(noexcept(allocator_type())) :
-        base_type() { }
+        base_type()
+    { }
+
     constexpr explicit vector(const allocator_type& alloc) noexcept :
-        base_type(alloc) { }
+        base_type(alloc)
+    { }
 
     constexpr vector(size_type count, const value_type& value, const allocator_type& alloc = allocator_type()) :
         base_type(count, value, alloc)
@@ -200,7 +217,7 @@ public:
         if ((base_type::size() + count) > this->max_size())
         {
             throw std::overflow_error(exceeded_message);
-        }traits_type
+        }
         return base_type::insert(pos, count, value);
     }
 

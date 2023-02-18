@@ -10,6 +10,7 @@
 #ifndef SENTIENT_STRING_HPP
 #define SENTIENT_STRING_HPP
 
-#include <sentient/container/string.hpp>
+#include <sentient/container/basic_string.hpp>
+#include <sentient/container/basic_string_view.hpp>
 
 #endif

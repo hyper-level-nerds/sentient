@@ -9,4 +9,11 @@
 
 #ifndef SENTIENT_CONTAINIER_MAP_HPP
 #define SENTIENT_CONTAINIER_MAP_HPP
+
+namespace snt {
+
+
+
+}
+
 #endif

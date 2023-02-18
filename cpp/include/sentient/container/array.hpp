@@ -15,6 +15,13 @@
 
 namespace snt {
 
+/**
+ * @brief Array type for the Sentient library
+ * @author Jin (jaehwanspin@gmail.com)
+ * @tparam ValueType element type
+ * @tparam Size array size
+ * @tparam BaseArrayContainer base array container type that satisfies standard specifications
+ */
 template <
     typename ValueType,
     std::size_t Size,

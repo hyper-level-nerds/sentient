@@ -10,4 +10,6 @@
 #ifndef SENTIENT_ARRAY_HPP
 #define SENTIENT_ARRAY_HPP
 
+#include <sentient/container/array.hpp>
+
 #endif
