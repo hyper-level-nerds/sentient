@@ -10,5 +10,6 @@
 #ifndef SENTIENT_UNORDERED_MAP_HPP
 #define SENTIENT_UNORDERED_MAP_HPP
 
+#include <sentient/container/unordered_map.hpp>
 
 #endif

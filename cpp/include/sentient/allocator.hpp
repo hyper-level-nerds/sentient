@@ -10,6 +10,17 @@
 #ifndef SENTIENT_ALLOCATOR_HPP
 #define SENTIENT_ALLOCATOR_HPP
 
+/**
+ * @file allocator.hpp
+ * @author Jin (jayjintheprogrammer@gmail.com)
+ * @brief forwards memory headers
+ * @version 0.1
+ * @date 2023-02-20
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include <sentient/memory/allocator.hpp>
 
 #endif

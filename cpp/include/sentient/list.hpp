@@ -10,4 +10,17 @@
 #ifndef SENTIENT_LIST_HPP 
 #define SENTIENT_LIST_HPP
 
+/**
+ * @file list.hpp
+ * @author Jin (jayjintheprogrammer@gmail.com)
+ * @brief forwards list container header
+ * @version 0.1
+ * @date 2023-02-20
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
+#include <sentient/container/list.hpp>
+
 #endif

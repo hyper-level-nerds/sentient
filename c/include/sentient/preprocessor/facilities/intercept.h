@@ -1,0 +1,302 @@
+//
+// Copyright (c) 2016-2019 Jin (jaehwanspin@gmail.com)
+//
+// Distributed under the Boost Software License, Version 1.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+//
+// Official repository: https://github.com/hyper-level-nerds/sentient
+//
+
+# ifndef SENTIENT_PREPROCESSOR_FACILITIES_INTERCEPT_H
+# define SENTIENT_PREPROCESSOR_FACILITIES_INTERCEPT_H
+#
+# include <sentient/preprocessor/config/config.h>
+#
+# if ~SNT_PP_CONFIG_FLAGS() & SNT_PP_CONFIG_STRICT()
+#
+# /* SNT_PP_INTERCEPT */
+#
+# define SNT_PP_INTERCEPT SNT_PP_INTERCEPT_
+#
+# define SNT_PP_INTERCEPT_0
+# define SNT_PP_INTERCEPT_1
+# define SNT_PP_INTERCEPT_2
+# define SNT_PP_INTERCEPT_3
+# define SNT_PP_INTERCEPT_4
+# define SNT_PP_INTERCEPT_5
+# define SNT_PP_INTERCEPT_6
+# define SNT_PP_INTERCEPT_7
+# define SNT_PP_INTERCEPT_8
+# define SNT_PP_INTERCEPT_9
+# define SNT_PP_INTERCEPT_10
+# define SNT_PP_INTERCEPT_11
+# define SNT_PP_INTERCEPT_12
+# define SNT_PP_INTERCEPT_13
+# define SNT_PP_INTERCEPT_14
+# define SNT_PP_INTERCEPT_15
+# define SNT_PP_INTERCEPT_16
+# define SNT_PP_INTERCEPT_17
+# define SNT_PP_INTERCEPT_18
+# define SNT_PP_INTERCEPT_19
+# define SNT_PP_INTERCEPT_20
+# define SNT_PP_INTERCEPT_21
+# define SNT_PP_INTERCEPT_22
+# define SNT_PP_INTERCEPT_23
+# define SNT_PP_INTERCEPT_24
+# define SNT_PP_INTERCEPT_25
+# define SNT_PP_INTERCEPT_26
+# define SNT_PP_INTERCEPT_27
+# define SNT_PP_INTERCEPT_28
+# define SNT_PP_INTERCEPT_29
+# define SNT_PP_INTERCEPT_30
+# define SNT_PP_INTERCEPT_31
+# define SNT_PP_INTERCEPT_32
+# define SNT_PP_INTERCEPT_33
+# define SNT_PP_INTERCEPT_34
+# define SNT_PP_INTERCEPT_35
+# define SNT_PP_INTERCEPT_36
+# define SNT_PP_INTERCEPT_37
+# define SNT_PP_INTERCEPT_38
+# define SNT_PP_INTERCEPT_39
+# define SNT_PP_INTERCEPT_40
+# define SNT_PP_INTERCEPT_41
+# define SNT_PP_INTERCEPT_42
+# define SNT_PP_INTERCEPT_43
+# define SNT_PP_INTERCEPT_44
+# define SNT_PP_INTERCEPT_45
+# define SNT_PP_INTERCEPT_46
+# define SNT_PP_INTERCEPT_47
+# define SNT_PP_INTERCEPT_48
+# define SNT_PP_INTERCEPT_49
+# define SNT_PP_INTERCEPT_50
+# define SNT_PP_INTERCEPT_51
+# define SNT_PP_INTERCEPT_52
+# define SNT_PP_INTERCEPT_53
+# define SNT_PP_INTERCEPT_54
+# define SNT_PP_INTERCEPT_55
+# define SNT_PP_INTERCEPT_56
+# define SNT_PP_INTERCEPT_57
+# define SNT_PP_INTERCEPT_58
+# define SNT_PP_INTERCEPT_59
+# define SNT_PP_INTERCEPT_60
+# define SNT_PP_INTERCEPT_61
+# define SNT_PP_INTERCEPT_62
+# define SNT_PP_INTERCEPT_63
+# define SNT_PP_INTERCEPT_64
+# define SNT_PP_INTERCEPT_65
+# define SNT_PP_INTERCEPT_66
+# define SNT_PP_INTERCEPT_67
+# define SNT_PP_INTERCEPT_68
+# define SNT_PP_INTERCEPT_69
+# define SNT_PP_INTERCEPT_70
+# define SNT_PP_INTERCEPT_71
+# define SNT_PP_INTERCEPT_72
+# define SNT_PP_INTERCEPT_73
+# define SNT_PP_INTERCEPT_74
+# define SNT_PP_INTERCEPT_75
+# define SNT_PP_INTERCEPT_76
+# define SNT_PP_INTERCEPT_77
+# define SNT_PP_INTERCEPT_78
+# define SNT_PP_INTERCEPT_79
+# define SNT_PP_INTERCEPT_80
+# define SNT_PP_INTERCEPT_81
+# define SNT_PP_INTERCEPT_82
+# define SNT_PP_INTERCEPT_83
+# define SNT_PP_INTERCEPT_84
+# define SNT_PP_INTERCEPT_85
+# define SNT_PP_INTERCEPT_86
+# define SNT_PP_INTERCEPT_87
+# define SNT_PP_INTERCEPT_88
+# define SNT_PP_INTERCEPT_89
+# define SNT_PP_INTERCEPT_90
+# define SNT_PP_INTERCEPT_91
+# define SNT_PP_INTERCEPT_92
+# define SNT_PP_INTERCEPT_93
+# define SNT_PP_INTERCEPT_94
+# define SNT_PP_INTERCEPT_95
+# define SNT_PP_INTERCEPT_96
+# define SNT_PP_INTERCEPT_97
+# define SNT_PP_INTERCEPT_98
+# define SNT_PP_INTERCEPT_99
+# define SNT_PP_INTERCEPT_100
+# define SNT_PP_INTERCEPT_101
+# define SNT_PP_INTERCEPT_102
+# define SNT_PP_INTERCEPT_103
+# define SNT_PP_INTERCEPT_104
+# define SNT_PP_INTERCEPT_105
+# define SNT_PP_INTERCEPT_106
+# define SNT_PP_INTERCEPT_107
+# define SNT_PP_INTERCEPT_108
+# define SNT_PP_INTERCEPT_109
+# define SNT_PP_INTERCEPT_110
+# define SNT_PP_INTERCEPT_111
+# define SNT_PP_INTERCEPT_112
+# define SNT_PP_INTERCEPT_113
+# define SNT_PP_INTERCEPT_114
+# define SNT_PP_INTERCEPT_115
+# define SNT_PP_INTERCEPT_116
+# define SNT_PP_INTERCEPT_117
+# define SNT_PP_INTERCEPT_118
+# define SNT_PP_INTERCEPT_119
+# define SNT_PP_INTERCEPT_120
+# define SNT_PP_INTERCEPT_121
+# define SNT_PP_INTERCEPT_122
+# define SNT_PP_INTERCEPT_123
+# define SNT_PP_INTERCEPT_124
+# define SNT_PP_INTERCEPT_125
+# define SNT_PP_INTERCEPT_126
+# define SNT_PP_INTERCEPT_127
+# define SNT_PP_INTERCEPT_128
+# define SNT_PP_INTERCEPT_129
+# define SNT_PP_INTERCEPT_130
+# define SNT_PP_INTERCEPT_131
+# define SNT_PP_INTERCEPT_132
+# define SNT_PP_INTERCEPT_133
+# define SNT_PP_INTERCEPT_134
+# define SNT_PP_INTERCEPT_135
+# define SNT_PP_INTERCEPT_136
+# define SNT_PP_INTERCEPT_137
+# define SNT_PP_INTERCEPT_138
+# define SNT_PP_INTERCEPT_139
+# define SNT_PP_INTERCEPT_140
+# define SNT_PP_INTERCEPT_141
+# define SNT_PP_INTERCEPT_142
+# define SNT_PP_INTERCEPT_143
+# define SNT_PP_INTERCEPT_144
+# define SNT_PP_INTERCEPT_145
+# define SNT_PP_INTERCEPT_146
+# define SNT_PP_INTERCEPT_147
+# define SNT_PP_INTERCEPT_148
+# define SNT_PP_INTERCEPT_149
+# define SNT_PP_INTERCEPT_150
+# define SNT_PP_INTERCEPT_151
+# define SNT_PP_INTERCEPT_152
+# define SNT_PP_INTERCEPT_153
+# define SNT_PP_INTERCEPT_154
+# define SNT_PP_INTERCEPT_155
+# define SNT_PP_INTERCEPT_156
+# define SNT_PP_INTERCEPT_157
+# define SNT_PP_INTERCEPT_158
+# define SNT_PP_INTERCEPT_159
+# define SNT_PP_INTERCEPT_160
+# define SNT_PP_INTERCEPT_161
+# define SNT_PP_INTERCEPT_162
+# define SNT_PP_INTERCEPT_163
+# define SNT_PP_INTERCEPT_164
+# define SNT_PP_INTERCEPT_165
+# define SNT_PP_INTERCEPT_166
+# define SNT_PP_INTERCEPT_167
+# define SNT_PP_INTERCEPT_168
+# define SNT_PP_INTERCEPT_169
+# define SNT_PP_INTERCEPT_170
+# define SNT_PP_INTERCEPT_171
+# define SNT_PP_INTERCEPT_172
+# define SNT_PP_INTERCEPT_173
+# define SNT_PP_INTERCEPT_174
+# define SNT_PP_INTERCEPT_175
+# define SNT_PP_INTERCEPT_176
+# define SNT_PP_INTERCEPT_177
+# define SNT_PP_INTERCEPT_178
+# define SNT_PP_INTERCEPT_179
+# define SNT_PP_INTERCEPT_180
+# define SNT_PP_INTERCEPT_181
+# define SNT_PP_INTERCEPT_182
+# define SNT_PP_INTERCEPT_183
+# define SNT_PP_INTERCEPT_184
+# define SNT_PP_INTERCEPT_185
+# define SNT_PP_INTERCEPT_186
+# define SNT_PP_INTERCEPT_187
+# define SNT_PP_INTERCEPT_188
+# define SNT_PP_INTERCEPT_189
+# define SNT_PP_INTERCEPT_190
+# define SNT_PP_INTERCEPT_191
+# define SNT_PP_INTERCEPT_192
+# define SNT_PP_INTERCEPT_193
+# define SNT_PP_INTERCEPT_194
+# define SNT_PP_INTERCEPT_195
+# define SNT_PP_INTERCEPT_196
+# define SNT_PP_INTERCEPT_197
+# define SNT_PP_INTERCEPT_198
+# define SNT_PP_INTERCEPT_199
+# define SNT_PP_INTERCEPT_200
+# define SNT_PP_INTERCEPT_201
+# define SNT_PP_INTERCEPT_202
+# define SNT_PP_INTERCEPT_203
+# define SNT_PP_INTERCEPT_204
+# define SNT_PP_INTERCEPT_205
+# define SNT_PP_INTERCEPT_206
+# define SNT_PP_INTERCEPT_207
+# define SNT_PP_INTERCEPT_208
+# define SNT_PP_INTERCEPT_209
+# define SNT_PP_INTERCEPT_210
+# define SNT_PP_INTERCEPT_211
+# define SNT_PP_INTERCEPT_212
+# define SNT_PP_INTERCEPT_213
+# define SNT_PP_INTERCEPT_214
+# define SNT_PP_INTERCEPT_215
+# define SNT_PP_INTERCEPT_216
+# define SNT_PP_INTERCEPT_217
+# define SNT_PP_INTERCEPT_218
+# define SNT_PP_INTERCEPT_219
+# define SNT_PP_INTERCEPT_220
+# define SNT_PP_INTERCEPT_221
+# define SNT_PP_INTERCEPT_222
+# define SNT_PP_INTERCEPT_223
+# define SNT_PP_INTERCEPT_224
+# define SNT_PP_INTERCEPT_225
+# define SNT_PP_INTERCEPT_226
+# define SNT_PP_INTERCEPT_227
+# define SNT_PP_INTERCEPT_228
+# define SNT_PP_INTERCEPT_229
+# define SNT_PP_INTERCEPT_230
+# define SNT_PP_INTERCEPT_231
+# define SNT_PP_INTERCEPT_232
+# define SNT_PP_INTERCEPT_233
+# define SNT_PP_INTERCEPT_234
+# define SNT_PP_INTERCEPT_235
+# define SNT_PP_INTERCEPT_236
+# define SNT_PP_INTERCEPT_237
+# define SNT_PP_INTERCEPT_238
+# define SNT_PP_INTERCEPT_239
+# define SNT_PP_INTERCEPT_240
+# define SNT_PP_INTERCEPT_241
+# define SNT_PP_INTERCEPT_242
+# define SNT_PP_INTERCEPT_243
+# define SNT_PP_INTERCEPT_244
+# define SNT_PP_INTERCEPT_245
+# define SNT_PP_INTERCEPT_246
+# define SNT_PP_INTERCEPT_247
+# define SNT_PP_INTERCEPT_248
+# define SNT_PP_INTERCEPT_249
+# define SNT_PP_INTERCEPT_250
+# define SNT_PP_INTERCEPT_251
+# define SNT_PP_INTERCEPT_252
+# define SNT_PP_INTERCEPT_253
+# define SNT_PP_INTERCEPT_254
+# define SNT_PP_INTERCEPT_255
+# define SNT_PP_INTERCEPT_256
+#
+# else
+#
+# /* SNT_PP_INTERCEPT */
+#
+# define SNT_PP_INTERCEPT SNT_PP_INTERCEPT_
+#
+# include <sentient/preprocessor/config/limits.h>
+#
+# if SNT_PP_LIMIT_MAG == 256
+# include <sentient/preprocessor/facilities/limits/intercept_256.h>
+# elif SNT_PP_LIMIT_MAG == 512
+# include <sentient/preprocessor/facilities/limits/intercept_256.h>
+# include <sentient/preprocessor/facilities/limits/intercept_512.h>
+# elif SNT_PP_LIMIT_MAG == 1024
+# include <sentient/preprocessor/facilities/limits/intercept_256.h>
+# include <sentient/preprocessor/facilities/limits/intercept_512.h>
+# include <sentient/preprocessor/facilities/limits/intercept_1024.h>
+# else
+# error Incorrect value for the SNT_PP_LIMIT_MAG limit
+# endif
+#
+# endif
+#
+# endif

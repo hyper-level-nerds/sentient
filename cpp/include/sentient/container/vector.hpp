@@ -20,9 +20,9 @@
 namespace snt {
 
 /**
- * @author 
- * @brief the standard spec satisfied vector class has its own size type for serialization
  * @author Jin (jaehwanspin@gmail.com)
+ * @brief the standard spec satisfied vector class has its own size type for serialization
+ * 
  * @tparam ValueType value type
  * @tparam PayloadSizeType payload size type for serialization
  * @tparam Allocator allocator for string, default std::allocator<CharType>
@@ -61,8 +61,9 @@ public:
     using const_reverse_iterator = typename base_type::const_reverse_iterator;
     using payload_size_type = PayloadSizeType;
 
+    
     /**
-     * @brief 
+     * @
      */
     constexpr vector() noexcept(noexcept(allocator_type())) :
         base_type()
@@ -139,6 +140,11 @@ public:
         }
     }
 
+	/**
+	 * @brief standard spec reserve
+	 * @param new_cap internal buffer allocation size
+	 * @return void
+	 */
     constexpr void reserve(size_type new_cap)
     {
         if (new_cap > this->max_size())
@@ -148,6 +154,11 @@ public:
         base_type::reserve(new_cap);
     }
 
+	/**
+	 * @brief standard spec resize 1
+	 * @param count new size
+	 * @return void
+	 */
     constexpr void resize(size_type count)
     {
         if (count > this->max_size())
@@ -157,6 +168,12 @@ public:
         base_type::resize(count);
     }
 
+	/**
+	 * @brief standard spec resize 2
+	 * @param count new size
+	 * @param value value to be filled with
+	 * @return void
+	 */
     constexpr void resize(size_type count, const value_type& value)
     {
         if (count > this->max_size())
@@ -166,6 +183,11 @@ public:
         base_type::resize(count, value);
     }
 
+	/**
+	 * @brief standard spec push_back 1
+	 * @param value
+	 * @return void
+	 */
     constexpr void push_back(const value_type& value)
     {
         if ((base_type::size() + 1) > this->max_size())

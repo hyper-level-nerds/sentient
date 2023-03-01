@@ -10,6 +10,8 @@
 #ifndef SENTIENT_CONTAINER_ARRAY_HPP
 #define SENTIENT_CONTAINER_ARRAY_HPP
 
+#if __cplusplus >= 202002L
+
 #include <cstddef>
 #include <array>
 
@@ -30,5 +32,9 @@ template <
 using array = BaseArrayContainer;
 
 }
+
+#else
+#error "Go get the compiler that supports over c++20 to use Sentient"
+#endif // #if __cplusplus >= 202002L
 
 #endif 

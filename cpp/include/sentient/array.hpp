@@ -10,6 +10,17 @@
 #ifndef SENTIENT_ARRAY_HPP
 #define SENTIENT_ARRAY_HPP
 
+/**
+ * @file array.hpp
+ * @author Jin (jayjintheprogrammer@gmail.com)
+ * @brief forwards array container header
+ * @version 0.1
+ * @date 2023-02-20
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include <sentient/container/array.hpp>
 
 #endif

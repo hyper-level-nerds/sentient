@@ -10,6 +10,17 @@
 #ifndef SENTIENT_VECTOR_HPP
 #define SENTIENT_VECTOR_HPP
 
+/**
+ * @file vector.hpp
+ * @author Jin (jayjintheprogrammer@gmail.com)
+ * @brief forwards vector container header
+ * @version 0.1
+ * @date 2023-02-20
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include <sentient/container/vector.hpp>
 
 #endif

@@ -13,30 +13,30 @@
 #include <sentient/concepts/primitive.hpp>
 
 #include <boost/signals2/signal.hpp>
-#include <boost/asio/executor.hpp>
+#include <boost/asio/any_io_executor.hpp>
 
 namespace snt {
 
 template <
     typename Type,
-    typename Executor = boost::asio::executor
+    typename Executor = boost::asio::any_io_executor
 > requires snt::concepts::primitive<Type>
 struct observable
 {
 private:
     using genuine_value_type = std::atomic<Type>;
+    using signal_type = boost::signals2::signal<void(value_type)>;
 
 public:
     using value_type = Type;
     using executor_type = Executor;
-    using signal_type = boost::signals2::signal<void(value_type)>;
 
 public:
-    constexpr observable(executor_type& exec) noexcept :
+    constexpr observable(const executor_type& exec) noexcept :
         exec_(exec)
     { }
 
-    constexpr observable(executor_type& exec, value_type val) noexcept :
+    constexpr observable(const executor_type& exec, value_type val) noexcept :
         exec_(exec), value_(val)
     { }
 
@@ -61,7 +61,7 @@ private:
 
 private:
     genuine_value_type value_;
-    executor_type&     exec_;
+    executor_type      exec_;
     signal_type        sig_;
 };
 
