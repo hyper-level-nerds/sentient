@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2016-2019 Jin (jaehwanspin@gmail.com)
+// Copyright (c) 2016-2019 Jin (jayjintheprogrammer@gmail.com)
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -115,7 +115,7 @@ SNT_API void SNT_SOFTMANGLE(snt_add_type_info)(snt_ti_node_t node) {
     type_dict_root = snt_impl_add_type_info(type_dict_root, node);
 }
 
-SNT_API struct snt_type_info* snt_get_type_info(snt_type_id_t id) {
+SNT_API const struct snt_type_info* snt_get_type_info(snt_type_id_t id) {
     struct snt_type_info* result = NULL;
     if (type_dict_root != NULL) {
         snt_ti_node_t found_node = snt_impl_get_type_info(type_dict_root, id);
